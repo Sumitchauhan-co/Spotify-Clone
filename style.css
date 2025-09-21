@@ -1460,7 +1460,7 @@ body {
   height: 75%;
   width: 25%;
   /* background-color: yellow; */
-  margin: 0 2%;
+  margin: 0 3%;
   display: flex;
   flex-direction: column;
   color: white;
@@ -1471,7 +1471,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .footer-page .container-1 .content .content-2 {
@@ -1479,7 +1479,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   color: var(--light-dark-text-color);
 }
 
@@ -2028,18 +2028,19 @@ body {
   justify-content: start;
 }
 
-.section-2 .songs-container .song-1 .song-name,
-.section-2 .songs-container .song-2 .song-name,
-.section-2 .songs-container .song-3 .song-name,
-.section-2 .songs-container .song-4 .song-name,
-.section-2 .songs-container .song-5 .song-name,
-.section-2 .songs-container .song-6 .song-name,
-.section-2 .songs-container .song-7 .song-name {
+.section-2 .songs-container .song-1 .name,
+.section-2 .songs-container .song-2 .name,
+.section-2 .songs-container .song-3 .name,
+.section-2 .songs-container .song-4 .name,
+.section-2 .songs-container .song-5 .name,
+.section-2 .songs-container .song-6 .name,
+.section-2 .songs-container .song-7 .name {
   height: 100%;
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: start;
+  color: var(--dark-text-color);
 }
 
 .section-2 .songs-container .song-1 .date,
@@ -2054,6 +2055,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  color: var(--dark-text-color);
 }
 
 .section-2 .songs-container .song-1 .duration,
@@ -2068,6 +2070,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  color: var(--dark-text-color);
 }
 
 .section-2 .songs-container .song-1:hover,
@@ -2969,19 +2972,21 @@ body {
   justify-content: start;
 }
 
-.section-2 .phone-songs-container .song-1 .song-name,
-.section-2 .phone-songs-container .song-2 .song-name,
-.section-2 .phone-songs-container .song-3 .song-name,
-.section-2 .phone-songs-container .song-4 .song-name,
-.section-2 .phone-songs-container .song-5 .song-name,
-.section-2 .phone-songs-container .song-6 .song-name,
-.section-2 .phone-songs-container .song-7 .song-name {
+.section-2 .phone-songs-container .song-1 .name,
+.section-2 .phone-songs-container .song-2 .name,
+.section-2 .phone-songs-container .song-3 .name,
+.section-2 .phone-songs-container .song-4 .name,
+.section-2 .phone-songs-container .song-5 .name,
+.section-2 .phone-songs-container .song-6 .name,
+.section-2 .phone-songs-container .song-7 .name {
   height: 100%;
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: start;
   padding-left: 3%;
+  font-size: 10px;
+  color: var(--dark-text-color);
 }
 
 .section-2 .phone-songs-container .song-1 .date,
@@ -2997,6 +3002,8 @@ body {
   align-items: center;
   justify-content: start;
   padding-left: 3%;
+  font-size: 10px;
+  color: var(--dark-text-color);
 }
 
 .section-2 .phone-songs-container .song-1 .duration,
@@ -3011,6 +3018,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  font-size: 10px;
+  color: var(--dark-text-color);
 }
 
 .section-2 .phone-songs-container .song-1:hover,

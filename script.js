@@ -57,6 +57,9 @@ let page1PlayBtn1 = document.querySelector(
 let pageChange1PlayBtn1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1"
 );
+let phonePageChange1 = document.querySelector(
+  ".section-2 .page-1-phone .phone-container-class .playlists-container .div-1"
+);
 let page1Play1Svg1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(1)"
 );
@@ -170,6 +173,10 @@ const sec2Page1Phone = document.querySelector(".section-2 .page-1-phone");
 const sec2Page2Phone = document.querySelector(".section-2 .page-2-phone");
 const Page1 = document.querySelector(".section-2 .page-1");
 
+let page2PhonePlay = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause");
+let page2PhonePlaySvg1 = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)");
+let page2PhonePlaySvg2 = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)");
+
 function formatTime(seconds) {
   let min = Math.floor(seconds / 60);
   let sec = Math.floor(seconds % 60);
@@ -177,7 +184,7 @@ function formatTime(seconds) {
 }
 
 async function main() {
-  let a = await fetch("songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
+  let a = await fetch("http://127.0.0.1:5500/songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
   loadSong(n);
 
@@ -204,6 +211,8 @@ async function main() {
   // }
   songs.forEach((element) => {
     let c = new Audio(element.src);
+    c.src = element.src;
+    c.preload = "metadata";
     c.load();
     console.log(element.src);
     songsContainer.insertAdjacentHTML(
@@ -215,7 +224,7 @@ async function main() {
         <div class="song-name">${element.title}</div>
         <div class="song-artist">${element.artist}</div>
       </div>
-      <div class="song-name">${element.title}</div>
+      <div class="name">${element.title}</div>
       <div class="date">25 Sep, 2025</div>
       <div class="duration" id="duration-${element.id}">--:--</div>
     </div>`
@@ -229,9 +238,9 @@ async function main() {
         <div class="song-name">${element.title}</div>
         <div class="song-artist">${element.artist}</div>
       </div>
-      <div class="song-name">${element.title}</div>
+      <div class="name">${element.title}</div>
       <div class="date">25 Sep, 2025</div>
-      <div class="duration" id="duration-${element.id}">--:--</div>
+      <div class="duration" id="duration-phone-${element.id}">--:--</div>
     </div>`
     );
     c.addEventListener("loadedmetadata", () => {
@@ -241,8 +250,14 @@ async function main() {
     });
     c.addEventListener("loadedmetadata", () => {
       let e = formatTime(c.duration);
-      document.querySelector(`#duration-${element.id}`).textContent = e;
-      // console.log(e);
+      document.querySelector(`#duration-phone-${element.id}`).textContent = e;
+      // console.log(d);
+    });
+    document.addEventListener("pointerdown", ()=>{
+      const unlock = new Audio();
+      unlock.play().catch(()=>{
+        console.log("Audio is unlocked");
+      }, {once : true});
     });
   });
 }
@@ -278,7 +293,6 @@ function loadSong(index) {
     nextSong();
   });
   songDetails();
-
   b.play();
 }
 
@@ -296,6 +310,14 @@ function playSvg() {
   // page1Play2Svg2.classList.remove("display-none");
 }
 
+function phonePlaySvg() {
+  playBtnSvg1.classList.add("display-none");
+  playBtnSvg2.classList.remove("display-none");
+
+  page2PhonePlaySvg1.classList.add("display-none");
+  page2PhonePlaySvg2.classList.remove("display-none");
+}
+
 function pauseSvg() {
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
@@ -310,8 +332,16 @@ function pauseSvg() {
   // page1Play2Svg1.classList.remove("display-none");
 }
 
+function phonePauseSvg() {
+  playBtnSvg1.classList.add("display-none");
+  playBtnSvg2.classList.remove("display-none");
+
+  page2PhonePlaySvg2.classList.add("display-none");
+  page2PhonePlaySvg1.classList.remove("display-none");
+}
+
 randomPlay.addEventListener("pointerdown", () => {
-  let r = Math.floor(Math.random() * 7);
+  let r = Math.floor(Math.random() * 7);                         //to change
   n = r;
   b.play();
   playSvg();
@@ -381,6 +411,19 @@ songsContainer.addEventListener("pointerdown", (e) => {
   console.log(`url(${songs[n].cover})`);
 });
 
+phoneSongsContainer.addEventListener("pointerdown", (e) => {
+  let songDiv = e.target.closest("[data-id]");
+  if (!songDiv) return;
+
+  let id = songDiv.dataset.id - 1;
+  console.log(id);
+  n = id;
+  loadSong(n);
+  playSvg();
+  songDetails();
+  console.log(`url(${songs[n].cover})`);
+});
+
 prevBtn.addEventListener("pointerdown", () => {
   prevSong();
 });
@@ -420,29 +463,55 @@ container.addEventListener("pointerdown", (e) => {
 });
 
 let play = function () {
-  if (resize === false) {
+  if (window.innerWidth > 1025) {
     if (page2.classList.contains("display-none")) {
       page2.classList.remove("display-none");
       page1.classList.add("display-none");
-      console.log("page1 is visible");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
+      console.log("page2 is visible");
     } else {
       page2.classList.add("display-none");
       page1.classList.remove("display-none");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
-      console.log("page2 is visible");
+      console.log("page1 is visible");
     }
-  }
+  } else if (window.innerWidth <= 1025 &&
+      window.innerWidth > 350 &&
+      window.innerHeight <= 1375 &&
+      window.innerHeight > 600) {
+      if (sec2Page2Phone.classList.contains("display-none")) {
+        page2.classList.add("display-none");
+        page1.classList.add("display-none");
+        sec2Page1Phone.classList.add("display-none");
+        sec2Page2Phone.classList.remove("display-none");
+        console.log("phone-page2 is visible");
+      } else {
+        page2.classList.add("display-none");
+        page1.classList.add("display-none");
+        sec2Page1Phone.classList.remove("display-none");
+        sec2Page2Phone.classList.add("display-none");
+        console.log("phone-page1 is visible");
+      }
+    }
 };
 
 playlist1.addEventListener("pointerdown", play);
 
-pageChange1PlayBtn1.addEventListener("click", () => {
-  if (page2.classList.contains("display-none")) {
-    page1.classList.add("display-none");
-    page2.classList.remove("display-none");
+pageChange1PlayBtn1.addEventListener("pointerdown", play);
+
+phonePageChange1.addEventListener("pointerdown", play);
+
+page2PhonePlay.addEventListener("pointerdown", ()=>{
+  if (b.paused) {
+    b.play();
+    phonePlaySvg();
+    console.log("Song is played");
+  } else {
+    b.pause();
+    phonePauseSvg();
+    console.log("Song is paused");
   }
 });
 
@@ -515,55 +584,40 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
   sec1CloseIcons.classList.add("display-none");
 });
 
-window.addEventListener("resize", () => {
-  // if (window.innerWidth <= 768) {
-  //   document.documentElement.style.setProperty("--section-1-width", 68 + "px");
-  //   sec1PlaylistContent.forEach((element) => {
-  //     element.classList.add("display-none");
-  //   });
-  //   sec1Container.style.display = "none";
-  //   sec1Bar.style.display = "none";
-  //   sec1CloseIcons.classList.remove("display-none");
-  // } else {
-  //   document.documentElement.style.setProperty("--section-1-width", 360 + "px");
-  //   sec1PlaylistContent.forEach((element) => {
-  //     element.classList.remove("display-none");
-  //   });
-  //   sec1Container.style.display = "block";
-  //   sec1Bar.style.display = "flex";
-  //   sec1CloseIcons.classList.add("display-none");
-  // }
-});
 
-window.addEventListener("load", () => {
-  if (window.innerWidth <= 768) {
-    document.documentElement.style.setProperty("--section-1-width", 68 + "px");
-    sec1PlaylistContent.forEach((element) => {
-      element.classList.add("display-none");
-    });
-    sec1Container.style.display = "none";
-    sec1Bar.style.display = "none";
-    sec1CloseIcons.classList.remove("display-none");
-  } else {
-    document.documentElement.style.setProperty("--section-1-width", 360 + "px");
-    sec1PlaylistContent.forEach((element) => {
-      element.classList.remove("display-none");
-    });
-    sec1Container.style.display = "block";
-    sec1Bar.style.display = "flex";
-    sec1CloseIcons.classList.add("display-none");
-  }
+["resize","load"].forEach((evt) => {
+  window.addEventListener(evt, () => {
+    if (window.innerWidth <= 768) {
+      document.documentElement.style.setProperty("--section-1-width", 68 + "px");
+      sec1PlaylistContent.forEach((element) => {
+        element.classList.add("display-none");
+      });
+      sec1Container.style.display = "none";
+      sec1Bar.style.display = "none";
+      sec1CloseIcons.classList.remove("display-none");
+    } else {
+      document.documentElement.style.setProperty("--section-1-width", 360 + "px");
+      sec1PlaylistContent.forEach((element) => {
+        element.classList.remove("display-none");
+      });
+      sec1Container.style.display = "block";
+      sec1Bar.style.display = "flex";
+      sec1CloseIcons.classList.add("display-none");
+    }
+  });
 });
 
 ["resize", "load"].forEach((evt) => {
   window.addEventListener(evt, () => {
-    resize = true;
     if (
       window.innerWidth <= 1025 &&
       window.innerWidth > 350 &&
       window.innerHeight <= 1375 &&
       window.innerHeight > 600
     ) {
+
+      resize = true;
+
       //main
 
       mainSection.style.height = "70vh";
@@ -572,7 +626,6 @@ window.addEventListener("load", () => {
 
       // header
 
-      // header.style.height = "7vh";
       header.style.alignItems = "center";
       headerLeft.style.margin = "7px 18px";
       headerLeft.style.alignItems = "center";
@@ -589,30 +642,28 @@ window.addEventListener("load", () => {
       headerRight1.classList.add("display-none");
       headerRight2.classList.add("display-none");
       headerRight3.style.width = "30%";
-      headerRight4.style.width = "30%";
       headerRight3.style.height = "45%";
+      headerRight4.style.width = "30%";
       headerRight4.style.height = "45%";
       headerRight5.style.fontSize = "12px";
 
       // Footer
 
-      footerPage.style.height = "15vh";
+      footerPage.style.height = "13vh";
       footerPage.style.gap = "5%";
       footerPage.style.marginTop = "5%";
       footerPage.style.flexDirection = "column";
       footerPageCont1.style.maxWidth = "70%"; //
       footerPageCont1.style.minWidth = "50%"; //
-      footerPageCont1.style.height = "90%";
-      footerPageCont1.style.margin = "0 5%";
-      footerPageCont3.style.height = "0%";
+      footerPageCont1.style.height = "40%";
       footerPageCont2.style.width = "110%";
-      footerPageCont2.style.width = "100%";
+      footerPageCont2.style.height = "50%";
+      footerPageCont3.style.height = "0%";
       footerPageCont1Img.style.minWidth = "25%";
       footerPageCont1Img.style.height = "115%";
       footerPageCont1Content.style.fontSize = "12px";
       footerPageCont1Content.style.height = "100%";
-      footerPageCont1Content.style.width = "60%";
-      footerPageCont1Add.style.width = "20%";
+      footerPageCont1Content.style.maxWidth = "60%";
       footerPageCont1Add.style.width = "20%";
       footerPageCont2UpperMid.style.margin = "0";
       footerPageCont2UpperMid.style.height = "20px";
@@ -626,6 +677,8 @@ window.addEventListener("load", () => {
       footerPageCont2UpperStartSecondSvg.style.height = "15px";
       footerPageCont2UpperStartSecondSvg.style.width = "15px";
       footerPageCont2UpperEndFirstSvg.style.height = "15px";
+      footerPageCont2UpperEndFirstSvg.style.width = "15px";
+      footerPageCont2UpperEndSecondSvg.style.height = "15px";
       footerPageCont2UpperEndSecondSvg.style.width = "15px";
       footerPageCont2LowerProgressContainer.style.width = "50%";
 
@@ -635,7 +688,7 @@ window.addEventListener("load", () => {
       page1.classList.add("display-none");
       page2.classList.add("display-none");
 
-      playlist1.removeEventListener("pointerdown", play);
+      // playlist1.removeEventListener("pointerdown", play);
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
@@ -649,10 +702,10 @@ window.addEventListener("load", () => {
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
 
-        // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
+        const page1Hidden = sec2Page1Phone.classList.contains("display-none");
 
-        // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-        // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
+        sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
+        sec2Page2Phone.classList.toggle("display-none",page1Hidden)
         if (sec2Page1Phone.classList.contains("display-none")) {
           sec2Page1Phone.classList.remove("display-none");
           sec2Page2Phone.classList.add("display-none");
@@ -664,52 +717,57 @@ window.addEventListener("load", () => {
         }
       });
 
-      sec1OpenPLaylists.addEventListener("pointerdown", () => {
-        document.documentElement.style.setProperty(
-          "--section-1-width",
-          375 + "px"
-        );
-        sec1PlaylistContent.forEach((element) => {
-          element.classList.remove("display-none");
-        });
-        // sec1Header.style.display = "flex";
-        sec1Container.style.display = "block";
-        sec1Bar.style.display = "flex";
-        sec1CloseIcons.classList.add("display-none");
-      });
+      // sec1OpenPLaylists.addEventListener("pointerdown", () => {
+      //   document.documentElement.style.setProperty(
+      //     "--section-1-width",
+      //     375 + "px"
+      //   );
+      //   sec1PlaylistContent.forEach((element) => {
+      //     element.classList.remove("display-none");
+      //   });
+      //   // sec1Header.style.display = "flex";
+      //   sec1Container.style.display = "block";
+      //   sec1Bar.style.display = "flex";
+      //   sec1CloseIcons.classList.add("display-none");
+      // });
 
-      if (window.innerWidth <= 768) {
-        document.documentElement.style.setProperty(
-          "--section-1-width",
-          68 + "px"
-        );
-        sec1PlaylistContent.forEach((element) => {
-          element.classList.add("display-none");
-        });
-        sec1Container.style.display = "none";
-        sec1Bar.style.display = "none";
-        sec1CloseIcons.classList.remove("display-none");
-      } else {
-        document.documentElement.style.setProperty(
-          "--section-1-width",
-          360 + "px"
-        );
-        sec1PlaylistContent.forEach((element) => {
-          element.classList.remove("display-none");
-        });
-        sec1Container.style.display = "block";
-        sec1Bar.style.display = "flex";
-        sec1CloseIcons.classList.add("display-none");
-      }
+      // if (window.innerWidth <= 768) {
+      //   document.documentElement.style.setProperty(
+      //     "--section-1-width",
+      //     68 + "px"
+      //   );
+      //   sec1PlaylistContent.forEach((element) => {
+      //     element.classList.add("display-none");
+      //   });
+      //   sec1Container.style.display = "none";
+      //   sec1Bar.style.display = "none";
+      //   sec1CloseIcons.classList.remove("display-none");
+      // } else {
+      //   document.documentElement.style.setProperty(
+      //     "--section-1-width",
+      //     360 + "px"
+      //   );
+      //   sec1PlaylistContent.forEach((element) => {
+      //     element.classList.remove("display-none");
+      //   });
+      //   sec1Container.style.display = "block";
+      //   sec1Bar.style.display = "flex";
+      //   sec1CloseIcons.classList.add("display-none");
+      // }
     } else {
-      // header
+
+      //main
 
       mainSection.style.height = "80vh";
       mainSection.style.gridTemplateColumns =
         "var(--section-1-width, 0.7fr) 0.001fr 1.5fr 0.001fr 0.7fr";
-      header.style.height = "8vh";
+
+      // header
+
       headerLeft.style.margin = "15px 30px";
       headerLeftSvg.style.height = "30px";
+      headerMid.style.width = "35vw";
+      headerMid.style.height = "100%";
       headerMid1.style.height = "45px";
       headerMid1.style.width = "45px";
       headerMid1Svg.style.height = "55%";
@@ -717,27 +775,29 @@ window.addEventListener("load", () => {
       headerMid21.style.height = "85%";
       headerMid22.style.fontSize = "15px";
       headerMid23.style.height = "85%";
-      headerMid.style.width = "35vw";
       headerRight1.classList.remove("display-none");
       headerRight2.classList.remove("display-none");
       headerRight3.style.width = "10%";
-      headerRight4.style.width = "10%";
       headerRight3.style.height = "65%";
+      headerRight4.style.width = "10%";
       headerRight4.style.height = "65%";
       headerRight5.style.fontSize = "17px";
 
       // Footer
 
+      footerPage.style.height = "12vh"
       footerPage.style.gap = "0";
       footerPage.style.marginTop = "0";
       footerPage.style.flexDirection = "row";
-      footerPageCont1.style.width = "20%";
-      footerPageCont1.style.height = "100%";
+      footerPageCont1.style.width = "20%";                                  // to change
+      footerPageCont1.style.height = "100%";                                     // to change
       footerPageCont2.style.width = "35%";
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "17%";
       footerPageCont1Img.style.height = "90%";
-      footerPageCont1Content.style.width = "25%";
+      footerPageCont1Content.style.maxWidth = "40%";
+      footerPageCont1Content.style.height = "100%";
+      footerPageCont1Content.style.fontSize = "15px";
       footerPageCont1Add.style.width = "10%";
       footerPageCont2UpperMid.style.margin = "0 10px";
       footerPageCont2UpperMid.style.height = "29px";
@@ -756,12 +816,12 @@ window.addEventListener("load", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "17px";
       footerPageCont2LowerProgressContainer.style.width = "80%";
 
-      sec2Page1Phone.classList.add("display-none");
-      sec2Page2Phone.classList.add("display-none");
-      // page1.style.display = "revert";
-      // page2.style.display = "none";
+      // sec2Page1Phone.classList.add("display-none");
+      // sec2Page2Phone.classList.add("display-none");
+      // // page1.style.display = "revert";
+      // // page2.style.display = "none";
 
-      page1.classList.remove("display-none");
+      // page1.classList.remove("display-none");
       // page2.classList.remove("display-none");
     }
 
