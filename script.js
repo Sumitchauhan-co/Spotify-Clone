@@ -353,10 +353,12 @@ playBtn.addEventListener("pointerdown", () => {
   if (b.paused) {
     b.play();
     playSvg();
+    phonePlaySvg();
     console.log("Song is played");
   } else {
     b.pause();
     pauseSvg();
+    phonePauseSvg();
     console.log("Song is paused");
   }
 });
