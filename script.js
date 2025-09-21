@@ -333,8 +333,8 @@ function pauseSvg() {
 }
 
 function phonePauseSvg() {
-  playBtnSvg1.classList.add("display-none");
-  playBtnSvg2.classList.remove("display-none");
+  playBtnSvg2.classList.add("display-none");
+  playBtnSvg1.classList.remove("display-none");
 
   page2PhonePlaySvg2.classList.add("display-none");
   page2PhonePlaySvg1.classList.remove("display-none");
@@ -666,12 +666,12 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
       footerPageCont1Content.style.maxWidth = "60%";
       footerPageCont1Add.style.width = "20%";
       footerPageCont2UpperMid.style.margin = "0";
-      footerPageCont2UpperMid.style.height = "20px";
-      footerPageCont2UpperMid.style.width = "20px";
-      footerPageCont2UpperMidSvg.style.width = "12px";
-      footerPageCont2UpperMidSvg.style.height = "12px";
-      footerPageCont2UpperMidSvg2.style.width = "12px";
-      footerPageCont2UpperMidSvg2.style.height = "12px";
+      footerPageCont2UpperMid.style.height = "25px";
+      footerPageCont2UpperMid.style.width = "25px";
+      footerPageCont2UpperMidSvg.style.width = "15px";
+      footerPageCont2UpperMidSvg.style.height = "15px";
+      footerPageCont2UpperMidSvg2.style.width = "13px";
+      footerPageCont2UpperMidSvg2.style.height = "13px";
       footerPageCont2UpperStartFirstSvg.style.height = "15px";
       footerPageCont2UpperStartFirstSvg.style.width = "15px";
       footerPageCont2UpperStartSecondSvg.style.height = "15px";
