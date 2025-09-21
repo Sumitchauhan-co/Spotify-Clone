@@ -177,7 +177,7 @@ function formatTime(seconds) {
 }
 
 async function main() {
-  let a = await fetch("http://127.0.0.1:5500/songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
+  let a = await fetch("songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
   loadSong(n);
 
@@ -204,6 +204,7 @@ async function main() {
   // }
   songs.forEach((element) => {
     let c = new Audio(element.src);
+    c.load();
     console.log(element.src);
     songsContainer.insertAdjacentHTML(
       "beforeend",
@@ -309,7 +310,7 @@ function pauseSvg() {
   // page1Play2Svg1.classList.remove("display-none");
 }
 
-randomPlay.addEventListener("click", () => {
+randomPlay.addEventListener("pointerdown", () => {
   let r = Math.floor(Math.random() * 7);
   n = r;
   b.play();
@@ -318,7 +319,7 @@ randomPlay.addEventListener("click", () => {
   songDetails();
 });
 
-playBtn.addEventListener("click", () => {
+playBtn.addEventListener("pointerdown", () => {
   if (b.paused) {
     b.play();
     playSvg();
@@ -330,7 +331,7 @@ playBtn.addEventListener("click", () => {
   }
 });
 
-page2playBtn.addEventListener("click", () => {
+page2playBtn.addEventListener("pointerdown", () => {
   if (b.paused) {
     b.play();
     playSvg();
@@ -342,7 +343,7 @@ page2playBtn.addEventListener("click", () => {
   }
 });
 
-page1PlayBtn1.addEventListener("click", (e) => {
+page1PlayBtn1.addEventListener("pointerdown", (e) => {
   e.stopPropagation();
   if (b.paused) {
     b.play();
@@ -367,7 +368,7 @@ page1PlayBtn1.addEventListener("click", (e) => {
 //   }
 // });
 
-songsContainer.addEventListener("click", (e) => {
+songsContainer.addEventListener("pointerdown", (e) => {
   let songDiv = e.target.closest("[data-id]");
   if (!songDiv) return;
 
@@ -380,7 +381,7 @@ songsContainer.addEventListener("click", (e) => {
   console.log(`url(${songs[n].cover})`);
 });
 
-prevBtn.addEventListener("click", () => {
+prevBtn.addEventListener("pointerdown", () => {
   prevSong();
 });
 
@@ -395,7 +396,7 @@ function prevSong() {
   loadSong(n);
 }
 
-nextBtn.addEventListener("click", () => {
+nextBtn.addEventListener("pointerdown", () => {
   nextSong();
 });
 
@@ -410,7 +411,7 @@ function nextSong() {
   loadSong(n);
 }
 
-container.addEventListener("click", (e) => {
+container.addEventListener("pointerdown", (e) => {
   let rect = container.getBoundingClientRect();
   let clickX = e.clientX - rect.left;
   let width = rect.width;
@@ -419,16 +420,16 @@ container.addEventListener("click", (e) => {
 });
 
 let play = function () {
-  if (resize == false) {
-    if (page1.classList.contains("display-none")) {
-      page1.classList.remove("display-none");
-      page2.classList.add("display-none");
+  if (resize === false) {
+    if (page2.classList.contains("display-none")) {
+      page2.classList.remove("display-none");
+      page1.classList.add("display-none");
       console.log("page1 is visible");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
     } else {
-      page1.classList.add("display-none");
-      page2.classList.remove("display-none");
+      page2.classList.add("display-none");
+      page1.classList.remove("display-none");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
       console.log("page2 is visible");
@@ -436,7 +437,7 @@ let play = function () {
   }
 };
 
-playlist1.addEventListener("click", play);
+playlist1.addEventListener("pointerdown", play);
 
 pageChange1PlayBtn1.addEventListener("click", () => {
   if (page2.classList.contains("display-none")) {
@@ -503,7 +504,7 @@ document.addEventListener("mouseup", () => {
   isResizing = false;
 });
 
-sec1OpenPLaylists.addEventListener("click", () => {
+sec1OpenPLaylists.addEventListener("pointerdown", () => {
   document.documentElement.style.setProperty("--section-1-width", 375 + "px");
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
@@ -634,7 +635,7 @@ window.addEventListener("load", () => {
       page1.classList.add("display-none");
       page2.classList.add("display-none");
 
-      playlist1.removeEventListener("click", play);
+      playlist1.removeEventListener("pointerdown", play);
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
@@ -663,7 +664,7 @@ window.addEventListener("load", () => {
         }
       });
 
-      sec1OpenPLaylists.addEventListener("click", () => {
+      sec1OpenPLaylists.addEventListener("pointerdown", () => {
         document.documentElement.style.setProperty(
           "--section-1-width",
           375 + "px"
