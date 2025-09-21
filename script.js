@@ -134,6 +134,7 @@ const header = document.querySelector(".header"),
 const footerPage = document.querySelector(".footer-page"),
   footerPageCont1 = document.querySelector(".footer-page .container-1"),
   footerPageCont2 = document.querySelector(".footer-page .container-2"),
+  footerPageCont3 = document.querySelector(".footer-page .container-3"),
   footerPageCont1Img = document.querySelector(".footer-page .container-1 .img"),
   footerPageCont1Content = document.querySelector(
     ".footer-page .container-1 .content"
@@ -143,7 +144,10 @@ const footerPage = document.querySelector(".footer-page"),
     ".footer-page .container-2 .upper .mid"
   ),
   footerPageCont2UpperMidSvg = document.querySelector(
-    ".footer-page .container-2 .upper .mid svg"
+    ".footer-page .container-2 .upper .mid svg:nth-child(1)"
+  ),
+  footerPageCont2UpperMidSvg2 = document.querySelector(
+    ".footer-page .container-2 .upper .mid svg:nth-child(2)"
   ),
   footerPageCont2UpperStartFirstSvg = document.querySelector(
     ".footer-page .container-2 .upper .start .first svg"
@@ -173,7 +177,7 @@ function formatTime(seconds) {
 }
 
 async function main() {
-  let a = await fetch("songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
+  let a = await fetch("http://127.0.0.1:5500/songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
   loadSong(n);
 
@@ -414,7 +418,7 @@ container.addEventListener("click", (e) => {
   b.currentTime = newTime;
 });
 
-let play = function() {
+let play = function () {
   if (resize == false) {
     if (page1.classList.contains("display-none")) {
       page1.classList.remove("display-none");
@@ -430,7 +434,7 @@ let play = function() {
       console.log("page2 is visible");
     }
   }
-}
+};
 
 playlist1.addEventListener("click", play);
 
@@ -550,429 +554,238 @@ window.addEventListener("load", () => {
   }
 });
 
-window.addEventListener("resize", () => {
-  resize = true;
-  if (
-    window.innerWidth <= 1025 &&
-    window.innerWidth > 350 &&
-    window.innerHeight <= 1375 &&
-    window.innerHeight > 600
-  ) {
-    // header
+["resize", "load"].forEach((evt) => {
+  window.addEventListener(evt, () => {
+    resize = true;
+    if (
+      window.innerWidth <= 1025 &&
+      window.innerWidth > 350 &&
+      window.innerHeight <= 1375 &&
+      window.innerHeight > 600
+    ) {
+      //main
 
-    mainSection.style.height = "70vh";
-    mainSection.style.gridTemplateColumns =
-      "var(--section-1-width, 0.7fr) 0.001fr 1.5fr";
-    header.style.height = "5vh";
-    headerLeft.style.margin = "10px 20px";
-    headerLeftSvg.style.height = "25px";
-    headerMid1.style.height = "30px";
-    headerMid1.style.width = "30px";
-    headerMid1Svg.style.height = "45%";
-    headerMid2.style.borderRadius = "15px";
-    headerMid21.style.height = "60%";
-    headerMid22.style.fontSize = "12px";
-    headerMid23.style.height = "60%";
-    headerMid.style.width = "65vw";
-    headerRight1.classList.add("display-none");
-    headerRight2.classList.add("display-none");
-    headerRight3.style.width = "30%";
-    headerRight4.style.width = "30%";
-    headerRight3.style.height = "45%";
-    headerRight4.style.height = "45%";
-    headerRight5.style.fontSize = "12px";
+      mainSection.style.height = "70vh";
+      mainSection.style.gridTemplateColumns =
+        "var(--section-1-width, 0.7fr) 0.001fr 1.5fr";
 
-    // Footer
+      // header
 
-    footerPage.style.gap = "3%";
-    footerPage.style.marginTop = "5%";
-    footerPage.style.flexDirection = "column";
-    footerPageCont1.style.width = "35%";
-    footerPageCont1.style.height = "90%";
-    footerPageCont2.style.width = "110%";
-    footerPageCont2.style.width = "100%";
-    footerPageCont1Img.style.width = "25%";
-    footerPageCont1Img.style.height = "75%";
-    footerPageCont1Content.style.width = "60%";
-    footerPageCont1Add.style.width = "20%";
-    footerPageCont1Add.style.width = "20%";
-    footerPageCont2UpperMid.style.margin = "0";
-    footerPageCont2UpperMid.style.height = "20px";
-    footerPageCont2UpperMid.style.width = "20px";
-    footerPageCont2UpperMidSvg.style.width = "10px";
-    footerPageCont2UpperMidSvg.style.height = "10px";
-    footerPageCont2UpperStartFirstSvg.style.height = "15px";
-    footerPageCont2UpperStartFirstSvg.style.width = "15px";
-    footerPageCont2UpperStartSecondSvg.style.height = "15px";
-    footerPageCont2UpperStartSecondSvg.style.width = "15px";
-    footerPageCont2UpperEndFirstSvg.style.height = "15px";
-    footerPageCont2UpperEndSecondSvg.style.width = "15px";
-    footerPageCont2LowerProgressContainer.style.width = "50%";
+      // header.style.height = "7vh";
+      header.style.alignItems = "center";
+      headerLeft.style.margin = "7px 18px";
+      headerLeft.style.alignItems = "center";
+      headerLeftSvg.style.height = "30px";
+      headerMid.style.width = "60vw";
+      headerMid.style.height = "80%";
+      headerMid1.style.height = "35px";
+      headerMid1.style.width = "35px";
+      headerMid1Svg.style.height = "45%";
+      headerMid2.style.borderRadius = "12px";
+      headerMid21.style.height = "60%";
+      headerMid22.style.fontSize = "12px";
+      headerMid23.style.height = "60%";
+      headerRight1.classList.add("display-none");
+      headerRight2.classList.add("display-none");
+      headerRight3.style.width = "30%";
+      headerRight4.style.width = "30%";
+      headerRight3.style.height = "45%";
+      headerRight4.style.height = "45%";
+      headerRight5.style.fontSize = "12px";
 
-    sec2Page1Phone.classList.remove("display-none");
-    // page1.style.display = "none";
-    // page2.style.display = "none";
-    page1.classList.add("display-none");
-    page2.classList.add("display-none");
+      // Footer
 
-    playlist1.removeEventListener("click", play);
+      footerPage.style.height = "15vh";
+      footerPage.style.gap = "5%";
+      footerPage.style.marginTop = "5%";
+      footerPage.style.flexDirection = "column";
+      footerPageCont1.style.maxWidth = "70%"; //
+      footerPageCont1.style.minWidth = "50%"; //
+      footerPageCont1.style.height = "90%";
+      footerPageCont1.style.margin = "0 5%";
+      footerPageCont3.style.height = "0%";
+      footerPageCont2.style.width = "110%";
+      footerPageCont2.style.width = "100%";
+      footerPageCont1Img.style.minWidth = "25%";
+      footerPageCont1Img.style.height = "115%";
+      footerPageCont1Content.style.fontSize = "12px";
+      footerPageCont1Content.style.height = "100%";
+      footerPageCont1Content.style.width = "60%";
+      footerPageCont1Add.style.width = "20%";
+      footerPageCont1Add.style.width = "20%";
+      footerPageCont2UpperMid.style.margin = "0";
+      footerPageCont2UpperMid.style.height = "20px";
+      footerPageCont2UpperMid.style.width = "20px";
+      footerPageCont2UpperMidSvg.style.width = "12px";
+      footerPageCont2UpperMidSvg.style.height = "12px";
+      footerPageCont2UpperMidSvg2.style.width = "12px";
+      footerPageCont2UpperMidSvg2.style.height = "12px";
+      footerPageCont2UpperStartFirstSvg.style.height = "15px";
+      footerPageCont2UpperStartFirstSvg.style.width = "15px";
+      footerPageCont2UpperStartSecondSvg.style.height = "15px";
+      footerPageCont2UpperStartSecondSvg.style.width = "15px";
+      footerPageCont2UpperEndFirstSvg.style.height = "15px";
+      footerPageCont2UpperEndSecondSvg.style.width = "15px";
+      footerPageCont2LowerProgressContainer.style.width = "50%";
 
-    playlist1.addEventListener("click", () => {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        68 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.add("display-none");
+      sec2Page1Phone.classList.remove("display-none");
+      // page1.style.display = "none";
+      // page2.style.display = "none";
+      page1.classList.add("display-none");
+      page2.classList.add("display-none");
+
+      playlist1.removeEventListener("click", play);
+
+      playlist1.addEventListener("click", () => {
+        document.documentElement.style.setProperty(
+          "--section-1-width",
+          68 + "px"
+        );
+        sec1PlaylistContent.forEach((element) => {
+          element.classList.add("display-none");
+        });
+        sec1Container.style.display = "none";
+        sec1Bar.style.display = "none";
+        sec1CloseIcons.classList.remove("display-none");
+
+        // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
+
+        // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
+        // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
+        if (sec2Page1Phone.classList.contains("display-none")) {
+          sec2Page1Phone.classList.remove("display-none");
+          sec2Page2Phone.classList.add("display-none");
+          console.log("sec2Page2Phone visible");
+        } else {
+          sec2Page1Phone.classList.add("display-none");
+          sec2Page2Phone.classList.remove("display-none");
+          console.log("sec2Page1Phone visible");
+        }
       });
-      sec1Container.style.display = "none";
-      sec1Bar.style.display = "none";
-      sec1CloseIcons.classList.remove("display-none");
 
-      // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
+      sec1OpenPLaylists.addEventListener("click", () => {
+        document.documentElement.style.setProperty(
+          "--section-1-width",
+          375 + "px"
+        );
+        sec1PlaylistContent.forEach((element) => {
+          element.classList.remove("display-none");
+        });
+        // sec1Header.style.display = "flex";
+        sec1Container.style.display = "block";
+        sec1Bar.style.display = "flex";
+        sec1CloseIcons.classList.add("display-none");
+      });
 
-      // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-      // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-      if (sec2Page1Phone.classList.contains("display-none")) {
-        sec2Page1Phone.classList.remove("display-none");
-        sec2Page2Phone.classList.add("display-none");
-        console.log("sec2Page2Phone visible");
+      if (window.innerWidth <= 768) {
+        document.documentElement.style.setProperty(
+          "--section-1-width",
+          68 + "px"
+        );
+        sec1PlaylistContent.forEach((element) => {
+          element.classList.add("display-none");
+        });
+        sec1Container.style.display = "none";
+        sec1Bar.style.display = "none";
+        sec1CloseIcons.classList.remove("display-none");
       } else {
-        sec2Page1Phone.classList.add("display-none");
-        sec2Page2Phone.classList.remove("display-none");
-        console.log("sec2Page1Phone visible");
+        document.documentElement.style.setProperty(
+          "--section-1-width",
+          360 + "px"
+        );
+        sec1PlaylistContent.forEach((element) => {
+          element.classList.remove("display-none");
+        });
+        sec1Container.style.display = "block";
+        sec1Bar.style.display = "flex";
+        sec1CloseIcons.classList.add("display-none");
       }
-    });
-
-    sec1OpenPLaylists.addEventListener("click", () => {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        375 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.remove("display-none");
-      });
-      // sec1Header.style.display = "flex";
-      sec1Container.style.display = "block";
-      sec1Bar.style.display = "flex";
-      sec1CloseIcons.classList.add("display-none");
-    });
-
-    if (window.innerWidth <= 768) {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        68 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.add("display-none");
-      });
-      sec1Container.style.display = "none";
-      sec1Bar.style.display = "none";
-      sec1CloseIcons.classList.remove("display-none");
     } else {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        360 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.remove("display-none");
-      });
-      sec1Container.style.display = "block";
-      sec1Bar.style.display = "flex";
-      sec1CloseIcons.classList.add("display-none");
+      // header
+
+      mainSection.style.height = "80vh";
+      mainSection.style.gridTemplateColumns =
+        "var(--section-1-width, 0.7fr) 0.001fr 1.5fr 0.001fr 0.7fr";
+      header.style.height = "8vh";
+      headerLeft.style.margin = "15px 30px";
+      headerLeftSvg.style.height = "30px";
+      headerMid1.style.height = "45px";
+      headerMid1.style.width = "45px";
+      headerMid1Svg.style.height = "55%";
+      headerMid2.style.borderRadius = "20px";
+      headerMid21.style.height = "85%";
+      headerMid22.style.fontSize = "15px";
+      headerMid23.style.height = "85%";
+      headerMid.style.width = "35vw";
+      headerRight1.classList.remove("display-none");
+      headerRight2.classList.remove("display-none");
+      headerRight3.style.width = "10%";
+      headerRight4.style.width = "10%";
+      headerRight3.style.height = "65%";
+      headerRight4.style.height = "65%";
+      headerRight5.style.fontSize = "17px";
+
+      // Footer
+
+      footerPage.style.gap = "0";
+      footerPage.style.marginTop = "0";
+      footerPage.style.flexDirection = "row";
+      footerPageCont1.style.width = "20%";
+      footerPageCont1.style.height = "100%";
+      footerPageCont2.style.width = "35%";
+      footerPageCont2.style.height = "100%";
+      footerPageCont1Img.style.width = "17%";
+      footerPageCont1Img.style.height = "90%";
+      footerPageCont1Content.style.width = "25%";
+      footerPageCont1Add.style.width = "10%";
+      footerPageCont2UpperMid.style.margin = "0 10px";
+      footerPageCont2UpperMid.style.height = "29px";
+      footerPageCont2UpperMid.style.width = "29px";
+      footerPageCont2UpperMidSvg.style.width = "15px";
+      footerPageCont2UpperMidSvg.style.height = "15px";
+      footerPageCont2UpperMidSvg2.style.width = "15px";
+      footerPageCont2UpperMidSvg2.style.height = "15px";
+      footerPageCont2UpperStartFirstSvg.style.height = "17px";
+      footerPageCont2UpperStartFirstSvg.style.width = "17px";
+      footerPageCont2UpperStartSecondSvg.style.height = "17px";
+      footerPageCont2UpperStartSecondSvg.style.width = "17px";
+      footerPageCont2UpperEndFirstSvg.style.height = "17px";
+      footerPageCont2UpperEndFirstSvg.style.width = "17px";
+      footerPageCont2UpperEndSecondSvg.style.height = "17px";
+      footerPageCont2UpperEndSecondSvg.style.width = "17px";
+      footerPageCont2LowerProgressContainer.style.width = "80%";
+
+      sec2Page1Phone.classList.add("display-none");
+      sec2Page2Phone.classList.add("display-none");
+      // page1.style.display = "revert";
+      // page2.style.display = "none";
+
+      page1.classList.remove("display-none");
+      // page2.classList.remove("display-none");
     }
-  } else {
-    // header
 
-    mainSection.style.height = "80vh";
-    mainSection.style.gridTemplateColumns =
-      "var(--section-1-width, 0.7fr) 0.001fr 1.5fr 0.001fr 0.7fr";
-    header.style.height = "8vh";
-    headerLeft.style.margin = "15px 30px";
-    headerLeftSvg.style.height = "30px";
-    headerMid1.style.height = "45px";
-    headerMid1.style.width = "45px";
-    headerMid1Svg.style.height = "55%";
-    headerMid2.style.borderRadius = "20px";
-    headerMid21.style.height = "85%";
-    headerMid22.style.fontSize = "15px";
-    headerMid23.style.height = "85%";
-    headerMid.style.width = "35vw";
-    headerRight1.classList.remove("display-none");
-    headerRight2.classList.remove("display-none");
-    headerRight3.style.width = "10%";
-    headerRight4.style.width = "10%";
-    headerRight3.style.height = "65%";
-    headerRight4.style.height = "65%";
-    headerRight5.style.fontSize = "17px";
+    // playlist1.addEventListener("click", ()=> {
+    //   document.documentElement.style.setProperty("--section-1-width", 68 + "px");
+    //   sec1PlaylistContent.forEach(element => {
+    //     element.classList.add("display-none")
+    //   });
+    //   sec1Container.style.display = "none";
+    //   sec1Bar.style.display = "none";
+    //   sec1CloseIcons.classList.remove("display-none");
 
-    // Footer
+    //   // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
 
-    footerPage.style.gap = "0";
-    footerPage.style.marginTop = "0";
-    footerPage.style.flexDirection = "row";
-    footerPageCont1.style.width = "20%";
-    footerPageCont1.style.height = "100%";
-    footerPageCont2.style.width = "35%";
-    footerPageCont2.style.height = "100%";
-    footerPageCont1Img.style.width = "17%";
-    footerPageCont1Img.style.height = "90%";
-    footerPageCont1Content.style.width = "25%";
-    footerPageCont1Add.style.width = "10%";
-    footerPageCont2UpperMid.style.margin = "0 10px";
-    footerPageCont2UpperMid.style.height = "29px";
-    footerPageCont2UpperMid.style.width = "29px";
-    footerPageCont2UpperMidSvg.style.width = "15px";
-    footerPageCont2UpperMidSvg.style.height = "15px";
-    footerPageCont2UpperStartFirstSvg.style.height = "17px";
-    footerPageCont2UpperStartFirstSvg.style.width = "17px";
-    footerPageCont2UpperStartSecondSvg.style.height = "17px";
-    footerPageCont2UpperStartSecondSvg.style.width = "17px";
-    footerPageCont2UpperEndFirstSvg.style.height = "17px";
-    footerPageCont2UpperEndFirstSvg.style.width = "17px";
-    footerPageCont2UpperEndSecondSvg.style.height = "17px";
-    footerPageCont2UpperEndSecondSvg.style.width = "17px";
-    footerPageCont2LowerProgressContainer.style.width = "80%";
-
-    sec2Page1Phone.classList.add("display-none");
-    sec2Page2Phone.classList.add("display-none");
-    // page1.style.display = "revert";
-    // page2.style.display = "none";
-
-    page1.classList.remove("display-none");
-    // page2.classList.remove("display-none");
-  }
-
-  // playlist1.addEventListener("click", ()=> {
-  //   document.documentElement.style.setProperty("--section-1-width", 68 + "px");
-  //   sec1PlaylistContent.forEach(element => {
-  //     element.classList.add("display-none")
-  //   });
-  //   sec1Container.style.display = "none";
-  //   sec1Bar.style.display = "none";
-  //   sec1CloseIcons.classList.remove("display-none");
-
-  //   // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
-
-  //   // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-  //   // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-  //   if (sec2Page2Phone.classList.contains("display-none")) {
-  //     sec2Page1Phone.classList.add("display-none");
-  //     sec2Page2Phone.classList.remove("display-none");
-  //   }
-  //   else if(sec2Page1Phone.classList.contains("display-none")){
-  //     sec2Page1Phone.classList.remove("display-none");
-  //     sec2Page2Phone.classList.add("display-none");
-  //   }
-  // });
+    //   // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
+    //   // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
+    //   if (sec2Page2Phone.classList.contains("display-none")) {
+    //     sec2Page1Phone.classList.add("display-none");
+    //     sec2Page2Phone.classList.remove("display-none");
+    //   }
+    //   else if(sec2Page1Phone.classList.contains("display-none")){
+    //     sec2Page1Phone.classList.remove("display-none");
+    //     sec2Page2Phone.classList.add("display-none");
+    //   }
+    // });
+  });
 });
 
-window.addEventListener("load", () => {
-  if (
-    window.innerWidth <= 1025 &&
-    window.innerWidth > 350 &&
-    window.innerHeight <= 1375 &&
-    window.innerHeight > 600
-  ) {
-    // header
-
-    mainSection.style.height = "70vh";
-    mainSection.style.gridTemplateColumns =
-      "var(--section-1-width, 0.7fr) 0.001fr 1.5fr";
-    header.style.height = "5vh";
-    headerLeft.style.margin = "10px 20px";
-    headerLeftSvg.style.height = "25px";
-    headerMid1.style.height = "30px";
-    headerMid1.style.width = "30px";
-    headerMid1Svg.style.height = "45%";
-    headerMid2.style.borderRadius = "15px";
-    headerMid21.style.height = "60%";
-    headerMid22.style.fontSize = "12px";
-    headerMid23.style.height = "60%";
-    headerMid.style.width = "65vw";
-    headerRight1.classList.add("display-none");
-    headerRight2.classList.add("display-none");
-    headerRight3.style.width = "30%";
-    headerRight4.style.width = "30%";
-    headerRight3.style.height = "45%";
-    headerRight4.style.height = "45%";
-    headerRight5.style.fontSize = "12px";
-
-    // Footer
-
-    footerPage.style.gap = "3%";
-    footerPage.style.marginTop = "5%";
-    footerPage.style.flexDirection = "column";
-    footerPageCont1.style.width = "35%";
-    footerPageCont1.style.height = "90%";
-    footerPageCont2.style.width = "110%";
-    footerPageCont2.style.width = "100%";
-    footerPageCont1Img.style.width = "25%";
-    footerPageCont1Img.style.height = "75%";
-    footerPageCont1Content.style.width = "60%";
-    footerPageCont1Add.style.width = "20%";
-    footerPageCont1Add.style.width = "20%";
-    footerPageCont2UpperMid.style.margin = "0";
-    footerPageCont2UpperMid.style.height = "20px";
-    footerPageCont2UpperMid.style.width = "20px";
-    footerPageCont2UpperMidSvg.style.width = "10px";
-    footerPageCont2UpperMidSvg.style.height = "10px";
-    footerPageCont2UpperStartFirstSvg.style.height = "15px";
-    footerPageCont2UpperStartFirstSvg.style.width = "15px";
-    footerPageCont2UpperStartSecondSvg.style.height = "15px";
-    footerPageCont2UpperStartSecondSvg.style.width = "15px";
-    footerPageCont2UpperEndFirstSvg.style.height = "15px";
-    footerPageCont2UpperEndSecondSvg.style.width = "15px";
-    footerPageCont2LowerProgressContainer.style.width = "50%";
-
-    sec2Page1Phone.classList.remove("display-none");
-    // page1.style.display = "none";
-    // page2.style.display = "none";
-    page1.classList.add("display-none");
-    page2.classList.add("display-none");
-
-    playlist1.addEventListener("click", () => {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        68 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.add("display-none");
-      });
-      sec1Container.style.display = "none";
-      sec1Bar.style.display = "none";
-      sec1CloseIcons.classList.remove("display-none");
-
-      // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
-
-      // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-      // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-      if (sec2Page2Phone.classList.contains("display-none")) {
-        sec2Page1Phone.classList.add("display-none");
-        sec2Page2Phone.classList.remove("display-none");
-      } else if (sec2Page1Phone.classList.contains("display-none")) {
-        sec2Page1Phone.classList.remove("display-none");
-        sec2Page2Phone.classList.add("display-none");
-      }
-    });
-
-    sec1OpenPLaylists.addEventListener("click", () => {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        375 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.remove("display-none");
-      });
-      // sec1Header.style.display = "flex";
-      sec1Container.style.display = "block";
-      sec1Bar.style.display = "flex";
-      sec1CloseIcons.classList.add("display-none");
-    });
-
-    if (window.innerWidth <= 768) {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        68 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.add("display-none");
-      });
-      sec1Container.style.display = "none";
-      sec1Bar.style.display = "none";
-      sec1CloseIcons.classList.remove("display-none");
-    } else {
-      document.documentElement.style.setProperty(
-        "--section-1-width",
-        360 + "px"
-      );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.remove("display-none");
-      });
-      sec1Container.style.display = "block";
-      sec1Bar.style.display = "flex";
-      sec1CloseIcons.classList.add("display-none");
-    }
-  } else {
-    // header
-
-    mainSection.style.height = "80vh";
-    mainSection.style.gridTemplateColumns =
-      "var(--section-1-width, 0.7fr) 0.001fr 1.5fr 0.001fr 0.7fr";
-    header.style.height = "8vh";
-    headerLeft.style.margin = "15px 30px";
-    headerLeftSvg.style.height = "30px";
-    headerMid1.style.height = "45px";
-    headerMid1.style.width = "45px";
-    headerMid1Svg.style.height = "55%";
-    headerMid2.style.borderRadius = "20px";
-    headerMid21.style.height = "85%";
-    headerMid22.style.fontSize = "15px";
-    headerMid23.style.height = "85%";
-    headerMid.style.width = "35vw";
-    headerRight1.classList.remove("display-none");
-    headerRight2.classList.remove("display-none");
-    headerRight3.style.width = "10%";
-    headerRight4.style.width = "10%";
-    headerRight3.style.height = "65%";
-    headerRight4.style.height = "65%";
-    headerRight5.style.fontSize = "17px";
-
-    // Footer
-
-    footerPage.style.gap = "0";
-    footerPage.style.marginTop = "0";
-    footerPage.style.flexDirection = "row";
-    footerPageCont1.style.width = "20%";
-    footerPageCont1.style.height = "100%";
-    footerPageCont2.style.width = "35%";
-    footerPageCont2.style.height = "100%";
-    footerPageCont1Img.style.width = "17%";
-    footerPageCont1Img.style.height = "90%";
-    footerPageCont1Content.style.width = "25%";
-    footerPageCont1Add.style.width = "10%";
-    footerPageCont2UpperMid.style.margin = "0 10px";
-    footerPageCont2UpperMid.style.height = "29px";
-    footerPageCont2UpperMid.style.width = "29px";
-    footerPageCont2UpperMidSvg.style.width = "15px";
-    footerPageCont2UpperMidSvg.style.height = "15px";
-    footerPageCont2UpperStartFirstSvg.style.height = "17px";
-    footerPageCont2UpperStartFirstSvg.style.width = "17px";
-    footerPageCont2UpperStartSecondSvg.style.height = "17px";
-    footerPageCont2UpperStartSecondSvg.style.width = "17px";
-    footerPageCont2UpperEndFirstSvg.style.height = "17px";
-    footerPageCont2UpperEndFirstSvg.style.width = "17px";
-    footerPageCont2UpperEndSecondSvg.style.height = "17px";
-    footerPageCont2UpperEndSecondSvg.style.width = "17px";
-    footerPageCont2LowerProgressContainer.style.width = "80%";
-
-    sec2Page1Phone.classList.add("display-none");
-    sec2Page2Phone.classList.add("display-none");
-    // page1.style.display = "revert";
-    // page2.style.display = "none";
-    page1.classList.remove("display-none");
-  }
-
-  // playlist1.addEventListener("click", ()=> {
-  //   document.documentElement.style.setProperty("--section-1-width", 68 + "px");
-  //   sec1PlaylistContent.forEach(element => {
-  //     element.classList.add("display-none")
-  //   });
-  //   sec1Container.style.display = "none";
-  //   sec1Bar.style.display = "none";
-  //   sec1CloseIcons.classList.remove("display-none");
-
-  //   // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
-
-  //   // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-  //   // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-  //   if (sec2Page2Phone.classList.contains("display-none")) {
-  //     sec2Page1Phone.classList.add("display-none");
-  //     sec2Page2Phone.classList.remove("display-none");
-  //   }
-  //   else if(sec2Page1Phone.classList.contains("display-none")){
-  //     sec2Page1Phone.classList.remove("display-none");
-  //     sec2Page2Phone.classList.add("display-none");
-  //   }
-  // });
-});

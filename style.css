@@ -2246,7 +2246,7 @@ body {
 .section-2 .phone-container-class .playlists-container .div-8 .content .name {
   height: 100%;
   max-width: 100%;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 550;
   color: white;
   padding: 0 7px;
@@ -2499,7 +2499,7 @@ body {
 }
 
 .phone-container-class .footer .foot .content-1 {
-  height: 55%;
+  height: 70%;
   width: 100%;
   display: grid;
   /* background-color: #5f1f62; */
@@ -2596,7 +2596,7 @@ body {
 .phone-container-class .footer .foot .content-1 .col-2 span,
 .phone-container-class .footer .foot .content-1 .col-3 span,
 .phone-container-class .footer .foot .content-1 .col-4 span {
-  height: 10%;
+  height: 15%;
   width: 90%;
   font-size: 8px;
   cursor: pointer;
@@ -2610,7 +2610,6 @@ body {
 
 .phone-container-class .footer .foot .content-2 {
   height: 10%;
-  width: 125%;
   display: flex;
   margin: 5% 0;
   color: var(--light-dark-text-color);
@@ -2890,6 +2889,7 @@ body {
   align-items: center;
   justify-content: start;
   padding: 3%;
+  font-size: 12px;
   transition: var(--trans-02);
   border-radius: 5px;
   position: relative;
@@ -2953,7 +2953,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-left: 3px;
 }
 
 .section-2 .phone-songs-container .song-1 .song-details .song-artist,
@@ -2982,6 +2981,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  padding-left: 3%;
 }
 
 .section-2 .phone-songs-container .song-1 .date,
@@ -2996,6 +2996,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  padding-left: 3%;
 }
 
 .section-2 .phone-songs-container .song-1 .duration,
@@ -3054,7 +3055,7 @@ body {
 }
 
 .phone-footer .foot .content-1 {
-  height: 55%;
+  height: 70%;
   width: 100%;
   display: grid;
   /* background-color: #5f1f62; */
@@ -3151,7 +3152,7 @@ body {
 .phone-footer .foot .content-1 .col-2 span,
 .phone-footer .foot .content-1 .col-3 span,
 .phone-footer .foot .content-1 .col-4 span {
-  height: 10%;
+  height: 15%;
   width: 90%;
   font-size: 8px;
   cursor: pointer;
@@ -3165,7 +3166,6 @@ body {
 
 .phone-footer .foot .content-2 {
   height: 10%;
-  width: 125%;
   display: flex;
   margin: 5% 0;
   color: var(--light-dark-text-color);
