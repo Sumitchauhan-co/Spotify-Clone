@@ -1,0 +1,510 @@
+.section-1 .sec1-header-container {
+  height: 17%;
+}
+
+.section-1 .sec1-header-container .sec1-header {
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3%;
+  /* background-color: antiquewhite; */
+}
+
+.section-1 .sec1-header-container .sec1-header .left-button {
+  height: 100%;
+  width: 30%;
+  color: white;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  white-space: nowrap;
+  /* background-color: aqua; */
+}
+
+.section-1 .sec1-header-container .sec1-header .right-container {
+  height: 100%;
+  width: 35%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.section-1 .sec1-header-container .sec1-header .right-container .mid-button {
+  height: 100%;
+  width: 75%;
+  color: white;
+  font-size: 8px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--button-color);
+  cursor: pointer;
+  /* background-color: blue; */
+}
+
+.section-1 .sec1-header-container .sec1-header .right-container .change {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar-functions {
+  height: 100px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.open-playlists {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.open-playlists svg {
+  height: 25px;
+  width: 25px;
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+.open-playlists:hover {
+  background-color: var(--button-color02);
+}
+
+.open-playlists:hover svg {
+  opacity: 1;
+}
+
+.add-playlists {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.add-playlists svg {
+  height: 20px;
+  width: 20px;
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+.add-playlists:hover {
+  background-color: var(--button-color02);
+}
+
+.add-playlists:hover svg {
+  opacity: 1;
+}
+
+.section-1
+  .sec1-header-container
+  .sec1-header
+  .right-container
+  .mid-button
+  svg {
+  height: 20px;
+  width: 20px;
+  filter: invert(1);
+}
+
+.section-1
+  .sec1-header-container
+  .sec1-header
+  .right-container
+  .mid-button
+  span {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.section-1 .sec1-header-container .sec1-header .right-container .right-button {
+  height: 35px;
+  width: 35px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  /* background-color: chartreuse; */
+}
+
+.section-1
+  .sec1-header-container
+  .sec1-header
+  .right-container
+  .right-button
+  svg {
+  height: 50%;
+  width: 50%;
+  filter: invert(1);
+}
+
+.section-1
+  .sec1-header-container
+  .sec1-header
+  .right-container
+  .background-glow-sec1:hover {
+  background-color: var(--button-color02);
+  opacity: 1;
+}
+
+.glow:hover {
+  background-color: var(--button-color);
+  transition: var(--trans-02);
+}
+
+.section-1 .sec1-header-container .nav-bar-container {
+  height: 30%;
+  margin: 2%;
+}
+
+.nav-bar {
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1%;
+}
+
+.nav-bar span {
+  display: inline-flex;
+  height: 100%;
+  width: 17%;
+  border-radius: 25px;
+  background-color: var(--button-color02);
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav-bar span:hover {
+  background-color: var(--button-hover-color);
+}
+
+.section-1 .bar {
+  height: 7%;
+  /* background-color: var(--button-color); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1% 2% 0;
+}
+
+.section-1 .bar .left-button {
+  height: 70%;
+  width: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: var(--trans-02);
+  opacity: 0.7;
+}
+
+.section-1 .bar .left-button svg {
+  height: 60%;
+  filter: invert(1);
+}
+
+.section-1 .bar .left-button:hover {
+  opacity: 1;
+  background-color: var(--button-color02);
+}
+
+.section-1 .bar .right-button {
+  height: 80%;
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--light-dark-text-color);
+  cursor: pointer;
+}
+
+.section-1 .bar .right-button span {
+  font-size: 14px;
+}
+
+.section-1 .bar .right-button svg {
+  height: 60%;
+  width: 17%;
+  opacity: 0.7;
+  filter: invert(1);
+}
+
+.playlist-container {
+  height: 100%;
+}
+
+.bar .right-button:hover,
+.section-1 .bar .right-button:hover svg {
+  color: white;
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.section-1 .playlist-container {
+  height: 75%;
+  /* background-color: aqua; */
+  /* margin: 0% 2%; */
+  padding: 2%;
+  display: grid;
+  grid-auto-rows: 65px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.section-1 .playlist-container > div {
+  height: 100%;
+}
+
+.collapse {
+  opacity: 0;
+  width: 0;
+  margin: 0;
+}
+
+.section-1 .playlist-1,
+.section-1 .playlist-2,
+.section-1 .playlist-3,
+.section-1 .playlist-4,
+.section-1 .playlist-5,
+.section-1 .playlist-6,
+.section-1 .playlist-7,
+.section-1 .playlist-8 {
+  /* background-color: lightslategray; */
+  padding: 7px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.section-1 .playlist-1 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/liked.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-1 .img svg,
+.section-1 .playlist-2 .img svg,
+.section-1 .playlist-3 .img svg,
+.section-1 .playlist-4 .img svg,
+.section-1 .playlist-5 .img svg,
+.section-1 .playlist-6 .img svg,
+.section-1 .playlist-7 .img svg,
+.section-1 .playlist-8 .img svg {
+  height: 25px;
+  width: 25px;
+  opacity: 0;
+  filter: invert(1);
+}
+
+.section-1 .playlist-1 .content-container,
+.section-1 .playlist-2 .content-container,
+.section-1 .playlist-3 .content-container,
+.section-1 .playlist-4 .content-container,
+.section-1 .playlist-5 .content-container,
+.section-1 .playlist-6 .content-container,
+.section-1 .playlist-7 .content-container,
+.section-1 .playlist-8 .content-container {
+  height: 100%;
+  width: 82%;
+  border-radius: 5px;
+  /* background-color: aquamarine; */
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.section-1 .playlist-1 .content-container .content,
+.section-1 .playlist-2 .content-container .content,
+.section-1 .playlist-3 .content-container .content,
+.section-1 .playlist-4 .content-container .content,
+.section-1 .playlist-5 .content-container .content,
+.section-1 .playlist-6 .content-container .content,
+.section-1 .playlist-7 .content-container .content,
+.section-1 .playlist-8 .content-container .content {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-1 .playlist-1 .content-container .content .content-1,
+.section-1 .playlist-2 .content-container .content .content-1,
+.section-1 .playlist-3 .content-container .content .content-1,
+.section-1 .playlist-4 .content-container .content .content-1,
+.section-1 .playlist-5 .content-container .content .content-1,
+.section-1 .playlist-6 .content-container .content .content-1,
+.section-1 .playlist-7 .content-container .content .content-1,
+.section-1 .playlist-8 .content-container .content .content-1 {
+  height: 50%;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+}
+
+.section-1 .playlist-1 .content-container .content .content-1 p,
+.section-1 .playlist-2 .content-container .content .content-1 p,
+.section-1 .playlist-3 .content-container .content .content-1 p,
+.section-1 .playlist-4 .content-container .content .content-1 p,
+.section-1 .playlist-5 .content-container .content .content-1 p,
+.section-1 .playlist-6 .content-container .content .content-1 p,
+.section-1 .playlist-7 .content-container .content .content-1 p,
+.section-1 .playlist-8 .content-container .content .content-1 p {
+  font-weight: 500;
+}
+
+.section-1 .playlist-1 .content-container .content .content-2,
+.section-1 .playlist-2 .content-container .content .content-2,
+.section-1 .playlist-3 .content-container .content .content-2,
+.section-1 .playlist-4 .content-container .content .content-2,
+.section-1 .playlist-5 .content-container .content .content-2,
+.section-1 .playlist-6 .content-container .content .content-2,
+.section-1 .playlist-7 .content-container .content .content-2,
+.section-1 .playlist-8 .content-container .content .content-2 {
+  height: 50%;
+  width: 100%;
+  color: var(--light-dark-text-color);
+  font-size: 16px;
+}
+
+.section-1 .playlist-2 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/chill\ and\ relax.webp);
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-3 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/feelings.webp);
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-4 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/sound\ tracks.webp);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-5 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/indian\ lofi\ hits.webp);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-6 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/daylist.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-7 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/repeat\ rewind.jpeg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 .playlist-8 .img {
+  height: 100%;
+  min-width: 50px;
+  background-image: url(images/on\ repeat.jpeg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlist-container .playlist-1:hover .dark-img,
+.playlist-container .playlist-2:hover .dark-img,
+.playlist-container .playlist-3:hover .dark-img,
+.playlist-container .playlist-4:hover .dark-img,
+.playlist-container .playlist-5:hover .dark-img,
+.playlist-container .playlist-6:hover .dark-img,
+.playlist-container .playlist-7:hover .dark-img,
+.playlist-container .playlist-8:hover .dark-img {
+  opacity: 0.5;
+}
+
+.playlist-container .playlist-1:hover svg,
+.playlist-container .playlist-2:hover svg,
+.playlist-container .playlist-3:hover svg,
+.playlist-container .playlist-4:hover svg,
+.playlist-container .playlist-5:hover svg,
+.playlist-container .playlist-6:hover svg,
+.playlist-container .playlist-7:hover svg,
+.playlist-container .playlist-8:hover svg {
+  opacity: 1;
+}

@@ -1,0 +1,223 @@
+.left-header {
+  /* margin: 2% 4%; */
+  margin: 15px 30px;
+  display: flex;
+}
+
+.svg-logo {
+  filter: invert(1);
+}
+
+.mid-header {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+
+.home-button {
+  /* height: 75%;
+    width: 8.5%; */
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: var(--button-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--trans-02);
+}
+
+.svg-home {
+  height: 55%;
+  filter: invert(1);
+}
+
+.search {
+  height: 75%;
+  width: 90%;
+  background-color: var(--button-color);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: var(--trans-03);
+}
+
+.svg-search-container {
+  height: 85%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-search {
+  height: 70%;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.search-bar {
+  border: none;
+  outline: none;
+  height: 85%;
+  width: 75%;
+  background-color: #00000000;
+  -webkit-text-fill-color: var(--light-dark-text-color);
+  border-radius: 15px;
+  font-size: 15px;
+  transition: var(--trans-05);
+}
+
+.search .line {
+  height: 75%;
+  width: 0.2%;
+  background-color: white;
+}
+
+.browse {
+  height: 85%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-browse {
+  height: 70%;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.right-header {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 2%;
+}
+
+.premium-button {
+  height: 65%;
+  width: 35%;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  /* transition: var(--trans-03); */
+}
+
+.premium-button span {
+  font-size: 17px;
+}
+
+.install {
+  height: 65%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-dark-text-color);
+  font-weight: bolder;
+  /* transition: var(--trans-03); */
+  gap: 7%;
+  cursor: pointer;
+}
+
+.svg-install {
+  height: 3vmin;
+  width: 2vmin;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.install span {
+  font-size: 13px;
+}
+
+.notification {
+  height: 65%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.svg-notification {
+  height: 50%;
+  width: 75%;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.activity {
+  height: 65%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.svg-activity {
+  height: 50%;
+  width: 75%;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.profile-button {
+  height: 6vmin;
+  width: 6vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 50%;
+}
+
+.profile {
+  height: 4vmin;
+  width: 4vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(100, 200, 255);
+  border-radius: 50%;
+}
+
+.profile-button span {
+  font-weight: 600;
+  font-family: sans-serif;
+  font-size: 17px;
+  text-align: center;
+}
+
+.background-glow:hover {
+  background-color: var(--button-color02);
+  opacity: 1;
+}
+
+.dull:hover {
+  opacity: 1;
+}
+
+.background-glow input:hover {
+  -webkit-text-fill-color: white;
+}
+
+.install-size-grow:hover,
+.install-size-grow:hover .svg-install {
+  color: white;
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.premium-size-grow:hover {
+  /* height: 75%;
+    width: 36%; */
+  background-color: var(--button-color);
+  transform: scale(1.03);
+}

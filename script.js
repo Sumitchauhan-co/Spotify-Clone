@@ -1,7 +1,10 @@
 let b;
 let n = 0;
+let m = 0;
 let songs = [];
+let songs2 = [];
 let resize = false;
+let i = 0;
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
 let page2playBtn = document.querySelector(
@@ -12,6 +15,15 @@ let playBtn2Svg1 = document.querySelector(
 );
 let playBtn2Svg2 = document.querySelector(
   ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(2)"
+);
+let page3playBtn = document.querySelector(
+  ".section-2 .page-3 .header-function .left .play-pause"
+);
+let playBtn3Svg1 = document.querySelector(
+  ".section-2 .page-3 .header-function .left .play-pause svg:nth-child(1)"
+);
+let playBtn3Svg2 = document.querySelector(
+  ".section-2 .page-3 .header-function .left .play-pause svg:nth-child(2)"
 );
 let playBtnSvg1 = document.querySelector(
   ".footer-page .container-2 .upper .mid svg:nth-child(1)"
@@ -41,16 +53,24 @@ let songName = document.querySelector(
 let artistName = document.querySelector(
   ".footer-page .container-1 .content .content-2"
 );
-let songsContainer = document.querySelector(".section-2 .songs-container");
+let songsContainer = document.querySelector(".section-2 .page-2 .songs-container");
+let songsContainer2 = document.querySelector(".section-2 .page-3 .songs-container");
 let phoneSongsContainer = document.querySelector(
-  ".section-2 .phone-songs-container"
+  ".section-2 .page-2-phone .phone-songs-container"
+);
+let phoneSongsContainer2 = document.querySelector(
+  ".section-2 .page-3-phone .phone-songs-container"
 );
 let playlist1 = document.querySelector(
   ".section-1 .playlist-container .playlist-1"
 );
+let playlist2 = document.querySelector(
+  ".section-1 .playlist-container .playlist-2"
+);
 let sec2 = document.querySelector(".section-2");
 let page1 = document.querySelector(".section-2 .page-1");
 let page2 = document.querySelector(".section-2 .page-2");
+let page3 = document.querySelector(".section-2 .page-3");
 let page1PlayBtn1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button"
 );
@@ -173,9 +193,25 @@ const sec2Page1Phone = document.querySelector(".section-2 .page-1-phone");
 const sec2Page2Phone = document.querySelector(".section-2 .page-2-phone");
 const Page1 = document.querySelector(".section-2 .page-1");
 
-let page2PhonePlay = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause");
-let page2PhonePlaySvg1 = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)");
-let page2PhonePlaySvg2 = document.querySelector(".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)");
+let page2PhonePlay = document.querySelector(
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause"
+);
+let page2PhonePlaySvg1 = document.querySelector(
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)"
+);
+let page2PhonePlaySvg2 = document.querySelector(
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)"
+);
+
+let page3PhonePlay = document.querySelector(
+  ".section-2 .page-3-phone .phone-header-function .left .play-pause"
+);
+let page3PhonePlaySvg1 = document.querySelector(
+  ".section-2 .page-3-phone .phone-header-function .left .play-pause svg:nth-child(1)"
+);
+let page3PhonePlaySvg2 = document.querySelector(
+  ".section-2 .page-3-phone .phone-header-function .left .play-pause svg:nth-child(2)"
+);
 
 function formatTime(seconds) {
   let min = Math.floor(seconds / 60);
@@ -214,7 +250,7 @@ async function main() {
     c.src = element.src;
     c.preload = "metadata";
     c.load();
-    console.log(element.src);
+    // console.log(element.src);
     songsContainer.insertAdjacentHTML(
       "beforeend",
       `<div class="song-${element.id}" data-id="${element.id}">
@@ -253,11 +289,14 @@ async function main() {
       document.querySelector(`#duration-phone-${element.id}`).textContent = e;
       // console.log(d);
     });
-    document.addEventListener("pointerdown", ()=>{
+    document.addEventListener("click", () => {
       const unlock = new Audio();
-      unlock.play().catch(()=>{
-        console.log("Audio is unlocked");
-      }, {once : true});
+      unlock.play().catch(
+        () => {
+          console.log("Audio is unlocked");
+        },
+        { once: true }
+      );
     });
   });
 }
@@ -296,52 +335,89 @@ function loadSong(index) {
   b.play();
 }
 
+function loadSongtype(index) {
+  if (b) b.pause();
+
+  b = new Audio(songs[index].src);
+
+  b.addEventListener("loadedmetadata", () => {
+    document.querySelector(".lower .duration").textContent = formatTime(
+      b.duration
+    );
+  });
+
+  b.addEventListener("timeupdate", () => {
+    document.querySelector(".lower .current").textContent = formatTime(
+      b.currentTime
+    );
+    let percent = (b.currentTime / b.duration) * 100;
+    bar.style.width = percent + "%";
+  });
+
+  b.addEventListener("ended", () => {
+    nextSong();
+  });
+  songDetails();
+}
+
 function playSvg() {
+  // footer play
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
+  // page 2
   playBtn2Svg1.classList.add("display-none");
   playBtn2Svg2.classList.remove("display-none");
 
+  // page 1 upper playlists
   page1Play1Svg1.classList.add("display-none");
   page1Play1Svg2.classList.remove("display-none");
 
+  // page 1 lower playlists
   // page1Play2Svg1.classList.add("display-none");
   // page1Play2Svg2.classList.remove("display-none");
 }
 
 function phonePlaySvg() {
+  // footer
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
+  // page 2
   page2PhonePlaySvg1.classList.add("display-none");
   page2PhonePlaySvg2.classList.remove("display-none");
 }
 
 function pauseSvg() {
+  // footer play
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
+  // page 2
   playBtn2Svg2.classList.add("display-none");
   playBtn2Svg1.classList.remove("display-none");
 
+  // page 1 upper playlists
   page1Play1Svg2.classList.add("display-none");
   page1Play1Svg1.classList.remove("display-none");
 
+  // page 1 lower playlists
   // page1Play2Svg2.classList.add("display-none");
   // page1Play2Svg1.classList.remove("display-none");
 }
 
 function phonePauseSvg() {
+  // footer
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
+  // page 2
   page2PhonePlaySvg2.classList.add("display-none");
   page2PhonePlaySvg1.classList.remove("display-none");
 }
 
-randomPlay.addEventListener("pointerdown", () => {
-  let r = Math.floor(Math.random() * 7);                         //to change
+randomPlay.addEventListener("click", () => {
+  let r = Math.floor(Math.random() * 7); //to change
   n = r;
   b.play();
   playSvg();
@@ -349,33 +425,59 @@ randomPlay.addEventListener("pointerdown", () => {
   songDetails();
 });
 
-playBtn.addEventListener("pointerdown", () => {
+playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     playSvg();
     phonePlaySvg();
+    playSvg2();
+    phonePlaySvg2();
     console.log("Song is played");
   } else {
     b.pause();
     pauseSvg();
     phonePauseSvg();
+    pauseSvg2();
+    phonePauseSvg2();
     console.log("Song is paused");
   }
 });
 
-page2playBtn.addEventListener("pointerdown", () => {
+page2playBtn.addEventListener("click", () => {
+  if (i == 0) {
+    loadSongtype(n);
+  }
   if (b.paused) {
     b.play();
     playSvg();
     console.log("Song is played");
+    i = 1;
   } else {
     b.pause();
     pauseSvg();
     console.log("Song is paused");
+    i = 1;
   }
 });
 
-page1PlayBtn1.addEventListener("pointerdown", (e) => {
+page2PhonePlay.addEventListener("click", () => {
+  if (i == 0) {
+    loadSongtype(n);
+  }
+  if (b.paused) {
+    b.play();
+    phonePlaySvg();
+    console.log("Song is played"); 
+    i = 1;
+  } else {
+    b.pause();
+    phonePauseSvg();
+    console.log("Song is paused");
+    i = 1;
+  }
+});
+
+page1PlayBtn1.addEventListener("click", (e) => {
   e.stopPropagation();
   if (b.paused) {
     b.play();
@@ -400,7 +502,7 @@ page1PlayBtn1.addEventListener("pointerdown", (e) => {
 //   }
 // });
 
-songsContainer.addEventListener("pointerdown", (e) => {
+songsContainer.addEventListener("click", (e) => {
   let songDiv = e.target.closest("[data-id]");
   if (!songDiv) return;
 
@@ -410,10 +512,10 @@ songsContainer.addEventListener("pointerdown", (e) => {
   loadSong(n);
   playSvg();
   songDetails();
-  console.log(`url(${songs[n].cover})`);
+  // console.log(`url(${songs[n].cover})`);
 });
 
-phoneSongsContainer.addEventListener("pointerdown", (e) => {
+phoneSongsContainer.addEventListener("click", (e) => {
   let songDiv = e.target.closest("[data-id]");
   if (!songDiv) return;
 
@@ -423,10 +525,10 @@ phoneSongsContainer.addEventListener("pointerdown", (e) => {
   loadSong(n);
   playSvg();
   songDetails();
-  console.log(`url(${songs[n].cover})`);
+  // console.log(`url(${songs[n].cover})`);
 });
 
-prevBtn.addEventListener("pointerdown", () => {
+prevBtn.addEventListener("click", () => {
   prevSong();
 });
 
@@ -441,7 +543,7 @@ function prevSong() {
   loadSong(n);
 }
 
-nextBtn.addEventListener("pointerdown", () => {
+nextBtn.addEventListener("click", () => {
   nextSong();
 });
 
@@ -456,7 +558,7 @@ function nextSong() {
   loadSong(n);
 }
 
-container.addEventListener("pointerdown", (e) => {
+container.addEventListener("click", (e) => {
   let rect = container.getBoundingClientRect();
   let clickX = e.clientX - rect.left;
   let width = rect.width;
@@ -466,56 +568,52 @@ container.addEventListener("pointerdown", (e) => {
 
 let play = function () {
   if (window.innerWidth > 1025) {
-    if (page2.classList.contains("display-none")) {
+    if (page2.classList.contains("display-none") ) {
       page2.classList.remove("display-none");
       page1.classList.add("display-none");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
       console.log("page2 is visible");
-    } else {
+    }
+    // else if (page3.classList.contains("display-none")) {                       //////////////////////////////////////////////////////
+    //   page2.classList.remove("display-none");
+    //   page1.classList.add("display-none");
+    //   sec2Page1Phone.classList.add("display-none");
+    //   sec2Page2Phone.classList.add("display-none");
+    //   console.log("page2 is visible");
+    // }
+    else {
       page2.classList.add("display-none");
       page1.classList.remove("display-none");
       sec2Page1Phone.classList.add("display-none");
       sec2Page2Phone.classList.add("display-none");
       console.log("page1 is visible");
     }
-  } else if (window.innerWidth <= 1025 &&
-      window.innerWidth > 350 &&
-      window.innerHeight <= 1375 &&
-      window.innerHeight > 600) {
-      if (sec2Page2Phone.classList.contains("display-none")) {
-        page2.classList.add("display-none");
-        page1.classList.add("display-none");
-        sec2Page1Phone.classList.add("display-none");
-        sec2Page2Phone.classList.remove("display-none");
-        console.log("phone-page2 is visible");
-      } else {
-        page2.classList.add("display-none");
-        page1.classList.add("display-none");
-        sec2Page1Phone.classList.remove("display-none");
-        sec2Page2Phone.classList.add("display-none");
-        console.log("phone-page1 is visible");
-      }
+  } else if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    if (sec2Page2Phone.classList.contains("display-none")) {
+      page2.classList.add("display-none");
+      page1.classList.add("display-none");
+      sec2Page1Phone.classList.add("display-none");
+      sec2Page2Phone.classList.remove("display-none");
+      console.log("phone-page2 is visible");
+    } else {
+      page2.classList.add("display-none");
+      page1.classList.add("display-none");
+      sec2Page1Phone.classList.remove("display-none");
+      sec2Page2Phone.classList.add("display-none");
+      console.log("phone-page1 is visible");
     }
+  }
 };
 
-playlist1.addEventListener("pointerdown", play);
+pageChange1PlayBtn1.addEventListener("click", play);
 
-pageChange1PlayBtn1.addEventListener("pointerdown", play);
-
-phonePageChange1.addEventListener("pointerdown", play);
-
-page2PhonePlay.addEventListener("pointerdown", ()=>{
-  if (b.paused) {
-    b.play();
-    phonePlaySvg();
-    console.log("Song is played");
-  } else {
-    b.pause();
-    phonePauseSvg();
-    console.log("Song is paused");
-  }
-});
+phonePageChange1.addEventListener("click", play);
 
 resizer.addEventListener("mousedown", () => {
   isResizing = true;
@@ -575,7 +673,7 @@ document.addEventListener("mouseup", () => {
   isResizing = false;
 });
 
-sec1OpenPLaylists.addEventListener("pointerdown", () => {
+sec1OpenPLaylists.addEventListener("click", () => {
   document.documentElement.style.setProperty("--section-1-width", 375 + "px");
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
@@ -586,11 +684,13 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
   sec1CloseIcons.classList.add("display-none");
 });
 
-
-["resize","load"].forEach((evt) => {
+["resize", "load"].forEach((evt) => {
   window.addEventListener(evt, () => {
     if (window.innerWidth <= 768) {
-      document.documentElement.style.setProperty("--section-1-width", 68 + "px");
+      document.documentElement.style.setProperty(
+        "--section-1-width",
+        68 + "px"
+      );
       sec1PlaylistContent.forEach((element) => {
         element.classList.add("display-none");
       });
@@ -598,7 +698,10 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
       sec1Bar.style.display = "none";
       sec1CloseIcons.classList.remove("display-none");
     } else {
-      document.documentElement.style.setProperty("--section-1-width", 360 + "px");
+      document.documentElement.style.setProperty(
+        "--section-1-width",
+        360 + "px"
+      );
       sec1PlaylistContent.forEach((element) => {
         element.classList.remove("display-none");
       });
@@ -617,7 +720,6 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
       window.innerHeight <= 1375 &&
       window.innerHeight > 600
     ) {
-
       resize = true;
 
       //main
@@ -689,8 +791,9 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
       // page2.style.display = "none";
       page1.classList.add("display-none");
       page2.classList.add("display-none");
+      page3.classList.add("display-none");
 
-      // playlist1.removeEventListener("pointerdown", play);
+      // playlist1.removeEventListener("click", play);
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
@@ -704,22 +807,23 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
 
-        const page1Hidden = sec2Page1Phone.classList.contains("display-none");
+        // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
 
-        sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-        sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-        if (sec2Page1Phone.classList.contains("display-none")) {
-          sec2Page1Phone.classList.remove("display-none");
-          sec2Page2Phone.classList.add("display-none");
-          console.log("sec2Page2Phone visible");
-        } else {
-          sec2Page1Phone.classList.add("display-none");
-          sec2Page2Phone.classList.remove("display-none");
-          console.log("sec2Page1Phone visible");
-        }
+        // sec2Page1Phone.classList.toggle("display-none", !page1Hidden);
+        // sec2Page2Phone.classList.toggle("display-none", page1Hidden);
+
+        // if (sec2Page1Phone.classList.contains("display-none")) {
+        //   sec2Page1Phone.classList.remove("display-none");
+        //   sec2Page2Phone.classList.add("display-none");
+        //   console.log("sec2Page2Phone visible");
+        // } else {
+        //   sec2Page1Phone.classList.add("display-none");
+        //   sec2Page2Phone.classList.remove("display-none");
+        //   console.log("sec2Page1Phone visible");
+        // }
       });
 
-      // sec1OpenPLaylists.addEventListener("pointerdown", () => {
+      // sec1OpenPLaylists.addEventListener("click", () => {
       //   document.documentElement.style.setProperty(
       //     "--section-1-width",
       //     375 + "px"
@@ -757,7 +861,6 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
       //   sec1CloseIcons.classList.add("display-none");
       // }
     } else {
-
       //main
 
       mainSection.style.height = "80vh";
@@ -787,17 +890,17 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
 
       // Footer
 
-      footerPage.style.height = "12vh"
+      footerPage.style.height = "12vh";
       footerPage.style.gap = "0";
       footerPage.style.marginTop = "0";
       footerPage.style.flexDirection = "row";
-      footerPageCont1.style.width = "20%";                                  // to change
-      footerPageCont1.style.height = "100%";                                     // to change
+      footerPageCont1.style.width = "20%"; // to change
+      footerPageCont1.style.height = "100%"; // to change
       footerPageCont2.style.width = "35%";
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "17%";
       footerPageCont1Img.style.height = "90%";
-      footerPageCont1Content.style.maxWidth = "40%";
+      footerPageCont1Content.style.minWidth = "50%";
       footerPageCont1Content.style.height = "100%";
       footerPageCont1Content.style.fontSize = "15px";
       footerPageCont1Add.style.width = "10%";
@@ -820,8 +923,8 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
 
       // sec2Page1Phone.classList.add("display-none");
       // sec2Page2Phone.classList.add("display-none");
-      // // page1.style.display = "revert";
-      // // page2.style.display = "none";
+      // page1.style.display = "revert";
+      // page2.style.display = "none";
 
       // page1.classList.remove("display-none");
       // page2.classList.remove("display-none");
@@ -851,4 +954,3 @@ sec1OpenPLaylists.addEventListener("pointerdown", () => {
     // });
   });
 });
-
