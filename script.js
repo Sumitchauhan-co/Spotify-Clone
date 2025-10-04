@@ -1,10 +1,10 @@
 let b;
 let n = 0;
-let m = 0;
 let songs = [];
 let songs2 = [];
 let resize = false;
 let i = 0;
+let pages = ["page1", "page2", "page3", "page1Phone", "page2Phone", "page3Phone"];
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
 let page2playBtn = document.querySelector(
@@ -53,8 +53,12 @@ let songName = document.querySelector(
 let artistName = document.querySelector(
   ".footer-page .container-1 .content .content-2"
 );
-let songsContainer = document.querySelector(".section-2 .page-2 .songs-container");
-let songsContainer2 = document.querySelector(".section-2 .page-3 .songs-container");
+let songsContainer = document.querySelector(
+  ".section-2 .page-2 .songs-container"
+);
+let songsContainer2 = document.querySelector(
+  ".section-2 .page-3 .songs-container"
+);
 let phoneSongsContainer = document.querySelector(
   ".section-2 .page-2-phone .phone-songs-container"
 );
@@ -67,18 +71,27 @@ let playlist1 = document.querySelector(
 let playlist2 = document.querySelector(
   ".section-1 .playlist-container .playlist-2"
 );
-let sec2 = document.querySelector(".section-2");
+let sec2 = document.querySelector(".main .section-2");
 let page1 = document.querySelector(".section-2 .page-1");
 let page2 = document.querySelector(".section-2 .page-2");
 let page3 = document.querySelector(".section-2 .page-3");
-let page1PlayBtn1 = document.querySelector(
+let page1PlayCont1Btn1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button"
+);
+let page1PlayCont1Btn2 = document.querySelector(
+  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button"
 );
 let pageChange1PlayBtn1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1"
 );
+let pageChange1PlayBtn2 = document.querySelector(
+  ".section-2 .page-1 .container-class .playlists-container .div-2"
+);
 let phonePageChange1 = document.querySelector(
   ".section-2 .page-1-phone .phone-container-class .playlists-container .div-1"
+);
+let phonePageChange2 = document.querySelector(
+  ".section-2 .page-1-phone .phone-container-class .playlists-container .div-2"
 );
 let page1Play1Svg1 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(1)"
@@ -86,9 +99,27 @@ let page1Play1Svg1 = document.querySelector(
 let page1Play1Svg2 = document.querySelector(
   ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(2)"
 );
-// let page1PlayBtn2 = document.querySelector(".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button");
-// let page1Play2Svg1 = document.querySelector(".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(1)");
-// let page1Play2Svg2 = document.querySelector(".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)");
+let page1Play2Svg1 = document.querySelector(
+  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(1)"
+);
+let page1Play2Svg2 = document.querySelector(
+  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(2)"
+);
+let page1PlayCont2 = document.querySelector(
+  ".section-2 .page-1 .recently-played .content-container .playlist-1"
+);
+let phonePage1PlayCont2 = document.querySelector(
+  ".section-2 .page-1-phone .recently-played .content-container .playlist-1"
+);
+let page1PlayCont2Btn1 = document.querySelector(
+  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button"
+);
+let page1PlayCont2Svg1 = document.querySelector(
+  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(1)"
+);
+let page1PlayCont2Svg2 = document.querySelector(
+  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)"
+);
 let page2Song1 = document.querySelector(
   ".section-2 .page-2 .songs-container .song-1"
 );
@@ -189,8 +220,9 @@ footerPageCont2LowerProgressContainer = document.querySelector(
 );
 
 const mainSection = document.querySelector(".main");
-const sec2Page1Phone = document.querySelector(".section-2 .page-1-phone");
-const sec2Page2Phone = document.querySelector(".section-2 .page-2-phone");
+const page1Phone = document.querySelector(".section-2 .page-1-phone");
+const page2Phone = document.querySelector(".section-2 .page-2-phone");
+const page3Phone = document.querySelector(".section-2 .page-3-phone");
 const Page1 = document.querySelector(".section-2 .page-1");
 
 let page2PhonePlay = document.querySelector(
@@ -224,27 +256,6 @@ async function main() {
   songs = await a.json();
   loadSong(n);
 
-  //songs display
-  // for (let index = 0; index < songs.length; index++) {
-  //   let c = new Audio(songs[index].src);
-  //   c.addEventListener("loadedmetadata", () => {
-  //     let d = formatTime(c.duration);
-  //     songsContainer.insertAdjacentHTML(
-  //       "beforeend",
-  //       `<div class="song-${songs[index].id}" data-id="${index}">
-  //       <div class="num">${songs[index].id}</div>
-  //       <div class="cover" style="background-image: url(${songs[index].cover});")></div>
-  //       <div class="song-details">
-  //         <div class="song-name">${songs[index].title}</div>
-  //         <div class="song-artist">${songs[index].artist}</div>
-  //       </div>
-  //       <div class="song-name">${songs[index].title}</div>
-  //       <div class="date">25 Sep,2025</div>
-  //       <div class="duration">${d}</div>
-  //     </div>`
-  //     );
-  //   });
-  // }
   songs.forEach((element) => {
     let c = new Audio(element.src);
     c.src = element.src;
@@ -369,13 +380,13 @@ function playSvg() {
   playBtn2Svg1.classList.add("display-none");
   playBtn2Svg2.classList.remove("display-none");
 
-  // page 1 upper playlists
+  // page 1 upper playlist 1
   page1Play1Svg1.classList.add("display-none");
   page1Play1Svg2.classList.remove("display-none");
 
   // page 1 lower playlists
-  // page1Play2Svg1.classList.add("display-none");
-  // page1Play2Svg2.classList.remove("display-none");
+  // page1PlayCont2Svg1.classList.add("display-none");
+  // page1PlayCont2Svg2.classList.remove("display-none");
 }
 
 function phonePlaySvg() {
@@ -397,13 +408,13 @@ function pauseSvg() {
   playBtn2Svg2.classList.add("display-none");
   playBtn2Svg1.classList.remove("display-none");
 
-  // page 1 upper playlists
+  // page 1 upper playlist 1
   page1Play1Svg2.classList.add("display-none");
   page1Play1Svg1.classList.remove("display-none");
 
   // page 1 lower playlists
-  // page1Play2Svg2.classList.add("display-none");
-  // page1Play2Svg1.classList.remove("display-none");
+  // page1PlayCont2Svg2.classList.add("display-none");
+  // page1PlayCont2Svg1.classList.remove("display-none");
 }
 
 function phonePauseSvg() {
@@ -467,7 +478,7 @@ page2PhonePlay.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     phonePlaySvg();
-    console.log("Song is played"); 
+    console.log("Song is played");
     i = 1;
   } else {
     b.pause();
@@ -477,7 +488,7 @@ page2PhonePlay.addEventListener("click", () => {
   }
 });
 
-page1PlayBtn1.addEventListener("click", (e) => {
+page1PlayCont1Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
   if (b.paused) {
     b.play();
@@ -489,18 +500,6 @@ page1PlayBtn1.addEventListener("click", (e) => {
     console.log("Song is paused");
   }
 });
-
-// page1PlayBtn2.addEventListener("click", () => {
-//   if (b.paused) {
-//     b.play();
-//     playSvg();
-//     console.log("Song is played");
-//   } else {
-//     b.pause();
-//     pauseSvg();
-//     console.log("Song is paused");
-//   }
-// });
 
 songsContainer.addEventListener("click", (e) => {
   let songDiv = e.target.closest("[data-id]");
@@ -566,54 +565,30 @@ container.addEventListener("click", (e) => {
   b.currentTime = newTime;
 });
 
-let play = function () {
+function showChangePage(pageSelector) {
+  let page = document.querySelector(pageSelector);
+  console.log(page)
+
+  // Hide all pages
+  document.querySelectorAll(".section-2 > div").forEach((page) => {
+    page.classList.add("display-none");
+  });
   if (window.innerWidth > 1025) {
-    if (page2.classList.contains("display-none") ) {
-      page2.classList.remove("display-none");
-      page1.classList.add("display-none");
-      sec2Page1Phone.classList.add("display-none");
-      sec2Page2Phone.classList.add("display-none");
-      console.log("page2 is visible");
-    }
-    // else if (page3.classList.contains("display-none")) {                       //////////////////////////////////////////////////////
-    //   page2.classList.remove("display-none");
-    //   page1.classList.add("display-none");
-    //   sec2Page1Phone.classList.add("display-none");
-    //   sec2Page2Phone.classList.add("display-none");
-    //   console.log("page2 is visible");
-    // }
-    else {
-      page2.classList.add("display-none");
-      page1.classList.remove("display-none");
-      sec2Page1Phone.classList.add("display-none");
-      sec2Page2Phone.classList.add("display-none");
-      console.log("page1 is visible");
-    }
-  } else if (
-    window.innerWidth <= 1025 &&
-    window.innerWidth > 350 &&
-    window.innerHeight <= 1375 &&
-    window.innerHeight > 600
-  ) {
-    if (sec2Page2Phone.classList.contains("display-none")) {
-      page2.classList.add("display-none");
-      page1.classList.add("display-none");
-      sec2Page1Phone.classList.add("display-none");
-      sec2Page2Phone.classList.remove("display-none");
-      console.log("phone-page2 is visible");
-    } else {
-      page2.classList.add("display-none");
-      page1.classList.add("display-none");
-      sec2Page1Phone.classList.remove("display-none");
-      sec2Page2Phone.classList.add("display-none");
-      console.log("phone-page1 is visible");
-    }
+    // Show the selected page
+    page.classList.remove("display-none");
+    console.log(page)
+    console.log("page visible");
+  } else {
+    // Show the selected page
+    page.classList.remove("display-none");
+    console.log("phone page visible");
   }
-};
+}
 
-pageChange1PlayBtn1.addEventListener("click", play);
+// pageChange1PlayBtn1.addEventListener("click", play);
+pageChange1PlayBtn1.addEventListener("click", () => showChangePage(".page-2"));
 
-phonePageChange1.addEventListener("click", play);
+phonePageChange1.addEventListener("click", () => showChangePage(".page-2-phone"));
 
 resizer.addEventListener("mousedown", () => {
   isResizing = true;
@@ -644,11 +619,11 @@ document.addEventListener("mousemove", (e) => {
     sec1Container.style.display = "none";
     sec1Bar.style.display = "none";
     sec1CloseIcons.classList.remove("display-none");
-    console.log(sec2Divs);
+    // console.log(sec2Divs);
     sec2Divs.forEach((element) => {
       element.style.height = "105%";
     });
-    console.log(sec2HeaderDivs);
+    // console.log(sec2HeaderDivs);
     sec2HeaderDivs.style.height = "25%";
   } else if (newWidth > 285) {
     document.documentElement.style.setProperty(
@@ -682,6 +657,10 @@ sec1OpenPLaylists.addEventListener("click", () => {
   sec1Container.style.display = "block";
   sec1Bar.style.display = "flex";
   sec1CloseIcons.classList.add("display-none");
+  sec2Divs.forEach((element) => {
+    element.style.height = "90%";
+  });
+  sec2HeaderDivs.style.height = "20%";
 });
 
 ["resize", "load"].forEach((evt) => {
@@ -786,7 +765,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "15px";
       footerPageCont2LowerProgressContainer.style.width = "50%";
 
-      sec2Page1Phone.classList.remove("display-none");
+      page1Phone.classList.remove("display-none");
       // page1.style.display = "none";
       // page2.style.display = "none";
       page1.classList.add("display-none");
@@ -806,60 +785,20 @@ sec1OpenPLaylists.addEventListener("click", () => {
         sec1Container.style.display = "none";
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
-
-        // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
-
-        // sec2Page1Phone.classList.toggle("display-none", !page1Hidden);
-        // sec2Page2Phone.classList.toggle("display-none", page1Hidden);
-
-        // if (sec2Page1Phone.classList.contains("display-none")) {
-        //   sec2Page1Phone.classList.remove("display-none");
-        //   sec2Page2Phone.classList.add("display-none");
-        //   console.log("sec2Page2Phone visible");
-        // } else {
-        //   sec2Page1Phone.classList.add("display-none");
-        //   sec2Page2Phone.classList.remove("display-none");
-        //   console.log("sec2Page1Phone visible");
-        // }
+      });
+      playlist2.addEventListener("click", () => {
+        document.documentElement.style.setProperty(
+          "--section-1-width",
+          68 + "px"
+        );
+        sec1PlaylistContent.forEach((element) => {
+          element.classList.add("display-none");
+        });
+        sec1Container.style.display = "none";
+        sec1Bar.style.display = "none";
+        sec1CloseIcons.classList.remove("display-none");
       });
 
-      // sec1OpenPLaylists.addEventListener("click", () => {
-      //   document.documentElement.style.setProperty(
-      //     "--section-1-width",
-      //     375 + "px"
-      //   );
-      //   sec1PlaylistContent.forEach((element) => {
-      //     element.classList.remove("display-none");
-      //   });
-      //   // sec1Header.style.display = "flex";
-      //   sec1Container.style.display = "block";
-      //   sec1Bar.style.display = "flex";
-      //   sec1CloseIcons.classList.add("display-none");
-      // });
-
-      // if (window.innerWidth <= 768) {
-      //   document.documentElement.style.setProperty(
-      //     "--section-1-width",
-      //     68 + "px"
-      //   );
-      //   sec1PlaylistContent.forEach((element) => {
-      //     element.classList.add("display-none");
-      //   });
-      //   sec1Container.style.display = "none";
-      //   sec1Bar.style.display = "none";
-      //   sec1CloseIcons.classList.remove("display-none");
-      // } else {
-      //   document.documentElement.style.setProperty(
-      //     "--section-1-width",
-      //     360 + "px"
-      //   );
-      //   sec1PlaylistContent.forEach((element) => {
-      //     element.classList.remove("display-none");
-      //   });
-      //   sec1Container.style.display = "block";
-      //   sec1Bar.style.display = "flex";
-      //   sec1CloseIcons.classList.add("display-none");
-      // }
     } else {
       //main
 
@@ -921,36 +860,12 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "17px";
       footerPageCont2LowerProgressContainer.style.width = "80%";
 
-      // sec2Page1Phone.classList.add("display-none");
-      // sec2Page2Phone.classList.add("display-none");
-      // page1.style.display = "revert";
-      // page2.style.display = "none";
-
-      // page1.classList.remove("display-none");
-      // page2.classList.remove("display-none");
+    page1.classList.remove("display-none");
+    page2.classList.add("display-none");
+    page3.classList.add("display-none");
+    page1Phone.classList.add("display-none");
+    page2Phone.classList.add("display-none");
+    page3Phone.classList.add("display-none");
     }
-
-    // playlist1.addEventListener("click", ()=> {
-    //   document.documentElement.style.setProperty("--section-1-width", 68 + "px");
-    //   sec1PlaylistContent.forEach(element => {
-    //     element.classList.add("display-none")
-    //   });
-    //   sec1Container.style.display = "none";
-    //   sec1Bar.style.display = "none";
-    //   sec1CloseIcons.classList.remove("display-none");
-
-    //   // const page1Hidden = sec2Page1Phone.classList.contains("display-none");
-
-    //   // sec2Page1Phone.classList.toggle("display-none",!page1Hidden)
-    //   // sec2Page2Phone.classList.toggle("display-none",page1Hidden)
-    //   if (sec2Page2Phone.classList.contains("display-none")) {
-    //     sec2Page1Phone.classList.add("display-none");
-    //     sec2Page2Phone.classList.remove("display-none");
-    //   }
-    //   else if(sec2Page1Phone.classList.contains("display-none")){
-    //     sec2Page1Phone.classList.remove("display-none");
-    //     sec2Page2Phone.classList.add("display-none");
-    //   }
-    // });
   });
 });
