@@ -4,7 +4,14 @@ let songs = [];
 let songs2 = [];
 let resize = false;
 let i = 0;
-let pages = ["page1", "page2", "page3", "page1Phone", "page2Phone", "page3Phone"];
+let pages = [
+  "page1",
+  "page2",
+  "page3",
+  "page1Phone",
+  "page2Phone",
+  "page3Phone",
+];
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
 let page2playBtn = document.querySelector(
@@ -427,15 +434,6 @@ function phonePauseSvg() {
   page2PhonePlaySvg1.classList.remove("display-none");
 }
 
-randomPlay.addEventListener("click", () => {
-  let r = Math.floor(Math.random() * 7); //to change
-  n = r;
-  b.play();
-  playSvg();
-  loadSong(n);
-  songDetails();
-});
-
 playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
@@ -527,19 +525,48 @@ phoneSongsContainer.addEventListener("click", (e) => {
   // console.log(`url(${songs[n].cover})`);
 });
 
+randomPlay.addEventListener("click", () => {
+  if (!page2.classList.contains("display-none")) {
+    let r = Math.floor(Math.random() * 7); //to change
+    n = r;
+    b.play();
+    playSvg();
+    loadSong(n);
+    songDetails();
+  } else if (!page3.classList.contains("display-none")){
+    let r = Math.floor(Math.random() * 34); //to change
+  m = r;
+  b.play();
+  playSvg2();
+  loadSong2(n);
+  songDetails2();
+  }
+});
+
 prevBtn.addEventListener("click", () => {
   prevSong();
 });
 
 function prevSong() {
-  n--;
-  if (n < 0) {
-    n = songs.length - 1;
+  if (!page2.classList.contains("display-none")) {
+    n--;
+    if (n < 0) {
+      n = songs.length - 1;
+    }
+    if (b.paused) {
+      playSvg();
+    }
+    loadSong(n);
+  } else if (!page3.classList.contains("display-none")) {
+    m--;
+    if (m < 0) {
+      m = songs2.length - 1;
+    }
+    if (b.paused) {
+      playSvg2();
+    }
+    loadSong2(m);
   }
-  if (b.paused) {
-    playSvg();
-  }
-  loadSong(n);
 }
 
 nextBtn.addEventListener("click", () => {
@@ -547,14 +574,25 @@ nextBtn.addEventListener("click", () => {
 });
 
 function nextSong() {
-  n++;
-  if (n >= songs.length) {
-    n = 0;
+  if (!page2.classList.contains("display-none")) {
+    n++;
+    if (n >= songs.length) {
+      n = 0;
+    }
+    if (b.paused) {
+      playSvg();
+    }
+    loadSong(n);
+  } else if (!page3.classList.contains("display-none")) {
+    m++;
+    if (m >= songs2.length) {
+      m = 0;
+    }
+    if (b.paused) {
+      playSvg2();
+    }
+    loadSong2(m);
   }
-  if (b.paused) {
-    playSvg();
-  }
-  loadSong(n);
 }
 
 container.addEventListener("click", (e) => {
@@ -567,7 +605,7 @@ container.addEventListener("click", (e) => {
 
 function showChangePage(pageSelector) {
   let page = document.querySelector(pageSelector);
-  console.log(page)
+  console.log(page);
 
   // Hide all pages
   document.querySelectorAll(".section-2 > div").forEach((page) => {
@@ -576,7 +614,7 @@ function showChangePage(pageSelector) {
   if (window.innerWidth > 1025) {
     // Show the selected page
     page.classList.remove("display-none");
-    console.log(page)
+    console.log(page);
     console.log("page visible");
   } else {
     // Show the selected page
@@ -588,7 +626,9 @@ function showChangePage(pageSelector) {
 // pageChange1PlayBtn1.addEventListener("click", play);
 pageChange1PlayBtn1.addEventListener("click", () => showChangePage(".page-2"));
 
-phonePageChange1.addEventListener("click", () => showChangePage(".page-2-phone"));
+phonePageChange1.addEventListener("click", () =>
+  showChangePage(".page-2-phone")
+);
 
 resizer.addEventListener("mousedown", () => {
   isResizing = true;
@@ -746,7 +786,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont1Img.style.height = "115%";
       footerPageCont1Content.style.fontSize = "12px";
       footerPageCont1Content.style.height = "100%";
-      footerPageCont1Content.style.maxWidth = "60%";
+      footerPageCont1Content.style.minWidth = "60%";
       footerPageCont1Add.style.width = "20%";
       footerPageCont2UpperMid.style.margin = "0";
       footerPageCont2UpperMid.style.height = "25px";
@@ -798,7 +838,6 @@ sec1OpenPLaylists.addEventListener("click", () => {
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
       });
-
     } else {
       //main
 
@@ -860,12 +899,12 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "17px";
       footerPageCont2LowerProgressContainer.style.width = "80%";
 
-    page1.classList.remove("display-none");
-    page2.classList.add("display-none");
-    page3.classList.add("display-none");
-    page1Phone.classList.add("display-none");
-    page2Phone.classList.add("display-none");
-    page3Phone.classList.add("display-none");
+      page1.classList.remove("display-none");
+      page2.classList.add("display-none");
+      page3.classList.add("display-none");
+      page1Phone.classList.add("display-none");
+      page2Phone.classList.add("display-none");
+      page3Phone.classList.add("display-none");
     }
   });
 });

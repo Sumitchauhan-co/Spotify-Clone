@@ -236,13 +236,7 @@
   font-size: 10px;
 }
 
-.section-2 .phone-songs-container .song-1,
-.section-2 .phone-songs-container .song-2,
-.section-2 .phone-songs-container .song-3,
-.section-2 .phone-songs-container .song-4,
-.section-2 .phone-songs-container .song-5,
-.section-2 .phone-songs-container .song-6,
-.section-2 .phone-songs-container .song-7 {
+.section-2 .phone-songs-container > div {
   height: 7vh;
   width: 100%;
   display: flex;
@@ -257,13 +251,7 @@
   cursor: pointer;
 }
 
-.section-2 .phone-songs-container .song-1 .num,
-.section-2 .phone-songs-container .song-2 .num,
-.section-2 .phone-songs-container .song-3 .num,
-.section-2 .phone-songs-container .song-4 .num,
-.section-2 .phone-songs-container .song-5 .num,
-.section-2 .phone-songs-container .song-6 .num,
-.section-2 .phone-songs-container .song-7 .num {
+.section-2 .phone-songs-container > div > div:nth-child(1) {
   height: 100%;
   width: 5%;
   display: flex;
@@ -271,13 +259,7 @@
   justify-content: center;
 }
 
-.section-2 .phone-songs-container .song-1 .cover,
-.section-2 .phone-songs-container .song-2 .cover,
-.section-2 .phone-songs-container .song-3 .cover,
-.section-2 .phone-songs-container .song-4 .cover,
-.section-2 .phone-songs-container .song-5 .cover,
-.section-2 .phone-songs-container .song-6 .cover,
-.section-2 .phone-songs-container .song-7 .cover {
+.section-2 .phone-songs-container > div > div:nth-child(2) {
   height: 80%;
   width: 15%;
   /* background-image: url(covers/song1.jpeg); */
@@ -286,13 +268,7 @@
   border-radius: 5px;
 }
 
-.section-2 .phone-songs-container .song-1 .song-details,
-.section-2 .phone-songs-container .song-2 .song-details,
-.section-2 .phone-songs-container .song-3 .song-details,
-.section-2 .phone-songs-container .song-4 .song-details,
-.section-2 .phone-songs-container .song-5 .song-details,
-.section-2 .phone-songs-container .song-6 .song-details,
-.section-2 .phone-songs-container .song-7 .song-details {
+.section-2 .phone-songs-container > div > div:nth-child(3) {
   height: 100%;
   width: 30%;
   display: flex;
@@ -301,13 +277,7 @@
   padding-left: 3%;
 }
 
-.section-2 .phone-songs-container .song-1 .song-details .song-name,
-.section-2 .phone-songs-container .song-2 .song-details .song-name,
-.section-2 .phone-songs-container .song-3 .song-details .song-name,
-.section-2 .phone-songs-container .song-4 .song-details .song-name,
-.section-2 .phone-songs-container .song-5 .song-details .song-name,
-.section-2 .phone-songs-container .song-6 .song-details .song-name,
-.section-2 .phone-songs-container .song-7 .song-details .song-name {
+.section-2 .phone-songs-container > div > div:nth-child(3) .song-name {
   height: 50%;
   width: 100%;
   display: flex;
@@ -315,13 +285,7 @@
   justify-content: start;
 }
 
-.section-2 .phone-songs-container .song-1 .song-details .song-artist,
-.section-2 .phone-songs-container .song-2 .song-details .song-artist,
-.section-2 .phone-songs-container .song-3 .song-details .song-artist,
-.section-2 .phone-songs-container .song-4 .song-details .song-artist,
-.section-2 .phone-songs-container .song-5 .song-details .song-artist,
-.section-2 .phone-songs-container .song-6 .song-details .song-artist,
-.section-2 .phone-songs-container .song-7 .song-details .song-artist {
+.section-2 .phone-songs-container > div > div:nth-child(3) .song-artist {
   height: 50%;
   width: 100%;
   display: flex;
@@ -329,13 +293,7 @@
   justify-content: start;
 }
 
-.section-2 .phone-songs-container .song-1 .name,
-.section-2 .phone-songs-container .song-2 .name,
-.section-2 .phone-songs-container .song-3 .name,
-.section-2 .phone-songs-container .song-4 .name,
-.section-2 .phone-songs-container .song-5 .name,
-.section-2 .phone-songs-container .song-6 .name,
-.section-2 .phone-songs-container .song-7 .name {
+.section-2 .phone-songs-container > div > div:nth-child(4) {
   height: 100%;
   width: 25%;
   display: flex;
@@ -346,13 +304,7 @@
   color: var(--dark-text-color);
 }
 
-.section-2 .phone-songs-container .song-1 .date,
-.section-2 .phone-songs-container .song-2 .date,
-.section-2 .phone-songs-container .song-3 .date,
-.section-2 .phone-songs-container .song-4 .date,
-.section-2 .phone-songs-container .song-5 .date,
-.section-2 .phone-songs-container .song-6 .date,
-.section-2 .phone-songs-container .song-7 .date {
+.section-2 .phone-songs-container > div > div:nth-child(5) {
   height: 100%;
   width: 20%;
   display: flex;
@@ -363,13 +315,7 @@
   color: var(--dark-text-color);
 }
 
-.section-2 .phone-songs-container .song-1 .duration,
-.section-2 .phone-songs-container .song-2 .duration,
-.section-2 .phone-songs-container .song-3 .duration,
-.section-2 .phone-songs-container .song-4 .duration,
-.section-2 .phone-songs-container .song-5 .duration,
-.section-2 .phone-songs-container .song-6 .duration,
-.section-2 .phone-songs-container .song-7 .duration {
+.section-2 .phone-songs-container > div > div:nth-child(6) {
   height: 100%;
   width: 13%;
   display: flex;
@@ -379,13 +325,7 @@
   color: var(--dark-text-color);
 }
 
-.section-2 .phone-songs-container .song-1:hover,
-.section-2 .phone-songs-container .song-2:hover,
-.section-2 .phone-songs-container .song-3:hover,
-.section-2 .phone-songs-container .song-4:hover,
-.section-2 .phone-songs-container .song-5:hover,
-.section-2 .phone-songs-container .song-6:hover,
-.section-2 .phone-songs-container .song-7:hover {
+.section-2 .phone-songs-container > div:hover {
   background-color: rgba(63, 63, 63, 0.493);
 }
 

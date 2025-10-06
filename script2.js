@@ -74,45 +74,6 @@ function songDetails2() {
   artistName.textContent = songs2[m].artist;
 }
 
-prevBtn.addEventListener("click", () => {
-  prevSong2();
-});
-
-function prevSong2() {
-  m--;
-  if (m < 0) {
-    m = songs2.length - 1;
-  }
-  if (b.paused) {
-    playSvg2();
-  }
-  loadSong2(m);
-}
-
-nextBtn.addEventListener("click", () => {
-  nextSong2();
-});
-
-function nextSong2() {
-  m++;
-  if (m >= songs2.length) {
-    m = 0;
-  }
-  if (b.paused) {
-    playSvg2();
-  }
-  loadSong2(m);
-}
-
-randomPlay.addEventListener("click", () => {
-  let r = Math.floor(Math.random() * 34); //to change
-  m = r;
-  b.play();
-  playSvg2();
-  loadSong2(n);
-  songDetails2();
-});
-
 function loadSong2(index) {
   if (b) b.pause();
 
