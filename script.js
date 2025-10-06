@@ -348,6 +348,7 @@ function loadSong(index) {
 
   b.addEventListener("ended", () => {
     nextSong();
+    console.log("auto next")
   });
   songDetails();
   b.play();
@@ -434,24 +435,6 @@ function phonePauseSvg() {
   page2PhonePlaySvg1.classList.remove("display-none");
 }
 
-playBtn.addEventListener("click", () => {
-  if (b.paused) {
-    b.play();
-    playSvg();
-    phonePlaySvg();
-    playSvg2();
-    phonePlaySvg2();
-    console.log("Song is played");
-  } else {
-    b.pause();
-    pauseSvg();
-    phonePauseSvg();
-    pauseSvg2();
-    phonePauseSvg2();
-    console.log("Song is paused");
-  }
-});
-
 page2playBtn.addEventListener("click", () => {
   if (i == 0) {
     loadSongtype(n);
@@ -524,76 +507,6 @@ phoneSongsContainer.addEventListener("click", (e) => {
   songDetails();
   // console.log(`url(${songs[n].cover})`);
 });
-
-randomPlay.addEventListener("click", () => {
-  if (!page2.classList.contains("display-none")) {
-    let r = Math.floor(Math.random() * 7); //to change
-    n = r;
-    b.play();
-    playSvg();
-    loadSong(n);
-    songDetails();
-  } else if (!page3.classList.contains("display-none")){
-    let r = Math.floor(Math.random() * 34); //to change
-  m = r;
-  b.play();
-  playSvg2();
-  loadSong2(n);
-  songDetails2();
-  }
-});
-
-prevBtn.addEventListener("click", () => {
-  prevSong();
-});
-
-function prevSong() {
-  if (!page2.classList.contains("display-none")) {
-    n--;
-    if (n < 0) {
-      n = songs.length - 1;
-    }
-    if (b.paused) {
-      playSvg();
-    }
-    loadSong(n);
-  } else if (!page3.classList.contains("display-none")) {
-    m--;
-    if (m < 0) {
-      m = songs2.length - 1;
-    }
-    if (b.paused) {
-      playSvg2();
-    }
-    loadSong2(m);
-  }
-}
-
-nextBtn.addEventListener("click", () => {
-  nextSong();
-});
-
-function nextSong() {
-  if (!page2.classList.contains("display-none")) {
-    n++;
-    if (n >= songs.length) {
-      n = 0;
-    }
-    if (b.paused) {
-      playSvg();
-    }
-    loadSong(n);
-  } else if (!page3.classList.contains("display-none")) {
-    m++;
-    if (m >= songs2.length) {
-      m = 0;
-    }
-    if (b.paused) {
-      playSvg2();
-    }
-    loadSong2(m);
-  }
-}
 
 container.addEventListener("click", (e) => {
   let rect = container.getBoundingClientRect();

@@ -10,7 +10,7 @@
 .footer-page .container-1 .img {
   height: 90%;
   width: 17%;
-  background-color: aqua;
+  /* background-color: aqua; */
   background-image: url(images/play\ song.jpeg);
   background-size: cover;
   background-position: center;

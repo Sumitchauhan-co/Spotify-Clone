@@ -94,7 +94,7 @@ function loadSong2(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong2();
+    nextSong();
   });
   songDetails2();
   b.play();
@@ -120,7 +120,7 @@ function loadSong2type(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong2();
+    nextSong();
   });
   songDetails2();
 }
@@ -347,4 +347,172 @@ page1PlayCont1Btn2.addEventListener("click", (e) => {
 
 pageChange1PlayBtn2.addEventListener("click", () => showChangePage(".page-3"));
 
-phonePageChange2.addEventListener("click", () => showChangePage(".page-3-phone"));
+phonePageChange2.addEventListener("click", () =>
+  showChangePage(".page-3-phone")
+);
+
+playBtn.addEventListener("click", () => {
+  if (b.paused) {
+    b.play();
+    playSvg();
+    phonePlaySvg();
+    playSvg2();
+    phonePlaySvg2();
+    console.log("Song is played");
+  } else {
+    b.pause();
+    pauseSvg();
+    phonePauseSvg();
+    pauseSvg2();
+    phonePauseSvg2();
+    console.log("Song is paused");
+  }
+});
+
+randomPlay.addEventListener("click", () => {
+  if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    if (!page2Phone.classList.contains("display-none")) {
+      let r = Math.floor(Math.random() * 7); //to change
+      n = r;
+      b.play();
+      playSvg();
+      loadSong(n);
+      songDetails();
+    } else if (!page3Phone.classList.contains("display-none")) {
+      let r = Math.floor(Math.random() * 34); //to change
+      m = r;
+      b.play();
+      playSvg2();
+      loadSong2(n);
+      songDetails2();
+    }
+  } else {
+    if (!page2.classList.contains("display-none")) {
+      let r = Math.floor(Math.random() * 7); //to change
+      n = r;
+      b.play();
+      playSvg();
+      loadSong(n);
+      songDetails();
+    } else if (!page3.classList.contains("display-none")) {
+      let r = Math.floor(Math.random() * 34); //to change
+      m = r;
+      b.play();
+      playSvg2();
+      loadSong2(n);
+      songDetails2();
+    }
+  }
+});
+
+prevBtn.addEventListener("click", () => {
+  prevSong();
+});
+
+function prevSong() {
+  if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    if (!page2Phone.classList.contains("display-none")) {
+      n--;
+      if (n < 0) {
+        n = songs.length - 1;
+      }
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (!page3Phone.classList.contains("display-none")) {
+      m--;
+      if (m < 0) {
+        m = songs2.length - 1;
+      }
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  } else {
+    if (!page2.classList.contains("display-none")) {
+      n--;
+      if (n < 0) {
+        n = songs.length - 1;
+      }
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (!page3.classList.contains("display-none")) {
+      m--;
+      if (m < 0) {
+        m = songs2.length - 1;
+      }
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  }
+}
+
+nextBtn.addEventListener("click", () => {
+  nextSong();
+});
+
+function nextSong() {
+  if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    if (!page2Phone.classList.contains("display-none")) {
+      n++;
+      if (n >= songs.length) {
+        n = 0;
+      }
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (!page3Phone.classList.contains("display-none")) {
+      m++;
+      if (m >= songs2.length) {
+        m = 0;
+      }
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  } else {
+    if (!page2.classList.contains("display-none")) {
+      n++;
+      if (n >= songs.length) {
+        n = 0;
+      }
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (!page3.classList.contains("display-none")) {
+      m++;
+      if (m >= songs2.length) {
+        m = 0;
+      }
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  }
+}
+
