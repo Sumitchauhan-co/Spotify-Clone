@@ -1,5 +1,6 @@
 let b;
 let n = 0;
+let p;
 let songs = [];
 let songs2 = [];
 let resize = false;
@@ -331,6 +332,7 @@ function loadSong(index) {
   if (b) b.pause();
 
   b = new Audio(songs[index].src);
+  p = 1;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(

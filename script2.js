@@ -78,6 +78,7 @@ function loadSong2(index) {
   if (b) b.pause();
 
   b = new Audio(songs2[index].src);
+  p = 2;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -376,14 +377,14 @@ randomPlay.addEventListener("click", () => {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (!page2Phone.classList.contains("display-none")) {
+    if (p === 1) {
       let r = Math.floor(Math.random() * 7); //to change
       n = r;
       b.play();
       playSvg();
       loadSong(n);
       songDetails();
-    } else if (!page3Phone.classList.contains("display-none")) {
+    } else if (p === 2) {
       let r = Math.floor(Math.random() * 34); //to change
       m = r;
       b.play();
@@ -392,14 +393,14 @@ randomPlay.addEventListener("click", () => {
       songDetails2();
     }
   } else {
-    if (!page2.classList.contains("display-none")) {
+    if (p === 1) {
       let r = Math.floor(Math.random() * 7); //to change
       n = r;
       b.play();
       playSvg();
       loadSong(n);
       songDetails();
-    } else if (!page3.classList.contains("display-none")) {
+    } else if (p === 2) {
       let r = Math.floor(Math.random() * 34); //to change
       m = r;
       b.play();
@@ -421,7 +422,7 @@ function prevSong() {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (!page2Phone.classList.contains("display-none")) {
+    if (p === 1) {
       n--;
       if (n < 0) {
         n = songs.length - 1;
@@ -430,7 +431,7 @@ function prevSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (!page3Phone.classList.contains("display-none")) {
+    } else if (p === 2) {
       m--;
       if (m < 0) {
         m = songs2.length - 1;
@@ -441,7 +442,7 @@ function prevSong() {
       loadSong2(m);
     }
   } else {
-    if (!page2.classList.contains("display-none")) {
+    if (p === 1) {
       n--;
       if (n < 0) {
         n = songs.length - 1;
@@ -450,7 +451,7 @@ function prevSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (!page3.classList.contains("display-none")) {
+    } else if (p === 2) {
       m--;
       if (m < 0) {
         m = songs2.length - 1;
@@ -474,7 +475,7 @@ function nextSong() {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (!page2Phone.classList.contains("display-none")) {
+    if (p === 1) {
       n++;
       if (n >= songs.length) {
         n = 0;
@@ -483,7 +484,7 @@ function nextSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (!page3Phone.classList.contains("display-none")) {
+    } else if (p === 2) {
       m++;
       if (m >= songs2.length) {
         m = 0;
@@ -494,7 +495,7 @@ function nextSong() {
       loadSong2(m);
     }
   } else {
-    if (!page2.classList.contains("display-none")) {
+    if (p === 1) {
       n++;
       if (n >= songs.length) {
         n = 0;
@@ -503,7 +504,7 @@ function nextSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (!page3.classList.contains("display-none")) {
+    } else if (p === 2) {
       m++;
       if (m >= songs2.length) {
         m = 0;
