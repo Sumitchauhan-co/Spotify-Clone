@@ -1,5 +1,6 @@
 let j = 0;
 let m = 0;
+let playlist2Play = false;
 
 async function main2() {
   let a = await fetch("json/songs3.json");
@@ -79,6 +80,7 @@ function loadSong2(index) {
 
   b = new Audio(songs2[index].src);
   p = 2;
+  playlist2Play = true;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -97,6 +99,8 @@ function loadSong2(index) {
   b.addEventListener("ended", () => {
     nextSong();
   });
+  addTORecent();
+  phoneAddTORecent();
   songDetails2();
   b.play();
 }
@@ -105,6 +109,7 @@ function loadSong2type(index) {
   if (b) b.pause();
 
   b = new Audio(songs2[index].src);
+  playlist2Play = true;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -123,6 +128,8 @@ function loadSong2type(index) {
   b.addEventListener("ended", () => {
     nextSong();
   });
+  addTORecent();
+  phoneAddTORecent();
   songDetails2();
 }
 
@@ -217,13 +224,16 @@ page3PhonePlay.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     phonePlaySvg2();
+    phonePauseSvg();
     console.log("Song is played");
     j = 1;
+    i = 0;
   } else {
     b.pause();
     phonePauseSvg2();
     console.log("Song is paused");
     j = 1;
+    i = 0;
   }
 });
 
@@ -234,13 +244,16 @@ page3playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     playSvg2();
+    pauseSvg();
     console.log("Song is played");
     j = 1;
+    i = 0;
   } else {
     b.pause();
     pauseSvg2();
     console.log("Song is paused");
     j = 1;
+    i = 0;
   }
 });
 
@@ -517,3 +530,44 @@ function nextSong() {
   }
 }
 
+// recent playlists
+
+let playlists = document.querySelectorAll(
+    ".page-1 .container-class .recently-played .content-container>div"
+  ),
+  recentContainer = document.querySelector(
+    ".page-1 .container-class .recently-played"
+  );
+
+playlists.forEach((playlist) => {
+  playlist.style.display = "none";
+  recentContainer.style.height = "0%";
+  recentContainer.style.display = "none";
+});
+
+function addTORecent() {
+  if (playlist2Play) {
+    playlists[0].style.display = "flex";
+    recentContainer.style.height = "50%";
+    recentContainer.style.display = "flex";
+  }
+}
+
+let phonePlaylists = document.querySelectorAll(
+    ".page-1-phone .phone-container-class .recently-played .content-container>div"
+  ),
+  phoneRecentContainer = document.querySelector(
+    ".page-1-phone .phone-container-class .recently-played"
+  );
+
+phonePlaylists.forEach((playlist) => {
+  playlist.style.display = "none";
+  phoneRecentContainer.style.height = "0%";
+});
+
+function phoneAddTORecent() {
+  if (playlist2Play) {
+    phonePlaylists[0].style.display = "flex";
+    phoneRecentContainer.style.height = "25%";
+  }
+}

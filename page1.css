@@ -86,6 +86,10 @@
   scroll-behavior: smooth;
 }
 
+/* .section-2 .container-class ::-webkit-scrollbar {
+  display: none;
+} */
+
 .section-2 .container-class .playlists-container {
   height: 20%;
   /* background-color: lightskyblue; */

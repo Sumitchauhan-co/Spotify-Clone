@@ -444,13 +444,16 @@ page2playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     playSvg();
+    pauseSvg2();
     console.log("Song is played");
     i = 1;
+    j = 0;
   } else {
     b.pause();
     pauseSvg();
     console.log("Song is paused");
     i = 1;
+    j = 0;
   }
 });
 
@@ -461,13 +464,16 @@ page2PhonePlay.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     phonePlaySvg();
+    phonePauseSvg2();
     console.log("Song is played");
     i = 1;
+    j = 0;
   } else {
     b.pause();
     phonePauseSvg();
     console.log("Song is paused");
     i = 1;
+    j = 0;
   }
 });
 
@@ -483,6 +489,8 @@ page1PlayCont1Btn1.addEventListener("click", (e) => {
     console.log("Song is paused");
   }
 });
+
+// click and play
 
 songsContainer.addEventListener("click", (e) => {
   let songDiv = e.target.closest("[data-id]");
@@ -510,6 +518,8 @@ phoneSongsContainer.addEventListener("click", (e) => {
   // console.log(`url(${songs[n].cover})`);
 });
 
+// change the music bar
+
 container.addEventListener("click", (e) => {
   let rect = container.getBoundingClientRect();
   let clickX = e.clientX - rect.left;
@@ -518,9 +528,25 @@ container.addEventListener("click", (e) => {
   b.currentTime = newTime;
 });
 
+// change the background color
+
+// const imgs = document.querySelectorAll(".page-1 .container-class .playlists-container>div .img");
+// console.log(imgs)
+// console.log(document.querySelector(".page-1 .header-container"))
+// const colorThief = new ColorThief();
+
+// imgs.forEach(img => {
+//   img.addEventListener("click", () => {
+//     const color = colorThief.getColor(img); // returns [R, G, B]
+//     document.querySelector(".page-1 .header-container").style.background = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+//     console.log(`rgb(${color[0]}, ${color[1]}, ${color[2]})`)
+//     console.log("done")
+//   })
+// })
+
 function showChangePage(pageSelector) {
   let page = document.querySelector(pageSelector);
-  console.log(page);
+  // console.log(page);
 
   // Hide all pages
   document.querySelectorAll(".section-2 > div").forEach((page) => {
@@ -529,12 +555,12 @@ function showChangePage(pageSelector) {
   if (window.innerWidth > 1025) {
     // Show the selected page
     page.classList.remove("display-none");
-    console.log(page);
-    console.log("page visible");
+    // console.log(page);
+    // console.log("page visible");
   } else {
     // Show the selected page
     page.classList.remove("display-none");
-    console.log("phone page visible");
+    // console.log("phone page visible");
   }
 }
 
