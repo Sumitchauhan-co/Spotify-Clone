@@ -2,7 +2,7 @@ let j = 0;
 let m = 0;
 
 async function main2() {
-  let a = await fetch("songs3.json");
+  let a = await fetch("json/songs3.json");
   songs2 = await a.json();
   loadSong(n);
 

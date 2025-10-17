@@ -17,7 +17,7 @@
   width: 27%;
   background-color: aqua;
   margin-right: 2%;
-  background-image: url(images/liked.jpg);
+  background-image: url(../assets/images/liked.jpg);
   background-size: cover;
   background-position: center;
   position: relative;

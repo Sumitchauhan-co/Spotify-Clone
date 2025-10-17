@@ -127,7 +127,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/liked.jpg);
+  background-image: url(../assets/images/liked.jpg);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -171,7 +171,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/chill\ and\ relax.webp);
+  background-image: url(../assets/images/chill\ and\ relax.webp);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -182,7 +182,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/feelings.webp);
+  background-image: url(../assets/images/feelings.webp);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -193,7 +193,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/sound\ tracks.webp);
+  background-image: url(../assets/images/sound\ tracks.webp);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -204,7 +204,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/indian\ lofi\ hits.webp);
+  background-image: url(../assets/images/indian\ lofi\ hits.webp);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -215,7 +215,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/daylist.jpg);
+  background-image: url(../assets/images/daylist.jpg);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -226,7 +226,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/repeat\ rewind.jpeg);
+  background-image: url(../assets/images/repeat\ rewind.jpeg);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -237,7 +237,7 @@
   height: 100%;
   width: 50%;
   /* background-color: bisque; */
-  background-image: url(images/on\ repeat.jpeg);
+  background-image: url(../assets/images/on\ repeat.jpeg);
   background-size: cover;
   background-position: center;
   border-top-left-radius: 5px;
@@ -316,7 +316,7 @@
 .phone-container-class .recently-played .content-container .playlist-1 .img {
   height: 85%;
   width: 95%;
-  background-image: url(images/chill\ and\ relax.webp);
+  background-image: url(../assets/images/chill\ and\ relax.webp);
   background-size: cover;
   background-position: center;
   border-radius: 7px;
@@ -340,7 +340,7 @@
 .phone-container-class .recently-played .content-container .playlist-2 .img {
   height: 85%;
   width: 95%;
-  background-image: url(images/feelings.webp);
+  background-image: url(../assets/images/feelings.webp);
   background-size: cover;
   background-position: center;
   border-radius: 7px;
@@ -349,7 +349,7 @@
 .phone-container-class .recently-played .content-container .playlist-3 .img {
   height: 85%;
   width: 95%;
-  background-image: url(images/sound\ tracks.webp);
+  background-image: url(../assets/images/sound\ tracks.webp);
   background-size: cover;
   background-position: center;
   border-radius: 7px;
@@ -358,7 +358,7 @@
 .phone-container-class .recently-played .content-container .playlist-4 .img {
   height: 85%;
   width: 95%;
-  background-image: url(images/indian\ lofi\ hits.webp);
+  background-image: url(../assets/images/indian\ lofi\ hits.webp);
   background-size: cover;
   background-position: center;
   border-radius: 7px;
@@ -366,7 +366,7 @@
 .phone-container-class .recently-played .content-container .playlist-5 .img {
   height: 85%;
   width: 95%;
-  background-image: url(images/daylist.jpg);
+  background-image: url(../assets/images/daylist.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 7px;
