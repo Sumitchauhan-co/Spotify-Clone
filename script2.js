@@ -1,6 +1,8 @@
 let j = 0;
 let m = 0;
 let playlist2Play = false;
+let repeatMode = false;
+let repeatPlay = document.querySelector(".footer-page .container-2 .upper .end .second")
 
 async function main2() {
   let a = await fetch("json/songs3.json");
@@ -12,9 +14,7 @@ async function main2() {
     c.src = element.src;
     c.preload = "metadata";
     c.load();
-    // console.log(element.src);
 
-    // if (songsContainer2) console.log("songsContainer2 working");
     songsContainer2.insertAdjacentHTML(
       "beforeend",
       `<div class="song-${element.id}" data-id="${element.id}">
@@ -29,7 +29,6 @@ async function main2() {
             <div class="duration" id="duration-${element.id}">--:--</div>
        </div>`
     );
-
     phoneSongsContainer2.insertAdjacentHTML(
       "beforeend",
       `<div class="song-${element.id}" data-id="${element.id}">
@@ -48,22 +47,20 @@ async function main2() {
     c.addEventListener("loadedmetadata", () => {
       let d = formatTime(c.duration);
       document.querySelector(`#duration-${element.id}`).textContent = d;
-      // console.log(d);
     });
     c.addEventListener("loadedmetadata", () => {
       let e = formatTime(c.duration);
       document.querySelector(`#duration-phone-${element.id}`).textContent = e;
-      // console.log(d);
     });
-    document.addEventListener("click", () => {
-      const unlock = new Audio();
-      unlock.play().catch(
-        () => {
-          console.log("Audio is unlocked");
-        },
-        { once: true }
-      );
-    });
+    // document.addEventListener("click", () => {
+    //   const unlock = new Audio();
+    //   unlock.play().catch(
+    //     () => {
+    //       console.log("Audio is unlocked");
+    //     },
+    //     { once: true }
+    //   );
+    // });
   });
 }
 
@@ -97,8 +94,13 @@ function loadSong2(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong();
+    if (repeatMode) {
+      currentSong();
+    } else {
+      nextSong();
+    }
   });
+
   addTORecent();
   phoneAddTORecent();
   songDetails2();
@@ -126,8 +128,13 @@ function loadSong2type(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong();
+    if (repeatMode) {
+      currentSong();
+    } else {
+      nextSong();
+    }
   });
+  
   addTORecent();
   phoneAddTORecent();
   songDetails2();
@@ -142,11 +149,11 @@ function playSvg2() {
   playBtn3Svg1.classList.add("display-none");
   playBtn3Svg2.classList.remove("display-none");
 
-  // page 1 upper playlist 1
+  // page 1 upper playlist 2
   page1Play2Svg1.classList.add("display-none");
   page1Play2Svg2.classList.remove("display-none");
 
-  // page 1 lower playlists
+  // page 1 lower playlist 1
   page1PlayCont2Svg1.classList.add("display-none");
   page1PlayCont2Svg2.classList.remove("display-none");
 }
@@ -160,11 +167,11 @@ function pauseSvg2() {
   playBtn3Svg2.classList.add("display-none");
   playBtn3Svg1.classList.remove("display-none");
 
-  // page 1 upper playlist 1
+  // page 1 upper playlist 2
   page1Play2Svg2.classList.add("display-none");
   page1Play2Svg1.classList.remove("display-none");
 
-  // page 1 lower playlists
+  // page 1 lower playlist 1
   page1PlayCont2Svg2.classList.add("display-none");
   page1PlayCont2Svg1.classList.remove("display-none");
 }
@@ -177,7 +184,6 @@ function phonePlaySvg2() {
   // page 3
   page3PhonePlaySvg1.classList.add("display-none");
   page3PhonePlaySvg2.classList.remove("display-none");
-  // console.log("phonePlaySvg for page 3 worked");
 }
 
 function phonePauseSvg2() {
@@ -188,7 +194,6 @@ function phonePauseSvg2() {
   // page 3
   page3PhonePlaySvg2.classList.add("display-none");
   page3PhonePlaySvg1.classList.remove("display-none");
-  //   console.log("phonePauseSvg for page 3 worked");
 }
 
 songsContainer2.addEventListener("click", (e) => {
@@ -196,12 +201,10 @@ songsContainer2.addEventListener("click", (e) => {
   if (!songDiv) return;
 
   let id = songDiv.dataset.id - 1;
-  //   console.log(id);
   m = id;
   loadSong2(m);
   playSvg2();
   songDetails2();
-  //   console.log(`url(${songs2[m].cover})`);
 });
 
 phoneSongsContainer2.addEventListener("click", (e) => {
@@ -214,7 +217,6 @@ phoneSongsContainer2.addEventListener("click", (e) => {
   loadSong2(m);
   phonePlaySvg2();
   songDetails2();
-  //   console.log(`url(${songs2[m].cover})`);
 });
 
 page3PhonePlay.addEventListener("click", () => {
@@ -271,24 +273,20 @@ function showPage(pageSelector, defaultSelector) {
       // If already visible, show default page
       page.classList.add("display-none");
       if (defaultPage) defaultPage.classList.remove("display-none");
-      //   console.log("page alr visible");
     } else if (page) {
       // Show the selected page
       page.classList.remove("display-none");
       defaultPage.classList.add("display-none");
-      //   console.log("page visible");
     }
   } else {
     if (isVisible) {
       // If already visible, show default page
       page.classList.add("display-none");
       if (defaultPage) defaultPage.classList.remove("display-none");
-      //   console.log("phone page alr visible");
     } else if (page) {
       // Show the selected page
       page.classList.remove("display-none");
       defaultPage.classList.add("display-none");
-      //   console.log("phone page visible");
     }
   }
 }
@@ -296,20 +294,16 @@ function showPage(pageSelector, defaultSelector) {
 playlist1.addEventListener("click", () => {
   if (window.innerWidth > 1025) {
     showPage(".page-2", ".page-1");
-    // console.log("page-2");
   } else {
     showPage(".page-2-phone", ".page-1-phone");
-    // console.log("page-2-phone");
   }
 });
 
 playlist2.addEventListener("click", () => {
   if (window.innerWidth > 1025) {
     showPage(".page-3", ".page-1");
-    // console.log("page-3");
   } else {
     showPage(".page-3-phone", ".page-1-phone");
-    // console.log("page-3-phone");
   }
 });
 
@@ -321,24 +315,20 @@ page1PlayCont2Btn1.addEventListener("click", (e) => {
   if (b.paused) {
     b.play();
     playSvg2();
-    // console.log("Song is played");
     j = 1;
   } else {
     b.pause();
     pauseSvg2();
-    // console.log("Song is paused");
     j = 1;
   }
 });
 
 page1PlayCont2.addEventListener("click", () => {
   showPage(".page-3", ".page-1");
-  // console.log("page-3");
 });
 
 phonePage1PlayCont2.addEventListener("click", () => {
   showPage(".page-3-phone", ".page-1-phone");
-  // console.log("page-3-phone");
 });
 
 page1PlayCont1Btn2.addEventListener("click", (e) => {
@@ -391,38 +381,38 @@ randomPlay.addEventListener("click", () => {
     window.innerHeight > 600
   ) {
     if (p === 1) {
-      let r = Math.floor(Math.random() * 7); //to change
+      let r = Math.floor(Math.random() * 7);
       n = r;
       b.play();
       playSvg();
       loadSong(n);
-      songDetails();
     } else if (p === 2) {
-      let r = Math.floor(Math.random() * 34); //to change
+      let r = Math.floor(Math.random() * 34);
       m = r;
       b.play();
       playSvg2();
       loadSong2(n);
-      songDetails2();
     }
   } else {
     if (p === 1) {
-      let r = Math.floor(Math.random() * 7); //to change
+      let r = Math.floor(Math.random() * 7)
       n = r;
       b.play();
       playSvg();
       loadSong(n);
-      songDetails();
     } else if (p === 2) {
-      let r = Math.floor(Math.random() * 34); //to change
+      let r = Math.floor(Math.random() * 34);
       m = r;
       b.play();
       playSvg2();
       loadSong2(n);
-      songDetails2();
     }
   }
 });
+
+repeatPlay.addEventListener("click", () => {
+  repeatMode = true;
+})
 
 prevBtn.addEventListener("click", () => {
   prevSong();
@@ -522,6 +512,39 @@ function nextSong() {
       if (m >= songs2.length) {
         m = 0;
       }
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  }
+}
+
+function currentSong() {
+  if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    if (p === 1) {
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (p === 2) {
+      if (b.paused) {
+        playSvg2();
+      }
+      loadSong2(m);
+    }
+  } else {
+    if (p === 1) {
+      if (b.paused) {
+        playSvg();
+      }
+      loadSong(n);
+    } else if (p === 2) {
       if (b.paused) {
         playSvg2();
       }

@@ -142,7 +142,6 @@ const sec1PlaylistContent = document.querySelectorAll(
 const sec1Container = document.querySelector(
   ".section-1 .sec1-header-container"
 );
-// const sec1Header = document.querySelector(".section-1 .sec1-header-container");
 const sec1CloseIcons = document.querySelector(".section-1 .sidebar-functions");
 const sec1OpenPLaylists = document.querySelector(
   ".section-1 .sidebar-functions .open-playlists"
@@ -269,7 +268,7 @@ async function main() {
     c.src = element.src;
     c.preload = "metadata";
     c.load();
-    // console.log(element.src);
+
     songsContainer.insertAdjacentHTML(
       "beforeend",
       `<div class="song-${element.id}" data-id="${element.id}">
@@ -298,25 +297,24 @@ async function main() {
       <div class="duration" id="duration-phone-${element.id}">--:--</div>
     </div>`
     );
+
     c.addEventListener("loadedmetadata", () => {
       let d = formatTime(c.duration);
       document.querySelector(`#duration-${element.id}`).textContent = d;
-      // console.log(d);
     });
     c.addEventListener("loadedmetadata", () => {
       let e = formatTime(c.duration);
       document.querySelector(`#duration-phone-${element.id}`).textContent = e;
-      // console.log(d);
     });
-    document.addEventListener("click", () => {
-      const unlock = new Audio();
-      unlock.play().catch(
-        () => {
-          console.log("Audio is unlocked");
-        },
-        { once: true }
-      );
-    });
+    // document.addEventListener("click", () => {
+    //   const unlock = new Audio();
+    //   unlock.play().catch(
+    //     () => {
+    //       console.log("Audio is unlocked");
+    //     },
+    //     { once: true }
+    //   );
+    // });
   });
 }
 
@@ -349,9 +347,14 @@ function loadSong(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong();
-    console.log("auto next")
+    if (repeatMode) {
+      currentSong();
+    } else {
+      nextSong();
+    }
+    repeatMode = false;
   });
+
   songDetails();
   b.play();
 }
@@ -376,8 +379,14 @@ function loadSongtype(index) {
   });
 
   b.addEventListener("ended", () => {
-    nextSong();
+    if (repeatMode) {
+      currentSong();
+    } else {
+      nextSong();
+    }
+    repeatMode = false;
   });
+
   songDetails();
 }
 
@@ -393,10 +402,6 @@ function playSvg() {
   // page 1 upper playlist 1
   page1Play1Svg1.classList.add("display-none");
   page1Play1Svg2.classList.remove("display-none");
-
-  // page 1 lower playlists
-  // page1PlayCont2Svg1.classList.add("display-none");
-  // page1PlayCont2Svg2.classList.remove("display-none");
 }
 
 function phonePlaySvg() {
@@ -421,10 +426,6 @@ function pauseSvg() {
   // page 1 upper playlist 1
   page1Play1Svg2.classList.add("display-none");
   page1Play1Svg1.classList.remove("display-none");
-
-  // page 1 lower playlists
-  // page1PlayCont2Svg2.classList.add("display-none");
-  // page1PlayCont2Svg1.classList.remove("display-none");
 }
 
 function phonePauseSvg() {
@@ -497,12 +498,10 @@ songsContainer.addEventListener("click", (e) => {
   if (!songDiv) return;
 
   let id = songDiv.dataset.id - 1;
-  console.log(id);
   n = id;
   loadSong(n);
   playSvg();
   songDetails();
-  // console.log(`url(${songs[n].cover})`);
 });
 
 phoneSongsContainer.addEventListener("click", (e) => {
@@ -510,12 +509,10 @@ phoneSongsContainer.addEventListener("click", (e) => {
   if (!songDiv) return;
 
   let id = songDiv.dataset.id - 1;
-  console.log(id);
   n = id;
   loadSong(n);
   playSvg();
   songDetails();
-  // console.log(`url(${songs[n].cover})`);
 });
 
 // change the music bar
@@ -546,7 +543,6 @@ container.addEventListener("click", (e) => {
 
 function showChangePage(pageSelector) {
   let page = document.querySelector(pageSelector);
-  // console.log(page);
 
   // Hide all pages
   document.querySelectorAll(".section-2 > div").forEach((page) => {
@@ -555,16 +551,12 @@ function showChangePage(pageSelector) {
   if (window.innerWidth > 1025) {
     // Show the selected page
     page.classList.remove("display-none");
-    // console.log(page);
-    // console.log("page visible");
   } else {
     // Show the selected page
     page.classList.remove("display-none");
-    // console.log("phone page visible");
   }
 }
 
-// pageChange1PlayBtn1.addEventListener("click", play);
 pageChange1PlayBtn1.addEventListener("click", () => showChangePage(".page-2"));
 
 phonePageChange1.addEventListener("click", () =>
@@ -596,15 +588,12 @@ document.addEventListener("mousemove", (e) => {
     sec1PlaylistContent.forEach((element) => {
       element.classList.add("display-none");
     });
-    // sec1Header.style.display = "none";
     sec1Container.style.display = "none";
     sec1Bar.style.display = "none";
     sec1CloseIcons.classList.remove("display-none");
-    // console.log(sec2Divs);
     sec2Divs.forEach((element) => {
       element.style.height = "105%";
     });
-    // console.log(sec2HeaderDivs);
     sec2HeaderDivs.style.height = "25%";
   } else if (newWidth > 285) {
     document.documentElement.style.setProperty(
@@ -614,7 +603,6 @@ document.addEventListener("mousemove", (e) => {
     sec1PlaylistContent.forEach((element) => {
       element.classList.remove("display-none");
     });
-    // sec1Header.style.display = "flex";
     sec1Container.style.display = "block";
     sec1Bar.style.display = "flex";
     sec1CloseIcons.classList.add("display-none");
@@ -634,7 +622,6 @@ sec1OpenPLaylists.addEventListener("click", () => {
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
   });
-  // sec1Header.style.display = "flex";
   sec1Container.style.display = "block";
   sec1Bar.style.display = "flex";
   sec1CloseIcons.classList.add("display-none");
@@ -717,8 +704,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.gap = "5%";
       footerPage.style.marginTop = "5%";
       footerPage.style.flexDirection = "column";
-      footerPageCont1.style.maxWidth = "70%"; //
-      footerPageCont1.style.minWidth = "50%"; //
+      footerPageCont1.style.maxWidth = "70%"; 
+      footerPageCont1.style.minWidth = "50%"; 
       footerPageCont1.style.height = "40%";
       footerPageCont2.style.width = "110%";
       footerPageCont2.style.height = "50%";
@@ -747,13 +734,9 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2LowerProgressContainer.style.width = "50%";
 
       page1Phone.classList.remove("display-none");
-      // page1.style.display = "none";
-      // page2.style.display = "none";
       page1.classList.add("display-none");
       page2.classList.add("display-none");
       page3.classList.add("display-none");
-
-      // playlist1.removeEventListener("click", play);
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
@@ -813,8 +796,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.gap = "0";
       footerPage.style.marginTop = "0";
       footerPage.style.flexDirection = "row";
-      footerPageCont1.style.width = "20%"; // to change
-      footerPageCont1.style.height = "100%"; // to change
+      footerPageCont1.style.width = "20%"; 
+      footerPageCont1.style.height = "100%"; 
       footerPageCont2.style.width = "35%";
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "17%";

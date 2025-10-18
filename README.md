@@ -3,9 +3,6 @@
 > A modern, Spotify-inspired music streaming web app built with **HTML, CSS, and JavaScript** — simple, smooth, and responsive.
 > An interactive, fully responsive music player web app — designed for seamless playback across devices and dynamic playlist control.
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Sumitchauhan-co/Js-Project-3?color=blue&style=for-the-badge)
-![GitHub stars](https://img.shields.io/github/stars/Sumitchauhan-co/Js-Project-3?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/Sumitchauhan-co/Js-Project-3?style=for-the-badge)
 ![Made with JS](https://img.shields.io/badge/Made%20with-JavaScript-yellow?style=for-the-badge)
 
 ---
