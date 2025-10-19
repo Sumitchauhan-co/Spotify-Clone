@@ -1,8 +1,8 @@
-let j = 0;
 let m = 0;
 let playlist2Play = false;
 let repeatMode = false;
 let repeatPlay = document.querySelector(".footer-page .container-2 .upper .end .second")
+let home = document.querySelector(".header .home-button")
 
 async function main2() {
   let a = await fetch("json/songs3.json");
@@ -76,7 +76,6 @@ function loadSong2(index) {
   if (b) b.pause();
 
   b = new Audio(songs2[index].src);
-  p = 2;
   playlist2Play = true;
 
   b.addEventListener("loadedmetadata", () => {
@@ -220,41 +219,30 @@ phoneSongsContainer2.addEventListener("click", (e) => {
 });
 
 page3PhonePlay.addEventListener("click", () => {
-  if (j == 0) {
+  if (!playlist2Play) {
     loadSong2type(m);
   }
   if (b.paused) {
     b.play();
-    phonePlaySvg2();
     phonePauseSvg();
-    console.log("Song is played");
-    j = 1;
-    i = 0;
+    phonePlaySvg2();
   } else {
     b.pause();
     phonePauseSvg2();
-    console.log("Song is paused");
-    j = 1;
-    i = 0;
   }
 });
 
 page3playBtn.addEventListener("click", () => {
-  if (j == 0) {
+  if (!playlist2Play) {
     loadSong2type(m);
   }
   if (b.paused) {
     b.play();
+    pauseSvg();
     playSvg2();
-    console.log("Song is played");
-    j = 1;
-    i = 0;
   } else {
     b.pause();
     pauseSvg2();
-    console.log("Song is paused");
-    j = 1;
-    i = 0;
   }
 });
 
@@ -308,17 +296,15 @@ playlist2.addEventListener("click", () => {
 
 page1PlayCont2Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
-  if (j == 0) {
+  if (!playlist2Play) {
     loadSong2type(m);
   }
   if (b.paused) {
     b.play();
     playSvg2();
-    j = 1;
   } else {
     b.pause();
     pauseSvg2();
-    j = 1;
   }
 });
 
@@ -332,19 +318,15 @@ phonePage1PlayCont2.addEventListener("click", () => {
 
 page1PlayCont1Btn2.addEventListener("click", (e) => {
   e.stopPropagation();
-  if (j == 0) {
+  if (!playlist2Play) {
     loadSong2type(m);
   }
   if (b.paused) {
     b.play();
     playSvg2();
-    console.log("Song is played");
-    j = 1;
   } else {
     b.pause();
     pauseSvg2();
-    console.log("Song is paused");
-    j = 1;
   }
 });
 
@@ -408,6 +390,10 @@ randomPlay.addEventListener("click", () => {
     }
   }
 });
+
+home.addEventListener("click", () => {
+  showChangePage(".page-1");
+})
 
 repeatPlay.addEventListener("click", () => {
   repeatMode = true;

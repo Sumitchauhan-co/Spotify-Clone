@@ -30,7 +30,7 @@ Experience a full-fledged web music player directly in your browser.
 
 ## 🧩 Tech Stack  
 
-- **Frontend:** HTML5, CSS3, JavaScript 
+- **Frontend:** HTML5, CSS3, JavaScript
 - **Data:** JSON  
 - **Hosting:** GitHub Pages  
 
@@ -59,7 +59,6 @@ Experience a full-fledged web music player directly in your browser.
 
 ## 🗂️ Project Structure  
 
-```
 JS Project-3/
 │
 ├── assets/
@@ -95,15 +94,13 @@ JS Project-3/
 ├── script2.js
 ├── style.css
 └── README.md
-```
 
 ---
 
 ## 🧠 Future Enhancements  
 
-- 💾 Add user playlist creation
 - 🎚️ Volume control  
-- 💾 Save last played track using localStorage  
+- 👾 Add side engaging game for laptop
 
 ---
 
@@ -116,4 +113,5 @@ JS Project-3/
 ---
 
 ### ❤️ Made with passion by **Sumit Chauhan**
+
 > “Code the music, play the logic.”

@@ -1,10 +1,9 @@
 let b;
 let n = 0;
-let p;
 let songs = [];
 let songs2 = [];
 let resize = false;
-let i = 0;
+let playlistPlay = false;
 let pages = [
   "page1",
   "page2",
@@ -127,9 +126,6 @@ let page1PlayCont2Svg1 = document.querySelector(
 );
 let page1PlayCont2Svg2 = document.querySelector(
   ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)"
-);
-let page2Song1 = document.querySelector(
-  ".section-2 .page-2 .songs-container .song-1"
 );
 let randomPlay = document.querySelector(
   ".footer-page .container-2 .upper .start .first"
@@ -330,7 +326,7 @@ function loadSong(index) {
   if (b) b.pause();
 
   b = new Audio(songs[index].src);
-  p = 1;
+  playlistPlay = true;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -363,6 +359,7 @@ function loadSongtype(index) {
   if (b) b.pause();
 
   b = new Audio(songs[index].src);
+  playlistPlay = true;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -439,42 +436,30 @@ function phonePauseSvg() {
 }
 
 page2playBtn.addEventListener("click", () => {
-  if (i == 0) {
+  if (!playlistPlay) {
     loadSongtype(n);
   }
   if (b.paused) {
     b.play();
-    playSvg();
     pauseSvg2();
-    console.log("Song is played");
-    i = 1;
-    j = 0;
+    playSvg();
   } else {
     b.pause();
     pauseSvg();
-    console.log("Song is paused");
-    i = 1;
-    j = 0;
   }
 });
 
 page2PhonePlay.addEventListener("click", () => {
-  if (i == 0) {
+  if (!playlistPlay) {
     loadSongtype(n);
   }
   if (b.paused) {
     b.play();
-    phonePlaySvg();
     phonePauseSvg2();
-    console.log("Song is played");
-    i = 1;
-    j = 0;
+    phonePlaySvg();
   } else {
     b.pause();
     phonePauseSvg();
-    console.log("Song is paused");
-    i = 1;
-    j = 0;
   }
 });
 
@@ -511,7 +496,7 @@ phoneSongsContainer.addEventListener("click", (e) => {
   let id = songDiv.dataset.id - 1;
   n = id;
   loadSong(n);
-  playSvg();
+  phonePlaySvg();
   songDetails();
 });
 
