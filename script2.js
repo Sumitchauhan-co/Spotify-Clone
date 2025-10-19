@@ -246,7 +246,6 @@ page3playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
     playSvg2();
-    pauseSvg();
     console.log("Song is played");
     j = 1;
     i = 0;
