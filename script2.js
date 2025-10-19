@@ -392,7 +392,16 @@ randomPlay.addEventListener("click", () => {
 });
 
 home.addEventListener("click", () => {
-  showChangePage(".page-1");
+  if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    showChangePage(".page-1-phone")
+  } else {
+    showChangePage(".page-1")
+  }
 })
 
 repeatPlay.addEventListener("click", () => {
