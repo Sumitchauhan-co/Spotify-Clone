@@ -1,8 +1,11 @@
 let m = 0;
 let playlist2Play = false;
 let repeatMode = false;
-let repeatPlay = document.querySelector(".footer-page .container-2 .upper .end .second")
-let home = document.querySelector(".header .home-button")
+let repeatPlay = document.querySelector(
+  ".footer-page .container-2 .upper .end .second"
+);
+let home = document.querySelector(".header .home-button");
+let sec2Page2Songs = 0;
 
 async function main2() {
   let a = await fetch("json/songs3.json");
@@ -11,9 +14,9 @@ async function main2() {
 
   songs2.forEach((element) => {
     let c = new Audio(element.src);
-    c.src = element.src;
-    c.preload = "metadata";
-    c.load();
+    // c.src = element.src;
+    // c.preload = "metadata";
+    // c.load();
 
     songsContainer2.insertAdjacentHTML(
       "beforeend",
@@ -61,6 +64,17 @@ async function main2() {
     //     { once: true }
     //   );
     // });
+    sec2PageSongs = document.querySelectorAll(
+      ".section-2 .songs-container > div "
+    );
+    sec2ScrollContainer = document.querySelectorAll(
+      ".section-2 .songs-container div > div:nth-child(3)"
+    );
+    console.log(sec2ScrollContainer)
+    sec2ScrollName = document.querySelectorAll(
+      ".section-2 .songs-container div > div:nth-child(3) > div:nth-child(1)"
+    );
+    console.log(sec2ScrollName)
   });
 }
 
@@ -68,8 +82,13 @@ main2();
 
 function songDetails2() {
   imgCover.style.backgroundImage = `url(${songs2[m].cover})`;
+  imgBanner.style.backgroundImage = `url(${songs2[m].cover})`;
   songName.textContent = songs2[m].title;
   artistName.textContent = songs2[m].artist;
+  sec3SongName.forEach((element) => {
+    element.textContent = songs2[m].title;
+  });
+  sec3Artist.textContent = songs2[m].artist;
 }
 
 function loadSong2(index) {
@@ -77,6 +96,7 @@ function loadSong2(index) {
 
   b = new Audio(songs2[index].src);
   playlist2Play = true;
+  playlistPlay = false;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -111,6 +131,7 @@ function loadSong2type(index) {
 
   b = new Audio(songs2[index].src);
   playlist2Play = true;
+  playlistPlay = false;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -133,10 +154,31 @@ function loadSong2type(index) {
       nextSong();
     }
   });
-  
+
   addTORecent();
   phoneAddTORecent();
   songDetails2();
+}
+
+function scroll() {
+  if (sec3ScrollName.scrollWidth > sec3ScrollContainer.clientWidth) {
+    sec3ScrollName.classList.add("scrolling");
+  } else {
+    sec3ScrollName.classList.remove("scrolling");
+  }
+  for (let i = 0; i < sec2ScrollName.length; i++) {
+    for (let j = 0; j < sec2ScrollContainer.length; j++) {
+      if (i === j) {
+        if (sec2ScrollName[i].scrollWidth > sec2ScrollContainer[j].clientWidth) {
+          sec2ScrollName[i].classList.add("scrolling");
+          break
+        } else {
+          sec2ScrollName[i].classList.remove("scrolling");
+          break
+        }
+      }
+    }
+  }
 }
 
 function playSvg2() {
@@ -204,6 +246,7 @@ songsContainer2.addEventListener("click", (e) => {
   loadSong2(m);
   playSvg2();
   songDetails2();
+  scroll();
 });
 
 phoneSongsContainer2.addEventListener("click", (e) => {
@@ -216,11 +259,13 @@ phoneSongsContainer2.addEventListener("click", (e) => {
   loadSong2(m);
   phonePlaySvg2();
   songDetails2();
+  scroll();
 });
 
 page3PhonePlay.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
+    scroll();
   }
   if (b.paused) {
     b.play();
@@ -235,6 +280,7 @@ page3PhonePlay.addEventListener("click", () => {
 page3playBtn.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
+    scroll();
   }
   if (b.paused) {
     b.play();
@@ -298,10 +344,12 @@ page1PlayCont2Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!playlist2Play) {
     loadSong2type(m);
+    scroll();
   }
   if (b.paused) {
     b.play();
     playSvg2();
+    pauseSvg();
   } else {
     b.pause();
     pauseSvg2();
@@ -320,10 +368,12 @@ page1PlayCont1Btn2.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!playlist2Play) {
     loadSong2type(m);
+    scroll();
   }
   if (b.paused) {
     b.play();
     playSvg2();
+    pauseSvg();
   } else {
     b.pause();
     pauseSvg2();
@@ -361,32 +411,36 @@ randomPlay.addEventListener("click", () => {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (p === 1) {
+    if (playlistPlay) {
       let r = Math.floor(Math.random() * 7);
       n = r;
       b.play();
       playSvg();
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       let r = Math.floor(Math.random() * 34);
       m = r;
       b.play();
       playSvg2();
       loadSong2(n);
+      scroll();
     }
   } else {
-    if (p === 1) {
-      let r = Math.floor(Math.random() * 7)
+    if (playlistPlay) {
+      let r = Math.floor(Math.random() * 7);
       n = r;
       b.play();
       playSvg();
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       let r = Math.floor(Math.random() * 34);
       m = r;
       b.play();
       playSvg2();
       loadSong2(n);
+      scroll();
     }
   }
 });
@@ -398,15 +452,15 @@ home.addEventListener("click", () => {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    showChangePage(".page-1-phone")
+    showChangePage(".page-1-phone");
   } else {
-    showChangePage(".page-1")
+    showChangePage(".page-1");
   }
-})
+});
 
 repeatPlay.addEventListener("click", () => {
   repeatMode = true;
-})
+});
 
 prevBtn.addEventListener("click", () => {
   prevSong();
@@ -419,7 +473,7 @@ function prevSong() {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (p === 1) {
+    if (playlistPlay) {
       n--;
       if (n < 0) {
         n = songs.length - 1;
@@ -428,7 +482,8 @@ function prevSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       m--;
       if (m < 0) {
         m = songs2.length - 1;
@@ -437,9 +492,10 @@ function prevSong() {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   } else {
-    if (p === 1) {
+    if (playlistPlay) {
       n--;
       if (n < 0) {
         n = songs.length - 1;
@@ -448,7 +504,8 @@ function prevSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       m--;
       if (m < 0) {
         m = songs2.length - 1;
@@ -457,6 +514,7 @@ function prevSong() {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   }
 }
@@ -472,7 +530,7 @@ function nextSong() {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (p === 1) {
+    if (playlistPlay) {
       n++;
       if (n >= songs.length) {
         n = 0;
@@ -481,7 +539,8 @@ function nextSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       m++;
       if (m >= songs2.length) {
         m = 0;
@@ -490,9 +549,10 @@ function nextSong() {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   } else {
-    if (p === 1) {
+    if (playlistPlay) {
       n++;
       if (n >= songs.length) {
         n = 0;
@@ -501,7 +561,8 @@ function nextSong() {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       m++;
       if (m >= songs2.length) {
         m = 0;
@@ -510,6 +571,7 @@ function nextSong() {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   }
 }
@@ -521,28 +583,32 @@ function currentSong() {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    if (p === 1) {
+    if (playlistPlay) {
       if (b.paused) {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       if (b.paused) {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   } else {
-    if (p === 1) {
+    if (playlistPlay) {
       if (b.paused) {
         playSvg();
       }
       loadSong(n);
-    } else if (p === 2) {
+      scroll();
+    } else if (playlist2Play) {
       if (b.paused) {
         playSvg2();
       }
       loadSong2(m);
+      scroll();
     }
   }
 }
@@ -558,14 +624,12 @@ let playlists = document.querySelectorAll(
 
 playlists.forEach((playlist) => {
   playlist.style.display = "none";
-  recentContainer.style.height = "0%";
   recentContainer.style.display = "none";
 });
 
 function addTORecent() {
   if (playlist2Play) {
     playlists[0].style.display = "flex";
-    recentContainer.style.height = "50%";
     recentContainer.style.display = "flex";
   }
 }
@@ -579,12 +643,12 @@ let phonePlaylists = document.querySelectorAll(
 
 phonePlaylists.forEach((playlist) => {
   playlist.style.display = "none";
-  phoneRecentContainer.style.height = "0%";
+  phoneRecentContainer.style.display = "none";
 });
 
 function phoneAddTORecent() {
   if (playlist2Play) {
     phonePlaylists[0].style.display = "flex";
-    phoneRecentContainer.style.height = "25%";
+    phoneRecentContainer.style.display = "flex";
   }
 }

@@ -359,7 +359,7 @@
 
 .container-class .recently-played .recent-header .left {
   height: 100%;
-  width: 30%;
+  /* width: 30%; */
   /* background-color: #3b3b3b; */
   display: flex;
   align-items: center;
@@ -529,7 +529,7 @@
 }
 
 .footer .foot {
-  height: 90%;
+  height: 100%;
   width: 100%;
   padding: 2%;
 }

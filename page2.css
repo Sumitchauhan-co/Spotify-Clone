@@ -14,7 +14,7 @@
 
 .section-2 .page-2 .header-container2 .img {
   height: 90%;
-  width: 27%;
+  width: 25%;
   /* background-color: aqua; */
   margin-right: 2%;
   background-image: url(assets/images/liked.jpg);
@@ -177,7 +177,7 @@
 }
 .section-2 .header-row .title {
   height: 100%;
-  width: 35%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -195,7 +195,7 @@
 
 .section-2 .header-row .added-date {
   height: 100%;
-  width: 20%;
+  width: 15%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -270,7 +270,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-left: 3%;
+  margin: 0 3%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
 }
 
 .section-2 .songs-container > div > div:nth-child(3) .song-name {
@@ -279,6 +282,9 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  display: inline-block;
+  /* padding-left: 50%; */
+  /* animation: scrollText s linear infinite; */
 }
 
 .section-2 .songs-container > div > div:nth-child(3) .song-artist {

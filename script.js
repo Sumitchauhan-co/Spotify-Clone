@@ -154,9 +154,40 @@ const sec2Divs = document.querySelectorAll(
   ".section-2 .container-class .recently-played .content-container>div"
 );
 const sec2HeaderDivs = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container"
+  ".section-2 .container-class .playlists-container"
 );
+const sec2HeaderDivsPlayBtn = document.querySelectorAll(
+    ".section-2 .container-class .playlists-container .content .play-button"
+  ),
+  sec2Recent = document.querySelector(".container-class .recently-played"),
+  sec2RecentPlaylistPlayBtn = document.querySelectorAll(
+    ".section-2 .recently-played .content-container .play-button"
+  ),
+  sec2PagesBanner = document.querySelectorAll(
+    ".section-2 .header-container2 .img"
+  );
+
+let sec2ScrollContainer = 0;
+let sec2ScrollName = 0;
+
 let isResizing = false;
+
+// section-3
+
+let imgBanner = document.querySelector(".section-3 .banner .img"),
+  sec3Artist = document.querySelector(".section-3 .song-detail .first .artist"),
+  sec3SongName = document.querySelectorAll(
+    ".section-3 .song-detail .first .name, .section-3 .sec3-header .first .name"
+  );
+
+let sec3ScrollContainer = document.querySelector(
+  ".section-3 .song-detail .first"
+);
+// console.log(sec3ScrollContainer)
+let sec3ScrollName = document.querySelector(
+  ".section-3 .song-detail .first .name"
+);
+// console.log(sec3ScrollName)
 
 // header
 
@@ -254,6 +285,8 @@ function formatTime(seconds) {
   return `${min}:${sec < 10 ? "0" + sec : sec}`;
 }
 
+let sec2PageSongs = 0;
+
 async function main() {
   let a = await fetch("json/songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
@@ -261,9 +294,9 @@ async function main() {
 
   songs.forEach((element) => {
     let c = new Audio(element.src);
-    c.src = element.src;
-    c.preload = "metadata";
-    c.load();
+    // c.src = element.src;
+    // c.preload = "metadata";
+    // c.load();
 
     songsContainer.insertAdjacentHTML(
       "beforeend",
@@ -311,6 +344,17 @@ async function main() {
     //     { once: true }
     //   );
     // });
+    sec2PageSongs = document.querySelectorAll(
+      ".section-2 .songs-container > div "
+    );
+    sec2ScrollContainer = document.querySelectorAll(
+      ".section-2 .songs-container div > div:nth-child(3)"
+    );
+    console.log(sec2ScrollContainer)
+    sec2ScrollName = document.querySelectorAll(
+      ".section-2 .songs-container div > div:nth-child(3) > div:nth-child(1)"
+    );
+    console.log(sec2ScrollName)
   });
 }
 
@@ -318,8 +362,13 @@ main();
 
 function songDetails() {
   imgCover.style.backgroundImage = `url(${songs[n].cover})`;
-  songName.textContent = songs[n].title;
+  imgBanner.style.backgroundImage = `url(${songs[n].cover})`;
   artistName.textContent = songs[n].artist;
+  songName.textContent = songs[n].title;
+  sec3SongName.forEach((element) => {
+    element.textContent = songs[n].title;
+  });
+  sec3Artist.textContent = songs[n].artist;
 }
 
 function loadSong(index) {
@@ -327,6 +376,7 @@ function loadSong(index) {
 
   b = new Audio(songs[index].src);
   playlistPlay = true;
+  playlist2Play = false;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -360,6 +410,7 @@ function loadSongtype(index) {
 
   b = new Audio(songs[index].src);
   playlistPlay = true;
+  playlist2Play = false;
 
   b.addEventListener("loadedmetadata", () => {
     document.querySelector(".lower .duration").textContent = formatTime(
@@ -438,6 +489,7 @@ function phonePauseSvg() {
 page2playBtn.addEventListener("click", () => {
   if (!playlistPlay) {
     loadSongtype(n);
+    scroll();
   }
   if (b.paused) {
     b.play();
@@ -447,11 +499,13 @@ page2playBtn.addEventListener("click", () => {
     b.pause();
     pauseSvg();
   }
+  console.log("played");
 });
 
 page2PhonePlay.addEventListener("click", () => {
   if (!playlistPlay) {
     loadSongtype(n);
+    scroll();
   }
   if (b.paused) {
     b.play();
@@ -461,13 +515,19 @@ page2PhonePlay.addEventListener("click", () => {
     b.pause();
     phonePauseSvg();
   }
+  console.log("played");
 });
 
 page1PlayCont1Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
+  if (!playlistPlay) {
+    loadSongtype(n);
+    scroll();
+  }
   if (b.paused) {
     b.play();
     playSvg();
+    pauseSvg2();
     console.log("Song is played");
   } else {
     b.pause();
@@ -487,6 +547,7 @@ songsContainer.addEventListener("click", (e) => {
   loadSong(n);
   playSvg();
   songDetails();
+  scroll();
 });
 
 phoneSongsContainer.addEventListener("click", (e) => {
@@ -498,6 +559,7 @@ phoneSongsContainer.addEventListener("click", (e) => {
   loadSong(n);
   phonePlaySvg();
   songDetails();
+  scroll();
 });
 
 // change the music bar
@@ -580,6 +642,22 @@ document.addEventListener("mousemove", (e) => {
       element.style.height = "105%";
     });
     sec2HeaderDivs.style.height = "25%";
+    sec2HeaderDivsPlayBtn.forEach((element) => {
+      element.style.top = "5%";
+    });
+    sec2Recent.style.height = "55%";
+    sec2RecentPlaylistPlayBtn.forEach((element) => {
+      element.style.top = "67%";
+    });
+    sec2PagesBanner.forEach((element) => {
+      element.style.width = "20%";
+    });
+    sec2PageSongs.forEach((element) => {
+      element.style.height = "9vh";
+    });
+    sec2Page2Songs.forEach((element) => {
+      element.style.height = "9vh";
+    });
   } else if (newWidth > 285) {
     document.documentElement.style.setProperty(
       "--section-1-width",
@@ -595,6 +673,22 @@ document.addEventListener("mousemove", (e) => {
       element.style.height = "90%";
     });
     sec2HeaderDivs.style.height = "20%";
+    sec2HeaderDivsPlayBtn.forEach((element) => {
+      element.style.top = "3%";
+    });
+    sec2Recent.style.height = "50%";
+    sec2RecentPlaylistPlayBtn.forEach((element) => {
+      element.style.top = "55%";
+    });
+    sec2PagesBanner.forEach((element) => {
+      element.style.width = "25%";
+    });
+    sec2PageSongs.forEach((element) => {
+      element.style.height = "8vh";
+    });
+    sec2Page2Songs.forEach((element) => {
+      element.style.height = "8vh";
+    });
   }
 });
 
@@ -614,6 +708,22 @@ sec1OpenPLaylists.addEventListener("click", () => {
     element.style.height = "90%";
   });
   sec2HeaderDivs.style.height = "20%";
+  sec2HeaderDivsPlayBtn.forEach((element) => {
+    element.style.top = "3%";
+  });
+  sec2Recent.style.height = "50%";
+  sec2RecentPlaylistPlayBtn.forEach((element) => {
+    element.style.top = "55%";
+  });
+  sec2PagesBanner.forEach((element) => {
+    element.style.width = "25%";
+  });
+  sec2PageSongs.forEach((element) => {
+    element.style.height = "8vh";
+  });
+  sec2Page2Songs.forEach((element) => {
+    element.style.height = "8vh";
+  });
 });
 
 ["resize", "load"].forEach((evt) => {
@@ -656,9 +766,10 @@ sec1OpenPLaylists.addEventListener("click", () => {
 
       //main
 
+      document.querySelector(".section-3").style.display = "none";
       mainSection.style.height = "70vh";
       mainSection.style.gridTemplateColumns =
-        "var(--section-1-width, 0.7fr) 0.001fr 1.5fr";
+        "var(--section-1-width, 0.7fr) 0.001fr 1.7fr";
 
       // header
 
@@ -689,8 +800,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.gap = "5%";
       footerPage.style.marginTop = "5%";
       footerPage.style.flexDirection = "column";
-      footerPageCont1.style.maxWidth = "70%"; 
-      footerPageCont1.style.minWidth = "50%"; 
+      footerPageCont1.style.maxWidth = "70%";
+      footerPageCont1.style.minWidth = "50%";
       footerPageCont1.style.height = "40%";
       footerPageCont2.style.width = "110%";
       footerPageCont2.style.height = "50%";
@@ -752,7 +863,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
 
       mainSection.style.height = "80vh";
       mainSection.style.gridTemplateColumns =
-        "var(--section-1-width, 0.7fr) 0.001fr 1.5fr 0.001fr 0.7fr";
+        "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr 0.6fr";
 
       // header
 
@@ -781,8 +892,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.gap = "0";
       footerPage.style.marginTop = "0";
       footerPage.style.flexDirection = "row";
-      footerPageCont1.style.width = "20%"; 
-      footerPageCont1.style.height = "100%"; 
+      footerPageCont1.style.width = "20%";
+      footerPageCont1.style.height = "100%";
       footerPageCont2.style.width = "35%";
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "17%";

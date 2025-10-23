@@ -275,6 +275,9 @@
   align-items: center;
   flex-direction: column;
   padding-left: 3%;
+  /* overflow: hidden;
+  white-space: nowrap;
+  position: relative; */
 }
 
 .section-2 .phone-songs-container > div > div:nth-child(3) .song-name {
@@ -283,6 +286,9 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  /* display: inline-block; */
+  /* padding-left: 50%; */
+  /* animation: scrollText 5s linear infinite; */
 }
 
 .section-2 .phone-songs-container > div > div:nth-child(3) .song-artist {
