@@ -810,10 +810,10 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "15px";
       footerPageCont2LowerProgressContainer.style.width = "50%";
 
-      page1Phone.classList.remove("display-none");
+      pagePhone.classList.remove("display-none");
+      page.classList.add("display-none");
       page1.classList.add("display-none");
       page2.classList.add("display-none");
-      page3.classList.add("display-none");
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
