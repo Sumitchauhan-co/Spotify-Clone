@@ -6,7 +6,7 @@ let resize = false;
 let playlistPlay = false;
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
-let page2playBtn = document.querySelector(
+let page1playBtn = document.querySelector(
   ".section-2 .page-1 .header-function .left .play-pause"
 );
 let playBtn2Svg1 = document.querySelector(
@@ -15,7 +15,7 @@ let playBtn2Svg1 = document.querySelector(
 let playBtn2Svg2 = document.querySelector(
   ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(2)"
 );
-let page3playBtn = document.querySelector(
+let page2playBtn = document.querySelector(
   ".section-2 .page-2 .header-function .left .play-pause"
 );
 let playBtn3Svg1 = document.querySelector(
@@ -71,13 +71,13 @@ let playlist2 = document.querySelector(
   ".section-1 .playlist-container .playlist-2"
 );
 let sec2 = document.querySelector(".main .section-2");
-let page1 = document.querySelector(".section-2 .homePage");
-let page2 = document.querySelector(".section-2 .page-1");
-let page3 = document.querySelector(".section-2 .page-2");
-let page1PlayCont1Btn1 = document.querySelector(
+let page = document.querySelector(".section-2 .homePage");
+let page1 = document.querySelector(".section-2 .page-1");
+let page2 = document.querySelector(".section-2 .page-2");
+let pagePlayCont1Btn1 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button"
 );
-let page1PlayCont1Btn2 = document.querySelector(
+let pagePlayCont1Btn2 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button"
 );
 let pageChange1PlayBtn1 = document.querySelector(
@@ -92,31 +92,31 @@ let phonePageChange1 = document.querySelector(
 let phonePageChange2 = document.querySelector(
   ".section-2 .homePage-phone .phone-container-class .playlists-container .div-2"
 );
-let page1Play1Svg1 = document.querySelector(
+let pagePlay1Svg1 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(1)"
 );
-let page1Play1Svg2 = document.querySelector(
+let pagePlay1Svg2 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(2)"
 );
-let page1Play2Svg1 = document.querySelector(
+let pagePlay2Svg1 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(1)"
 );
-let page1Play2Svg2 = document.querySelector(
+let pagePlay2Svg2 = document.querySelector(
   ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(2)"
 );
-let page1PlayCont2 = document.querySelector(
+let pagePlayCont2 = document.querySelector(
   ".section-2 .homePage .recently-played .content-container .playlist-1"
 );
-let phonePage1PlayCont2 = document.querySelector(
+let phonePagePlayCont2 = document.querySelector(
   ".section-2 .homePage-phone .recently-played .content-container .playlist-1"
 );
-let page1PlayCont2Btn1 = document.querySelector(
+let pagePlayCont2Btn1 = document.querySelector(
   ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button"
 );
-let page1PlayCont2Svg1 = document.querySelector(
+let pagePlayCont2Svg1 = document.querySelector(
   ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(1)"
 );
-let page1PlayCont2Svg2 = document.querySelector(
+let pagePlayCont2Svg2 = document.querySelector(
   ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)"
 );
 let randomPlay = document.querySelector(
@@ -246,28 +246,27 @@ footerPageCont2LowerProgressContainer = document.querySelector(
 );
 
 const mainSection = document.querySelector(".main");
-const page1Phone = document.querySelector(".section-2 .homePage-phone");
-const page2Phone = document.querySelector(".section-2 .page-1-phone");
-const page3Phone = document.querySelector(".section-2 .page-2-phone");
-const Page1 = document.querySelector(".section-2 .homePage");
+const pagePhone = document.querySelector(".section-2 .homePage-phone");
+const page1Phone = document.querySelector(".section-2 .page-1-phone");
+const page2Phone = document.querySelector(".section-2 .page-2-phone");
 
-let page2PhonePlay = document.querySelector(
+let page1PhonePlay = document.querySelector(
   ".section-2 .page-1-phone .phone-header-function .left .play-pause"
 );
-let page2PhonePlaySvg1 = document.querySelector(
+let page1PhonePlaySvg1 = document.querySelector(
   ".section-2 .page-1-phone .phone-header-function .left .play-pause svg:nth-child(1)"
 );
-let page2PhonePlaySvg2 = document.querySelector(
+let page1PhonePlaySvg2 = document.querySelector(
   ".section-2 .page-1-phone .phone-header-function .left .play-pause svg:nth-child(2)"
 );
 
-let page3PhonePlay = document.querySelector(
+let page2PhonePlay = document.querySelector(
   ".section-2 .page-2-phone .phone-header-function .left .play-pause"
 );
-let page3PhonePlaySvg1 = document.querySelector(
+let page2PhonePlaySvg1 = document.querySelector(
   ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)"
 );
-let page3PhonePlaySvg2 = document.querySelector(
+let page2PhonePlaySvg2 = document.querySelector(
   ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)"
 );
 
@@ -434,8 +433,8 @@ function playSvg() {
   playBtn2Svg2.classList.remove("display-none");
 
   // page 1 upper playlist 1
-  page1Play1Svg1.classList.add("display-none");
-  page1Play1Svg2.classList.remove("display-none");
+  pagePlay1Svg1.classList.add("display-none");
+  pagePlay1Svg2.classList.remove("display-none");
 }
 
 function phonePlaySvg() {
@@ -444,8 +443,8 @@ function phonePlaySvg() {
   playBtnSvg2.classList.remove("display-none");
 
   // page 2
-  page2PhonePlaySvg1.classList.add("display-none");
-  page2PhonePlaySvg2.classList.remove("display-none");
+  page1PhonePlaySvg1.classList.add("display-none");
+  page1PhonePlaySvg2.classList.remove("display-none");
 }
 
 function pauseSvg() {
@@ -458,8 +457,8 @@ function pauseSvg() {
   playBtn2Svg1.classList.remove("display-none");
 
   // page 1 upper playlist 1
-  page1Play1Svg2.classList.add("display-none");
-  page1Play1Svg1.classList.remove("display-none");
+  pagePlay1Svg2.classList.add("display-none");
+  pagePlay1Svg1.classList.remove("display-none");
 }
 
 function phonePauseSvg() {
@@ -468,11 +467,11 @@ function phonePauseSvg() {
   playBtnSvg1.classList.remove("display-none");
 
   // page 2
-  page2PhonePlaySvg2.classList.add("display-none");
-  page2PhonePlaySvg1.classList.remove("display-none");
+  page1PhonePlaySvg2.classList.add("display-none");
+  page1PhonePlaySvg1.classList.remove("display-none");
 }
 
-page2playBtn.addEventListener("click", () => {
+page1playBtn.addEventListener("click", () => {
   if (!playlistPlay) {
     loadSongtype(n);
     scroll();
@@ -487,7 +486,7 @@ page2playBtn.addEventListener("click", () => {
   }
 });
 
-page2PhonePlay.addEventListener("click", () => {
+page1PhonePlay.addEventListener("click", () => {
   if (!playlistPlay) {
     loadSongtype(n);
     scroll();
@@ -502,7 +501,7 @@ page2PhonePlay.addEventListener("click", () => {
   }
 });
 
-page1PlayCont1Btn1.addEventListener("click", (e) => {
+pagePlayCont1Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!playlistPlay) {
     loadSongtype(n);
@@ -901,12 +900,12 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperEndSecondSvg.style.width = "17px";
       footerPageCont2LowerProgressContainer.style.width = "80%";
 
-      page1.classList.remove("display-none");
+      page.classList.remove("display-none");
+      page1.classList.add("display-none");
       page2.classList.add("display-none");
-      page3.classList.add("display-none");
+      pagePhone.classList.add("display-none");
       page1Phone.classList.add("display-none");
       page2Phone.classList.add("display-none");
-      page3Phone.classList.add("display-none");
     }
   });
 });

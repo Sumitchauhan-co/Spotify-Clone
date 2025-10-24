@@ -180,12 +180,12 @@ function playSvg2() {
   playBtn3Svg2.classList.remove("display-none");
 
   // page 1 upper playlist 2
-  page1Play2Svg1.classList.add("display-none");
-  page1Play2Svg2.classList.remove("display-none");
+  pagePlay2Svg1.classList.add("display-none");
+  pagePlay2Svg2.classList.remove("display-none");
 
   // page 1 lower playlist 1
-  page1PlayCont2Svg1.classList.add("display-none");
-  page1PlayCont2Svg2.classList.remove("display-none");
+  pagePlayCont2Svg1.classList.add("display-none");
+  pagePlayCont2Svg2.classList.remove("display-none");
 }
 
 function pauseSvg2() {
@@ -198,12 +198,12 @@ function pauseSvg2() {
   playBtn3Svg1.classList.remove("display-none");
 
   // page 1 upper playlist 2
-  page1Play2Svg2.classList.add("display-none");
-  page1Play2Svg1.classList.remove("display-none");
+  pagePlay2Svg2.classList.add("display-none");
+  pagePlay2Svg1.classList.remove("display-none");
 
   // page 1 lower playlist 1
-  page1PlayCont2Svg2.classList.add("display-none");
-  page1PlayCont2Svg1.classList.remove("display-none");
+  pagePlayCont2Svg2.classList.add("display-none");
+  pagePlayCont2Svg1.classList.remove("display-none");
 }
 
 function phonePlaySvg2() {
@@ -212,8 +212,8 @@ function phonePlaySvg2() {
   playBtnSvg2.classList.remove("display-none");
 
   // page 3
-  page3PhonePlaySvg1.classList.add("display-none");
-  page3PhonePlaySvg2.classList.remove("display-none");
+  page2PhonePlaySvg1.classList.add("display-none");
+  page2PhonePlaySvg2.classList.remove("display-none");
 }
 
 function phonePauseSvg2() {
@@ -222,8 +222,8 @@ function phonePauseSvg2() {
   playBtnSvg1.classList.remove("display-none");
 
   // page 3
-  page3PhonePlaySvg2.classList.add("display-none");
-  page3PhonePlaySvg1.classList.remove("display-none");
+  page2PhonePlaySvg2.classList.add("display-none");
+  page2PhonePlaySvg1.classList.remove("display-none");
 }
 
 songsContainer2.addEventListener("click", (e) => {
@@ -250,7 +250,7 @@ phoneSongsContainer2.addEventListener("click", (e) => {
   scroll();
 });
 
-page3PhonePlay.addEventListener("click", () => {
+page2PhonePlay.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
     scroll();
@@ -265,7 +265,7 @@ page3PhonePlay.addEventListener("click", () => {
   }
 });
 
-page3playBtn.addEventListener("click", () => {
+page2playBtn.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
     scroll();
@@ -320,7 +320,7 @@ playlist2.addEventListener("click", () => {
   }
 });
 
-page1PlayCont2Btn1.addEventListener("click", (e) => {
+pagePlayCont2Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!playlist2Play) {
     loadSong2type(m);
@@ -336,15 +336,15 @@ page1PlayCont2Btn1.addEventListener("click", (e) => {
   }
 });
 
-page1PlayCont2.addEventListener("click", () => {
+pagePlayCont2.addEventListener("click", () => {
   showPage(".page-2", ".homePage");
 });
 
-phonePage1PlayCont2.addEventListener("click", () => {
+phonePagePlayCont2.addEventListener("click", () => {
   showPage(".page-2-phone", ".homePage-phone");
 });
 
-page1PlayCont1Btn2.addEventListener("click", (e) => {
+pagePlayCont1Btn2.addEventListener("click", (e) => {
   e.stopPropagation();
   if (!playlist2Play) {
     loadSong2type(m);
