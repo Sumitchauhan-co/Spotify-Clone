@@ -70,11 +70,11 @@ async function main2() {
     sec2ScrollContainer = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3)"
     );
-    console.log(sec2ScrollContainer)
+    // console.log(sec2ScrollContainer)
     sec2ScrollName = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3) > div:nth-child(1)"
     );
-    console.log(sec2ScrollName)
+    // console.log(sec2ScrollName)
   });
 }
 
@@ -323,14 +323,6 @@ function showPage(pageSelector, defaultSelector) {
     }
   }
 }
-
-playlist1.addEventListener("click", () => {
-  if (window.innerWidth > 1025) {
-    showPage(".page-2", ".page-1");
-  } else {
-    showPage(".page-2-phone", ".page-1-phone");
-  }
-});
 
 playlist2.addEventListener("click", () => {
   if (window.innerWidth > 1025) {
