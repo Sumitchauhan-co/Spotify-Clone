@@ -14,9 +14,6 @@ async function main2() {
 
   songs2.forEach((element) => {
     let c = new Audio(element.src);
-    // c.src = element.src;
-    // c.preload = "metadata";
-    // c.load();
 
     songsContainer2.insertAdjacentHTML(
       "beforeend",
@@ -55,26 +52,16 @@ async function main2() {
       let e = formatTime(c.duration);
       document.querySelector(`#duration-phone-${element.id}`).textContent = e;
     });
-    // document.addEventListener("click", () => {
-    //   const unlock = new Audio();
-    //   unlock.play().catch(
-    //     () => {
-    //       console.log("Audio is unlocked");
-    //     },
-    //     { once: true }
-    //   );
-    // });
+
     sec2PageSongs = document.querySelectorAll(
       ".section-2 .songs-container > div "
     );
     sec2ScrollContainer = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3)"
     );
-    // console.log(sec2ScrollContainer)
     sec2ScrollName = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3) > div:nth-child(1)"
     );
-    // console.log(sec2ScrollName)
   });
 }
 
@@ -169,12 +156,14 @@ function scroll() {
   for (let i = 0; i < sec2ScrollName.length; i++) {
     for (let j = 0; j < sec2ScrollContainer.length; j++) {
       if (i === j) {
-        if (sec2ScrollName[i].scrollWidth > sec2ScrollContainer[j].clientWidth) {
+        if (
+          sec2ScrollName[i].scrollWidth > sec2ScrollContainer[j].clientWidth
+        ) {
           sec2ScrollName[i].classList.add("scrolling");
-          break
+          break;
         } else {
           sec2ScrollName[i].classList.remove("scrolling");
-          break
+          break;
         }
       }
     }
@@ -254,7 +243,6 @@ phoneSongsContainer2.addEventListener("click", (e) => {
   if (!songDiv) return;
 
   let id = songDiv.dataset.id - 1;
-  console.log(id);
   m = id;
   loadSong2(m);
   phonePlaySvg2();
@@ -326,9 +314,9 @@ function showPage(pageSelector, defaultSelector) {
 
 playlist2.addEventListener("click", () => {
   if (window.innerWidth > 1025) {
-    showPage(".page-3", ".page-1");
+    showPage(".page-2", ".homePage");
   } else {
-    showPage(".page-3-phone", ".page-1-phone");
+    showPage(".page-2-phone", ".homePage-phone");
   }
 });
 
@@ -349,11 +337,11 @@ page1PlayCont2Btn1.addEventListener("click", (e) => {
 });
 
 page1PlayCont2.addEventListener("click", () => {
-  showPage(".page-3", ".page-1");
+  showPage(".page-2", ".homePage");
 });
 
 phonePage1PlayCont2.addEventListener("click", () => {
-  showPage(".page-3-phone", ".page-1-phone");
+  showPage(".page-2-phone", ".homePage-phone");
 });
 
 page1PlayCont1Btn2.addEventListener("click", (e) => {
@@ -372,10 +360,10 @@ page1PlayCont1Btn2.addEventListener("click", (e) => {
   }
 });
 
-pageChange1PlayBtn2.addEventListener("click", () => showChangePage(".page-3"));
+pageChange1PlayBtn2.addEventListener("click", () => showChangePage(".page-2"));
 
 phonePageChange2.addEventListener("click", () =>
-  showChangePage(".page-3-phone")
+  showChangePage(".page-2-phone")
 );
 
 playBtn.addEventListener("click", () => {
@@ -385,14 +373,12 @@ playBtn.addEventListener("click", () => {
     phonePlaySvg();
     playSvg2();
     phonePlaySvg2();
-    console.log("Song is played");
   } else {
     b.pause();
     pauseSvg();
     phonePauseSvg();
     pauseSvg2();
     phonePauseSvg2();
-    console.log("Song is paused");
   }
 });
 
@@ -444,9 +430,9 @@ home.addEventListener("click", () => {
     window.innerHeight <= 1375 &&
     window.innerHeight > 600
   ) {
-    showChangePage(".page-1-phone");
+    showChangePage(".homePage-phone");
   } else {
-    showChangePage(".page-1");
+    showChangePage(".homePage");
   }
 });
 
@@ -608,10 +594,10 @@ function currentSong() {
 // recent playlists
 
 let playlists = document.querySelectorAll(
-    ".page-1 .container-class .recently-played .content-container>div"
+    ".homePage .container-class .recently-played .content-container>div"
   ),
   recentContainer = document.querySelector(
-    ".page-1 .container-class .recently-played"
+    ".homePage .container-class .recently-played"
   );
 
 playlists.forEach((playlist) => {
@@ -627,10 +613,10 @@ function addTORecent() {
 }
 
 let phonePlaylists = document.querySelectorAll(
-    ".page-1-phone .phone-container-class .recently-played .content-container>div"
+    ".homePage-phone .phone-container-class .recently-played .content-container>div"
   ),
   phoneRecentContainer = document.querySelector(
-    ".page-1-phone .phone-container-class .recently-played"
+    ".homePage-phone .phone-container-class .recently-played"
   );
 
 phonePlaylists.forEach((playlist) => {

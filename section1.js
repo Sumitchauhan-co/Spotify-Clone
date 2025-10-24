@@ -124,7 +124,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-3 glow">
+                <div class="playlist-3 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">
@@ -137,7 +137,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-4 glow">
+                <div class="playlist-4 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">
@@ -150,7 +150,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-5 glow">
+                <div class="playlist-5 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">
@@ -163,7 +163,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-6 glow">
+                <div class="playlist-6 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">
@@ -176,7 +176,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-7 glow ">
+                <div class="playlist-7 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">
@@ -189,7 +189,7 @@ section1.insertAdjacentHTML(
                         </div>
                     </div>
                 </div>
-                <div class="playlist-8 glow">
+                <div class="playlist-8 glow" title="No action">
                     <div class="img dark-img"></div>
                     <div class="content-container">
                         <div class="content">

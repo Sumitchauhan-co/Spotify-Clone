@@ -307,6 +307,15 @@
   cursor: pointer;
 }
 
+.section-1 .playlist-3,
+.section-1 .playlist-4,
+.section-1 .playlist-5,
+.section-1 .playlist-6,
+.section-1 .playlist-7,
+.section-1 .playlist-8 {
+  cursor: not-allowed;
+}
+
 .section-1 .playlist-1 .img {
   height: 100%;
   min-width: 50px;

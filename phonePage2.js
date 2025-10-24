@@ -8,10 +8,10 @@ section2PhonePage2.insertAdjacentHTML(
                     <div class="img"></div>
                     <div class="content">
                         <span>Playlist</span>
-                        <h1>Liked Songs</h1>
+                        <h1>Chill and Relax</h1>
                         <div>
                             <span>Sumit</span>
-                            <span>• 7 Songs</span>
+                            <span>• 34 Songs</span>
                         </div>
                     </div>
                     <div class="bg"></div>

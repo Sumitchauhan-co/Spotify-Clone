@@ -4,33 +4,25 @@ let songs = [];
 let songs2 = [];
 let resize = false;
 let playlistPlay = false;
-let pages = [
-  "page1",
-  "page2",
-  "page3",
-  "page1Phone",
-  "page2Phone",
-  "page3Phone",
-];
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
 let page2playBtn = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause"
+  ".section-2 .page-1 .header-function .left .play-pause"
 );
 let playBtn2Svg1 = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(1)"
+  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(1)"
 );
 let playBtn2Svg2 = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(2)"
+  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(2)"
 );
 let page3playBtn = document.querySelector(
-  ".section-2 .page-3 .header-function .left .play-pause"
+  ".section-2 .page-2 .header-function .left .play-pause"
 );
 let playBtn3Svg1 = document.querySelector(
-  ".section-2 .page-3 .header-function .left .play-pause svg:nth-child(1)"
+  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(1)"
 );
 let playBtn3Svg2 = document.querySelector(
-  ".section-2 .page-3 .header-function .left .play-pause svg:nth-child(2)"
+  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(2)"
 );
 let playBtnSvg1 = document.querySelector(
   ".footer-page .container-2 .upper .mid svg:nth-child(1)"
@@ -61,16 +53,16 @@ let artistName = document.querySelector(
   ".footer-page .container-1 .content .content-2"
 );
 let songsContainer = document.querySelector(
-  ".section-2 .page-2 .songs-container"
+  ".section-2 .page-1 .songs-container"
 );
 let songsContainer2 = document.querySelector(
-  ".section-2 .page-3 .songs-container"
+  ".section-2 .page-2 .songs-container"
 );
 let phoneSongsContainer = document.querySelector(
-  ".section-2 .page-2-phone .phone-songs-container"
+  ".section-2 .page-1-phone .phone-songs-container"
 );
 let phoneSongsContainer2 = document.querySelector(
-  ".section-2 .page-3-phone .phone-songs-container"
+  ".section-2 .page-2-phone .phone-songs-container"
 );
 let playlist1 = document.querySelector(
   ".section-1 .playlist-container .playlist-1"
@@ -79,53 +71,53 @@ let playlist2 = document.querySelector(
   ".section-1 .playlist-container .playlist-2"
 );
 let sec2 = document.querySelector(".main .section-2");
-let page1 = document.querySelector(".section-2 .page-1");
-let page2 = document.querySelector(".section-2 .page-2");
-let page3 = document.querySelector(".section-2 .page-3");
+let page1 = document.querySelector(".section-2 .homePage");
+let page2 = document.querySelector(".section-2 .page-1");
+let page3 = document.querySelector(".section-2 .page-2");
 let page1PlayCont1Btn1 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button"
+  ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button"
 );
 let page1PlayCont1Btn2 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button"
+  ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button"
 );
 let pageChange1PlayBtn1 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-1"
+  ".section-2 .homePage .container-class .playlists-container .div-1"
 );
 let pageChange1PlayBtn2 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-2"
+  ".section-2 .homePage .container-class .playlists-container .div-2"
 );
 let phonePageChange1 = document.querySelector(
-  ".section-2 .page-1-phone .phone-container-class .playlists-container .div-1"
+  ".section-2 .homePage-phone .phone-container-class .playlists-container .div-1"
 );
 let phonePageChange2 = document.querySelector(
-  ".section-2 .page-1-phone .phone-container-class .playlists-container .div-2"
+  ".section-2 .homePage-phone .phone-container-class .playlists-container .div-2"
 );
 let page1Play1Svg1 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(1)"
+  ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(1)"
 );
 let page1Play1Svg2 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(2)"
+  ".section-2 .homePage .container-class .playlists-container .div-1 .content .play-button .play svg:nth-child(2)"
 );
 let page1Play2Svg1 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(1)"
+  ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(1)"
 );
 let page1Play2Svg2 = document.querySelector(
-  ".section-2 .page-1 .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(2)"
+  ".section-2 .homePage .container-class .playlists-container .div-2 .content .play-button .play svg:nth-child(2)"
 );
 let page1PlayCont2 = document.querySelector(
-  ".section-2 .page-1 .recently-played .content-container .playlist-1"
+  ".section-2 .homePage .recently-played .content-container .playlist-1"
 );
 let phonePage1PlayCont2 = document.querySelector(
-  ".section-2 .page-1-phone .recently-played .content-container .playlist-1"
+  ".section-2 .homePage-phone .recently-played .content-container .playlist-1"
 );
 let page1PlayCont2Btn1 = document.querySelector(
-  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button"
+  ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button"
 );
 let page1PlayCont2Svg1 = document.querySelector(
-  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(1)"
+  ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(1)"
 );
 let page1PlayCont2Svg2 = document.querySelector(
-  ".section-2 .page-1 .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)"
+  ".section-2 .homePage .recently-played .content-container .playlist-1 .play-button .play svg:nth-child(2)"
 );
 let randomPlay = document.querySelector(
   ".footer-page .container-2 .upper .start .first"
@@ -254,29 +246,29 @@ footerPageCont2LowerProgressContainer = document.querySelector(
 );
 
 const mainSection = document.querySelector(".main");
-const page1Phone = document.querySelector(".section-2 .page-1-phone");
-const page2Phone = document.querySelector(".section-2 .page-2-phone");
-const page3Phone = document.querySelector(".section-2 .page-3-phone");
-const Page1 = document.querySelector(".section-2 .page-1");
+const page1Phone = document.querySelector(".section-2 .homePage-phone");
+const page2Phone = document.querySelector(".section-2 .page-1-phone");
+const page3Phone = document.querySelector(".section-2 .page-2-phone");
+const Page1 = document.querySelector(".section-2 .homePage");
 
 let page2PhonePlay = document.querySelector(
-  ".section-2 .page-2-phone .phone-header-function .left .play-pause"
+  ".section-2 .page-1-phone .phone-header-function .left .play-pause"
 );
 let page2PhonePlaySvg1 = document.querySelector(
-  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)"
+  ".section-2 .page-1-phone .phone-header-function .left .play-pause svg:nth-child(1)"
 );
 let page2PhonePlaySvg2 = document.querySelector(
-  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)"
+  ".section-2 .page-1-phone .phone-header-function .left .play-pause svg:nth-child(2)"
 );
 
 let page3PhonePlay = document.querySelector(
-  ".section-2 .page-3-phone .phone-header-function .left .play-pause"
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause"
 );
 let page3PhonePlaySvg1 = document.querySelector(
-  ".section-2 .page-3-phone .phone-header-function .left .play-pause svg:nth-child(1)"
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(1)"
 );
 let page3PhonePlaySvg2 = document.querySelector(
-  ".section-2 .page-3-phone .phone-header-function .left .play-pause svg:nth-child(2)"
+  ".section-2 .page-2-phone .phone-header-function .left .play-pause svg:nth-child(2)"
 );
 
 function formatTime(seconds) {
@@ -288,15 +280,12 @@ function formatTime(seconds) {
 let sec2PageSongs = 0;
 
 async function main() {
-  let a = await fetch("json/songs2.json"); //songs2.json //http://127.0.0.1:5500/songs2.json
+  let a = await fetch("json/songs2.json"); //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
   loadSong(n);
 
   songs.forEach((element) => {
     let c = new Audio(element.src);
-    // c.src = element.src;
-    // c.preload = "metadata";
-    // c.load();
 
     songsContainer.insertAdjacentHTML(
       "beforeend",
@@ -335,26 +324,15 @@ async function main() {
       let e = formatTime(c.duration);
       document.querySelector(`#duration-phone-${element.id}`).textContent = e;
     });
-    // document.addEventListener("click", () => {
-    //   const unlock = new Audio();
-    //   unlock.play().catch(
-    //     () => {
-    //       console.log("Audio is unlocked");
-    //     },
-    //     { once: true }
-    //   );
-    // });
     sec2PageSongs = document.querySelectorAll(
       ".section-2 .songs-container > div "
     );
     sec2ScrollContainer = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3)"
     );
-    // console.log(sec2ScrollContainer)
     sec2ScrollName = document.querySelectorAll(
       ".section-2 .songs-container div > div:nth-child(3) > div:nth-child(1)"
     );
-    // console.log(sec2ScrollName)
   });
 }
 
@@ -440,9 +418,9 @@ function loadSongtype(index) {
 
 playlist1.addEventListener("click", () => {
   if (window.innerWidth > 1025) {
-    showPage(".page-2", ".page-1");
+    showPage(".page-1", ".homePage");
   } else {
-    showPage(".page-2-phone", ".page-1-phone");
+    showPage(".page-1-phone", ".homePage-phone");
   }
 });
 
@@ -507,7 +485,6 @@ page2playBtn.addEventListener("click", () => {
     b.pause();
     pauseSvg();
   }
-  console.log("played");
 });
 
 page2PhonePlay.addEventListener("click", () => {
@@ -523,7 +500,6 @@ page2PhonePlay.addEventListener("click", () => {
     b.pause();
     phonePauseSvg();
   }
-  console.log("played");
 });
 
 page1PlayCont1Btn1.addEventListener("click", (e) => {
@@ -536,11 +512,9 @@ page1PlayCont1Btn1.addEventListener("click", (e) => {
     b.play();
     playSvg();
     pauseSvg2();
-    console.log("Song is played");
   } else {
     b.pause();
     pauseSvg();
-    console.log("Song is paused");
   }
 });
 
@@ -582,15 +556,15 @@ container.addEventListener("click", (e) => {
 
 // change the background color
 
-// const imgs = document.querySelectorAll(".page-1 .container-class .playlists-container>div .img");
+// const imgs = document.querySelectorAll(".homePage .container-class .playlists-container>div .img");
 // console.log(imgs)
-// console.log(document.querySelector(".page-1 .header-container"))
+// console.log(document.querySelector(".homePage .header-container"))
 // const colorThief = new ColorThief();
 
 // imgs.forEach(img => {
 //   img.addEventListener("click", () => {
 //     const color = colorThief.getColor(img); // returns [R, G, B]
-//     document.querySelector(".page-1 .header-container").style.background = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+//     document.querySelector(".homePage .header-container").style.background = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
 //     console.log(`rgb(${color[0]}, ${color[1]}, ${color[2]})`)
 //     console.log("done")
 //   })
@@ -612,10 +586,10 @@ function showChangePage(pageSelector) {
   }
 }
 
-pageChange1PlayBtn1.addEventListener("click", () => showChangePage(".page-2"));
+pageChange1PlayBtn1.addEventListener("click", () => showChangePage(".page-1"));
 
 phonePageChange1.addEventListener("click", () =>
-  showChangePage(".page-2-phone")
+  showChangePage(".page-1-phone")
 );
 
 resizer.addEventListener("mousedown", () => {
