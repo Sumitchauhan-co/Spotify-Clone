@@ -100,7 +100,7 @@ JS Project-3/
 ## 🧠 Future Enhancements  
 
 - 🎚️ Volume control  
-- 👾 Add side engaging game for laptop
+- 📱 User friendly UI for phones
 
 ---
 
