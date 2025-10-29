@@ -875,7 +875,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       //main
 
       document.querySelector(".section-3").style.display = "none";
-      mainSection.style.height = "62vh";
+      mainSection.style.height = "63vh";
       mainSection.style.gridTemplateColumns =
         "var(--section-1-width, 0.7fr) 0.001fr 1fr";
 
@@ -919,7 +919,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.flexDirection = "column";
       footerPageCont1.style.maxWidth = "70%";
       footerPageCont1.style.minWidth = "50%";
-      footerPageCont1.style.height = "40%";
+      footerPageCont1.style.height = "30%";
       footerPageCont2.style.width = "110%";
       footerPageCont2.style.height = "60%";
       footerPageCont3.style.height = "0%";
