@@ -875,7 +875,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       //main
 
       document.querySelector(".section-3").style.display = "none";
-      mainSection.style.height = "72vh";
+      mainSection.style.height = "62vh";
       mainSection.style.gridTemplateColumns =
         "var(--section-1-width, 0.7fr) 0.001fr 1fr";
 
