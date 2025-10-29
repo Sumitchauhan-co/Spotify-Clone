@@ -92,6 +92,10 @@ JS Project-3/
 ├── index.html
 ├── script.js
 ├── script2.js
+├── section1.css
+├── section1.css
+├── section3.css
+├── section3.css
 ├── style.css
 └── README.md
 
@@ -100,14 +104,13 @@ JS Project-3/
 ## 🧠 Future Enhancements  
 
 - 🎚️ Volume control  
-- 👾 Add side engaging game for laptop
 
 ---
 
 ## 👨‍💻 Developer  
 
 **Sumit Chauhan**  
-🎓 B.Tech CSE Core | VIT Bhopal (Batch 2025–2029)  
+🎓 B.Tech CSE Core  
 💻 Passionate about web development, design, and creative problem-solving.  
 
 ---

@@ -64,7 +64,7 @@ section2HomePage.insertAdjacentHTML(
 
                             </div>
                         </div>
-                        <div class="div-3" title="No action">
+                        <div class="div-3">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">Feelings</div>
@@ -72,7 +72,7 @@ section2HomePage.insertAdjacentHTML(
                                 <div class="play"></div>
                             </div>
                         </div>
-                        <div class="div-4" title="No action">
+                        <div class="div-4">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">Sound Tracks</div>
@@ -80,7 +80,7 @@ section2HomePage.insertAdjacentHTML(
                                 <div class="play"></div>
                             </div>
                         </div>
-                        <div class="div-5" title="No action">
+                        <div class="div-5">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">Best Indian Lofi Hits</div>
@@ -88,7 +88,7 @@ section2HomePage.insertAdjacentHTML(
                                 <div class="play"></div>
                             </div>
                         </div>
-                        <div class="div-6" title="No action">
+                        <div class="div-6">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">Daylist</div>
@@ -96,7 +96,7 @@ section2HomePage.insertAdjacentHTML(
                                 <div class="play"></div>
                             </div>
                         </div>
-                        <div class="div-7" title="No action">
+                        <div class="div-7">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">Repeat Rewind</div>
@@ -104,7 +104,7 @@ section2HomePage.insertAdjacentHTML(
                                 <div class="play"></div>
                             </div>
                         </div>
-                        <div class="div-8" title="No action">
+                        <div class="div-8">
                             <div class="img"></div>
                             <div class="content">
                                 <div class="name">On repeat</div>

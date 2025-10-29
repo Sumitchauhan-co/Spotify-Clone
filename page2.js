@@ -11,7 +11,7 @@ section2Page2.insertAdjacentHTML(
                         <h1>Chill and Relax</h1>
                         <div>
                             <span>Sumit</span>
-                            <span>• 34 Songs</span>
+                            <span>• 35 Songs</span>
                         </div>
                     </div>
                     <div class="bg"></div>

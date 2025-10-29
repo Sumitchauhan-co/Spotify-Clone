@@ -1,11 +1,18 @@
 let m = 0;
-let playlist2Play = false;
 let repeatMode = false;
+let playlist2Play = false;
+let clickTimes = 2;
 let repeatPlay = document.querySelector(
   ".footer-page .container-2 .upper .end .second"
 );
 let home = document.querySelector(".header .home-button");
 let sec2Page2Songs = 0;
+let songsContainer2 = document.querySelector(
+  ".section-2 .page-2 .songs-container"
+);
+let phoneSongsContainer2 = document.querySelector(
+  ".section-2 .page-2-phone .phone-songs-container"
+);
 
 async function main2() {
   let a = await fetch("json/songs3.json");
@@ -38,8 +45,6 @@ async function main2() {
                 <div class="song-name">${element.title}</div>
                 <div class="song-artist">${element.artist}</div>
             </div>
-            <div class="name">${element.title}</div>
-            <div class="date">25 Sep, 2025</div>
             <div class="duration" id="duration-phone-${element.id}">--:--</div>
         </div>`
     );
@@ -175,15 +180,17 @@ function playSvg2() {
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
-  // page 3
-  playBtn3Svg1.classList.add("display-none");
-  playBtn3Svg2.classList.remove("display-none");
+  // page 2
+  page2PlayBtnSvg2.classList.add("display-none");
+  console.log(page2PlayBtnSvg1)
+  page2PlayBtnSvg1.classList.remove("display-none");
+  console.log(page2PlayBtnSvg2)
 
-  // page 1 upper playlist 2
+  // home page upper playlist 2
   pagePlay2Svg1.classList.add("display-none");
   pagePlay2Svg2.classList.remove("display-none");
 
-  // page 1 lower playlist 1
+  // home page lower playlist 1
   pagePlayCont2Svg1.classList.add("display-none");
   pagePlayCont2Svg2.classList.remove("display-none");
 }
@@ -193,15 +200,15 @@ function pauseSvg2() {
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
-  // page 3
-  playBtn3Svg2.classList.add("display-none");
-  playBtn3Svg1.classList.remove("display-none");
+  // page 2
+  page2PlayBtnSvg2.classList.add("display-none");
+  page2PlayBtnSvg1.classList.remove("display-none");
 
-  // page 1 upper playlist 2
+  // home page upper playlist 2
   pagePlay2Svg2.classList.add("display-none");
   pagePlay2Svg1.classList.remove("display-none");
 
-  // page 1 lower playlist 1
+  // home page lower playlist 1
   pagePlayCont2Svg2.classList.add("display-none");
   pagePlayCont2Svg1.classList.remove("display-none");
 }
@@ -311,14 +318,6 @@ function showPage(pageSelector, defaultSelector) {
     }
   }
 }
-
-playlist2.addEventListener("click", () => {
-  if (window.innerWidth > 1025) {
-    showPage(".page-2", ".homePage");
-  } else {
-    showPage(".page-2-phone", ".homePage-phone");
-  }
-});
 
 pagePlayCont2Btn1.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -437,7 +436,14 @@ home.addEventListener("click", () => {
 });
 
 repeatPlay.addEventListener("click", () => {
-  repeatMode = true;
+  if (clickTimes % 2 == 0) {
+    footerPageCont2UpperEndSecond.style.fill = "#80006d";
+    repeatMode = true;
+  } else {
+    footerPageCont2UpperEndSecond.style.fill = "#000";
+    repeatMode = false;
+  }
+  clickTimes++;
 });
 
 prevBtn.addEventListener("click", () => {
@@ -515,9 +521,12 @@ function nextSong() {
       }
       if (b.paused) {
         playSvg();
+        console.log("b.paused");
       }
       loadSong(n);
+      playSvg();
       scroll();
+      console.log("playlistPlay");
     } else if (playlist2Play) {
       m++;
       if (m >= songs2.length) {
@@ -525,9 +534,12 @@ function nextSong() {
       }
       if (b.paused) {
         playSvg2();
+        console.log("b.paused 2");
       }
       loadSong2(m);
+      playSvg2();
       scroll();
+      console.log("playlistPlay 2");
     }
   } else {
     if (playlistPlay) {

@@ -86,7 +86,7 @@ footerPage.insertAdjacentHTML(
                 <div class="progress-container">
                     <div class="progress-bar"></div>
                 </div>
-                <div class="duration">0:00</div>
+                <div class="duration"> --:-- </div>
             </div>
         </div>
         <div class="container-3"></div>

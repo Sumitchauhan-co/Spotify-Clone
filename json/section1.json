@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "p1": "Liked Songs",
+    "p2": "Playlist • 7 Songs",
+    "cover": "assets/images/p1.jpg"
+  },
+  {
+    "id": 2,
+    "p1": "Chill and Relax",
+    "p2": "Playlist • Sumit",
+    "cover": "assets/images/p2.jpg"
+  },
+  {
+    "id": 3,
+    "p1": "Feelings",
+    "p2": "Playlist • Sumit",
+    "cover": "assets/images/p3.jpg"
+  },
+  {
+    "id": 4,
+    "p1": "Sound Tracks",
+    "p2": "Playlist • Sumit",
+    "cover": "assets/images/p4.jpg"
+  },
+  {
+    "id": 5,
+    "p1": "Best Indian Lofi Hits",
+    "p2": "Playlist • Sumit",
+    "cover": "assets/images/p5.jpg"
+  },
+  {
+    "id": 6,
+    "p1": "Daylist",
+    "p2": "Playlist • Spotify",
+    "cover": "assets/images/p6.jpg"
+  },
+  {
+    "id": 7,
+    "p1": "Repeat Rewind",
+    "p2": "Playlist • Spotify",
+    "cover": "assets/images/p7.jpg"
+  },
+  {
+    "id": 8,
+    "p1": "On Repeat",
+    "p2": "Playlist • Spotify",
+    "cover": "assets/images/p8.jpg"
+  }
+]

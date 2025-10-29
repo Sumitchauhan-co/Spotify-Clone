@@ -6,29 +6,29 @@ let resize = false;
 let playlistPlay = false;
 
 let playBtn = document.querySelector(".footer-page .container-2 .upper .mid");
-let page1playBtn = document.querySelector(
-  ".section-2 .page-1 .header-function .left .play-pause"
-);
-let playBtn2Svg1 = document.querySelector(
-  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(1)"
-);
-let playBtn2Svg2 = document.querySelector(
-  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(2)"
-);
-let page2playBtn = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause"
-);
-let playBtn3Svg1 = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(1)"
-);
-let playBtn3Svg2 = document.querySelector(
-  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(2)"
-);
 let playBtnSvg1 = document.querySelector(
   ".footer-page .container-2 .upper .mid svg:nth-child(1)"
 );
 let playBtnSvg2 = document.querySelector(
   ".footer-page .container-2 .upper .mid svg:nth-child(2)"
+);
+let page1playBtn = document.querySelector(
+  ".section-2 .page-1 .header-function .left .play-pause"
+);
+let page1PlayBtnSvg1 = document.querySelector(
+  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(1)"
+);
+let page1PlayBtnSvg2 = document.querySelector(
+  ".section-2 .page-1 .header-function .left .play-pause svg:nth-child(2)"
+);
+let page2playBtn = document.querySelector(
+  ".section-2 .page-2 .header-function .left .play-pause"
+);
+let page2PlayBtnSvg1 = document.querySelector(
+  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(1)"
+);
+let page2PlayBtnSvg2 = document.querySelector(
+  ".section-2 .page-2 .header-function .left .play-pause svg:nth-child(2)"
 );
 let nextBtn = document.querySelector(
   ".footer-page .container-2 .upper .end .first"
@@ -55,20 +55,8 @@ let artistName = document.querySelector(
 let songsContainer = document.querySelector(
   ".section-2 .page-1 .songs-container"
 );
-let songsContainer2 = document.querySelector(
-  ".section-2 .page-2 .songs-container"
-);
 let phoneSongsContainer = document.querySelector(
   ".section-2 .page-1-phone .phone-songs-container"
-);
-let phoneSongsContainer2 = document.querySelector(
-  ".section-2 .page-2-phone .phone-songs-container"
-);
-let playlist1 = document.querySelector(
-  ".section-1 .playlist-container .playlist-1"
-);
-let playlist2 = document.querySelector(
-  ".section-1 .playlist-container .playlist-2"
 );
 let sec2 = document.querySelector(".main .section-2");
 let page = document.querySelector(".section-2 .homePage");
@@ -123,13 +111,20 @@ let randomPlay = document.querySelector(
   ".footer-page .container-2 .upper .start .first"
 );
 
+let playlist1 = 0;
+let playlist2 = 0;
+
 const resizer = document.querySelector(".resize");
-const sec1PlaylistContent = document.querySelectorAll(
-  ".section-1 .playlist-container .content-container"
-);
-const sec1Container = document.querySelector(
+let sec1PlaylistContent = 0;
+const sec1HeaderContainer = document.querySelector(
   ".section-1 .sec1-header-container"
 );
+const sec1PlaylistContainer = document.querySelector(
+  ".section-1 .playlist-container"
+);
+let sec1PlaylistContainerDiv = 0;
+let sec1PlaylistContainerDivImg = 0;
+let sec1PlaylistContainerDivImgSvg = 0;
 const sec1CloseIcons = document.querySelector(".section-1 .sidebar-functions");
 const sec1OpenPLaylists = document.querySelector(
   ".section-1 .sidebar-functions .open-playlists"
@@ -175,11 +170,9 @@ let imgBanner = document.querySelector(".section-3 .banner .img"),
 let sec3ScrollContainer = document.querySelector(
   ".section-3 .song-detail .first"
 );
-// console.log(sec3ScrollContainer)
 let sec3ScrollName = document.querySelector(
   ".section-3 .song-detail .first .name"
 );
-// console.log(sec3ScrollName)
 
 // header
 
@@ -192,13 +185,13 @@ const header = document.querySelector(".header"),
   headerMid = document.querySelector(".header .mid-header"),
   headerMid1 = document.querySelector(".header .mid-header .home-button"),
   headerMid2 = document.querySelector(".header .mid-header .search"),
-  headerMid21 = document.querySelector(
+  headerMid2a = document.querySelector(
     ".header .mid-header .search .svg-search-container"
   ),
-  headerMid22 = document.querySelector(
+  headerMid2b = document.querySelector(
     ".header .mid-header .search .search-bar"
   ),
-  headerMid23 = document.querySelector(".header .mid-header .search .browse"),
+  headerMid2c = document.querySelector(".header .mid-header .search .browse"),
   headerRight1 = document.querySelector(
     ".header .right-header .premium-button"
   ),
@@ -208,6 +201,10 @@ const header = document.querySelector(".header"),
   headerRight5 = document.querySelector(
     ".header .right-header .profile-button span"
   );
+headerRight5a = document.querySelector(".header .right-header .profile-button");
+headerRight5b = document.querySelector(
+  ".header .right-header .profile-button .profile"
+);
 
 // Footer
 
@@ -229,8 +226,14 @@ const footerPage = document.querySelector(".footer-page"),
   footerPageCont2UpperMidSvg2 = document.querySelector(
     ".footer-page .container-2 .upper .mid svg:nth-child(2)"
   ),
+  footerPageCont2UpperStart = document.querySelector(
+    ".footer-page .container-2 .upper .start"
+  ),
   footerPageCont2UpperStartFirstSvg = document.querySelector(
     ".footer-page .container-2 .upper .start .first svg"
+  ),
+  footerPageCont2UpperEnd = document.querySelector(
+    ".footer-page .container-2 .upper .end"
   ),
   footerPageCont2UpperStartSecondSvg = document.querySelector(
     ".footer-page .container-2 .upper .start .second svg"
@@ -241,8 +244,17 @@ const footerPage = document.querySelector(".footer-page"),
   footerPageCont2UpperEndSecondSvg = document.querySelector(
     ".footer-page .container-2 .upper .end .second svg"
   );
+  footerPageCont2UpperEndSecond = document.querySelector(
+    ".footer-page .container-2 .upper .end .second"
+  );
 footerPageCont2LowerProgressContainer = document.querySelector(
   ".footer-page .container-2 .lower .progress-container"
+);
+footerPageCont2LowerCurrent = document.querySelector(
+  ".footer-page .container-2 .lower .current"
+);
+footerPageCont2LowerDuration = document.querySelector(
+  ".footer-page .container-2 .lower .duration"
 );
 
 const mainSection = document.querySelector(".main");
@@ -277,11 +289,13 @@ function formatTime(seconds) {
 }
 
 let sec2PageSongs = 0;
+// let i = 0
 
 async function main() {
   let a = await fetch("json/songs2.json"); //http://127.0.0.1:5500/songs2.json
   songs = await a.json();
   loadSong(n);
+  // i++
 
   songs.forEach((element) => {
     let c = new Audio(element.src);
@@ -309,8 +323,6 @@ async function main() {
         <div class="song-name">${element.title}</div>
         <div class="song-artist">${element.artist}</div>
       </div>
-      <div class="name">${element.title}</div>
-      <div class="date">25 Sep, 2025</div>
       <div class="duration" id="duration-phone-${element.id}">--:--</div>
     </div>`
     );
@@ -336,6 +348,86 @@ async function main() {
 }
 
 main();
+
+let playlistContainer = document.querySelector(
+  ".section-1 .playlist-container"
+);
+
+async function sec1Main() {
+  let a = await fetch("json/section1.json");
+  let playlists = await a.json();
+
+  playlists.forEach((element) => {
+    playlistContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+        <div class="playlist-${element.id} glow" id="p-${element.id}">
+            <div class="img dark-img">
+                <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline"
+                    viewBox="0 0 16 16"
+                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                    <path
+                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z">
+                    </path>
+                </svg>
+            </div>
+            <div class="content-container">
+                <div class="content">
+                    <div class="content-1">
+                        <p>${element.p1}</p>
+                    </div>
+                    <div class="content-2">
+                        <p>${element.p2}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+    );
+
+    sec1PlaylistContainerDivImg = document.querySelectorAll(
+      ".section-1 > div .img"
+    );
+    sec1PlaylistContainerDivImgSvg = document.querySelectorAll(
+      ".section-1 > div .img svg"
+    );
+    sec1PlaylistContainerDiv = document.querySelectorAll(
+      ".section-1 .playlist-container > div"
+    );
+    sec1PlaylistContent = document.querySelectorAll(
+      ".section-1 .playlist-container .content-container"
+    );
+    let playlistImg = document.querySelectorAll(
+      ".section-1 .playlist-container > div:nth-last-child(1) .img"
+    );
+    playlistImg.forEach((e) => {
+      e.style.backgroundImage = `url(${element.cover})`;
+    });
+  });
+
+  playlist1 = document.querySelector(
+    ".section-1 .playlist-container .playlist-1"
+  );
+  playlist2 = document.querySelector(
+    ".section-1 .playlist-container .playlist-2"
+  );
+  playlist1.addEventListener("click", () => {
+    if (window.innerWidth > 1025) {
+      showPage(".page-1", ".homePage");
+    } else {
+      showPage(".page-1-phone", ".homePage-phone");
+    }
+  });
+  playlist2.addEventListener("click", () => {
+    if (window.innerWidth > 1025) {
+      showPage(".page-2", ".homePage");
+    } else {
+      showPage(".page-2-phone", ".homePage-phone");
+    }
+  });
+}
+
+sec1Main();
 
 function songDetails() {
   imgCover.style.backgroundImage = `url(${songs[n].cover})`;
@@ -380,6 +472,9 @@ function loadSong(index) {
 
   songDetails();
   b.play();
+  // if(i == 0){
+  //   playSvg();
+  // }
 }
 
 function loadSongtype(index) {
@@ -415,24 +510,16 @@ function loadSongtype(index) {
   songDetails();
 }
 
-playlist1.addEventListener("click", () => {
-  if (window.innerWidth > 1025) {
-    showPage(".page-1", ".homePage");
-  } else {
-    showPage(".page-1-phone", ".homePage-phone");
-  }
-});
-
 function playSvg() {
   // footer play
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
-  // page 2
-  playBtn2Svg1.classList.add("display-none");
-  playBtn2Svg2.classList.remove("display-none");
+  // page 1
+  page1PlayBtnSvg1.classList.add("display-none");
+  page1PlayBtnSvg2.classList.remove("display-none");
 
-  // page 1 upper playlist 1
+  // home page upper playlist 1
   pagePlay1Svg1.classList.add("display-none");
   pagePlay1Svg2.classList.remove("display-none");
 }
@@ -442,7 +529,7 @@ function phonePlaySvg() {
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
-  // page 2
+  // page 1
   page1PhonePlaySvg1.classList.add("display-none");
   page1PhonePlaySvg2.classList.remove("display-none");
 }
@@ -452,11 +539,11 @@ function pauseSvg() {
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
-  // page 2
-  playBtn2Svg2.classList.add("display-none");
-  playBtn2Svg1.classList.remove("display-none");
+  // page 1
+  page1PlayBtnSvg2.classList.add("display-none");
+  page1PlayBtnSvg1.classList.remove("display-none");
 
-  // page 1 upper playlist 1
+  // home page upper playlist 1
   pagePlay1Svg2.classList.add("display-none");
   pagePlay1Svg1.classList.remove("display-none");
 }
@@ -466,7 +553,7 @@ function phonePauseSvg() {
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
-  // page 2
+  // page 1
   page1PhonePlaySvg2.classList.add("display-none");
   page1PhonePlaySvg1.classList.remove("display-none");
 }
@@ -616,7 +703,7 @@ document.addEventListener("mousemove", (e) => {
     sec1PlaylistContent.forEach((element) => {
       element.classList.add("display-none");
     });
-    sec1Container.style.display = "none";
+    sec1HeaderContainer.style.display = "none";
     sec1Bar.style.display = "none";
     sec1CloseIcons.classList.remove("display-none");
     sec2Divs.forEach((element) => {
@@ -647,7 +734,7 @@ document.addEventListener("mousemove", (e) => {
     sec1PlaylistContent.forEach((element) => {
       element.classList.remove("display-none");
     });
-    sec1Container.style.display = "block";
+    sec1HeaderContainer.style.display = "block";
     sec1Bar.style.display = "flex";
     sec1CloseIcons.classList.add("display-none");
     sec2Divs.forEach((element) => {
@@ -682,12 +769,37 @@ sec1OpenPLaylists.addEventListener("click", () => {
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
   });
-  sec1Container.style.display = "block";
+  // sec1PlaylistContainer.style.gridAutoRows = "55px";
+  sec1HeaderContainer.style.display = "block";
   sec1Bar.style.display = "flex";
   sec1CloseIcons.classList.add("display-none");
   sec2Divs.forEach((element) => {
     element.style.height = "90%";
   });
+  sec1PlaylistContainer.style.gridAutoRows = "65px";
+  sec1CloseIcons.style.paddingLeft = "0";
+  sec1PlaylistContainerDiv.forEach((element) => {
+    element.style.padding = "7px";
+  });
+  sec1PlaylistContainerDiv.forEach((element) => {
+    element.style.height = "auto";
+  });
+  sec1PlaylistContainerDivImg.forEach((element) => {
+    element.style.minWidth = "50px";
+  });
+  sec1PlaylistContainerDivImgSvg.forEach((element) => {
+    element.style.width = "20px";
+  });
+  // sec1CloseIcons.style.paddingLeft = "5px";
+  // sec1PlaylistContainerDiv.forEach((element) => {
+  //   element.style.padding = "0";
+  // });
+  // sec1PlaylistContainerDiv.forEach((element) => {
+  //   element.style.height = "40px";
+  // });
+  // sec1PlaylistContainerDivImg.forEach((element) => {
+  //   element.style.minWidth = "40px";
+  // });
   sec2HeaderDivs.style.height = "20%";
   sec2HeaderDivsPlayBtn.forEach((element) => {
     element.style.top = "3%";
@@ -712,14 +824,29 @@ sec1OpenPLaylists.addEventListener("click", () => {
     if (window.innerWidth <= 768) {
       document.documentElement.style.setProperty(
         "--section-1-width",
-        68 + "px"
+        45 + "px"
+        // 68 + "px"
       );
       sec1PlaylistContent.forEach((element) => {
         element.classList.add("display-none");
       });
-      sec1Container.style.display = "none";
+      sec1HeaderContainer.style.display = "none";
       sec1Bar.style.display = "none";
       sec1CloseIcons.classList.remove("display-none");
+      sec1PlaylistContainer.style.gridAutoRows = "55px";
+      sec1CloseIcons.style.paddingLeft = "5px";
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.padding = "0";
+      });
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.height = "40px";
+      });
+      sec1PlaylistContainerDivImg.forEach((element) => {
+        element.style.minWidth = "40px";
+      });
+      sec1PlaylistContainerDivImgSvg.forEach((element) => {
+        element.style.width = "20px";
+      });
     } else {
       document.documentElement.style.setProperty(
         "--section-1-width",
@@ -728,7 +855,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       sec1PlaylistContent.forEach((element) => {
         element.classList.remove("display-none");
       });
-      sec1Container.style.display = "block";
+      sec1HeaderContainer.style.display = "block";
       sec1Bar.style.display = "flex";
       sec1CloseIcons.classList.add("display-none");
     }
@@ -748,36 +875,45 @@ sec1OpenPLaylists.addEventListener("click", () => {
       //main
 
       document.querySelector(".section-3").style.display = "none";
-      mainSection.style.height = "70vh";
+      mainSection.style.height = "72vh";
       mainSection.style.gridTemplateColumns =
-        "var(--section-1-width, 0.7fr) 0.001fr 1.7fr";
+        "var(--section-1-width, 0.7fr) 0.001fr 1fr";
 
       // header
 
+      header.style.height = "9vh";
       header.style.alignItems = "center";
-      headerLeft.style.margin = "7px 18px";
+      headerLeft.style.margin = "10px 20px";
       headerLeft.style.alignItems = "center";
-      headerLeftSvg.style.height = "30px";
-      headerMid.style.width = "60vw";
+      headerLeftSvg.style.height = "35px";
+      headerMid.style.width = "72vw";
       headerMid.style.height = "80%";
-      headerMid1.style.height = "35px";
-      headerMid1.style.width = "35px";
+      headerMid1.style.height = "40px";
+      headerMid1.style.width = "45px";
       headerMid1Svg.style.height = "45%";
-      headerMid2.style.borderRadius = "12px";
-      headerMid21.style.height = "60%";
-      headerMid22.style.fontSize = "12px";
-      headerMid23.style.height = "60%";
+      headerMid2.style.borderRadius = "17px";
+      headerMid2a.style.height = "60%";
+      headerMid2a.style.width = "20%";
+      headerMid2b.style.fontSize = "12px";
+      headerMid2c.style.height = "60%";
+      headerMid2c.style.width = "20%";
       headerRight1.classList.add("display-none");
       headerRight2.classList.add("display-none");
-      headerRight3.style.width = "30%";
-      headerRight3.style.height = "45%";
-      headerRight4.style.width = "30%";
-      headerRight4.style.height = "45%";
-      headerRight5.style.fontSize = "12px";
+      headerRight3.classList.add("display-none");
+      headerRight4.classList.add("display-none");
+      // headerRight3.style.width = "30%";
+      // headerRight3.style.height = "45%";
+      // headerRight4.style.width = "30%";
+      // headerRight4.style.height = "45%";
+      headerRight5.style.fontSize = "13px";
+      headerRight5a.style.height = "7vmin";
+      headerRight5a.style.width = "7vmin";
+      headerRight5b.style.height = "5vmin";
+      headerRight5b.style.width = "5vmin";
 
       // Footer
 
-      footerPage.style.height = "13vh";
+      footerPage.style.height = "17vh";
       footerPage.style.gap = "5%";
       footerPage.style.marginTop = "5%";
       footerPage.style.flexDirection = "column";
@@ -785,7 +921,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont1.style.minWidth = "50%";
       footerPageCont1.style.height = "40%";
       footerPageCont2.style.width = "110%";
-      footerPageCont2.style.height = "50%";
+      footerPageCont2.style.height = "60%";
       footerPageCont3.style.height = "0%";
       footerPageCont1Img.style.minWidth = "25%";
       footerPageCont1Img.style.height = "115%";
@@ -794,50 +930,85 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont1Content.style.minWidth = "60%";
       footerPageCont1Add.style.width = "20%";
       footerPageCont2UpperMid.style.margin = "0";
-      footerPageCont2UpperMid.style.height = "25px";
-      footerPageCont2UpperMid.style.width = "25px";
-      footerPageCont2UpperMidSvg.style.width = "15px";
-      footerPageCont2UpperMidSvg.style.height = "15px";
-      footerPageCont2UpperMidSvg2.style.width = "13px";
-      footerPageCont2UpperMidSvg2.style.height = "13px";
-      footerPageCont2UpperStartFirstSvg.style.height = "15px";
-      footerPageCont2UpperStartFirstSvg.style.width = "15px";
-      footerPageCont2UpperStartSecondSvg.style.height = "15px";
-      footerPageCont2UpperStartSecondSvg.style.width = "15px";
-      footerPageCont2UpperEndFirstSvg.style.height = "15px";
-      footerPageCont2UpperEndFirstSvg.style.width = "15px";
-      footerPageCont2UpperEndSecondSvg.style.height = "15px";
-      footerPageCont2UpperEndSecondSvg.style.width = "15px";
-      footerPageCont2LowerProgressContainer.style.width = "50%";
+      footerPageCont2UpperMid.style.height = "35px";
+      footerPageCont2UpperMid.style.width = "35px";
+      footerPageCont2UpperMidSvg.style.width = "20px";
+      footerPageCont2UpperMidSvg.style.height = "20px";
+      footerPageCont2UpperMidSvg2.style.width = "20px";
+      footerPageCont2UpperMidSvg2.style.height = "20px";
+      footerPageCont2UpperStart.style.paddingRight = "15px";
+      footerPageCont2UpperStartFirstSvg.style.height = "25px";
+      footerPageCont2UpperStartFirstSvg.style.width = "25px";
+      footerPageCont2UpperStartSecondSvg.style.height = "25px";
+      footerPageCont2UpperStartSecondSvg.style.width = "25px";
+      footerPageCont2UpperEnd.style.paddingLeft = "15px";
+      footerPageCont2UpperEndFirstSvg.style.height = "25px";
+      footerPageCont2UpperEndFirstSvg.style.width = "25px";
+      footerPageCont2UpperEndSecondSvg.style.height = "25px";
+      footerPageCont2UpperEndSecondSvg.style.width = "25px";
+      footerPageCont2LowerProgressContainer.style.width = "60%";
+      footerPageCont2LowerProgressContainer.style.height = "8px";
+      footerPageCont2LowerCurrent.style.fontSize = "20px";
+      footerPageCont2LowerDuration.style.fontSize = "20px";
 
       pagePhone.classList.remove("display-none");
       page.classList.add("display-none");
       page1.classList.add("display-none");
       page2.classList.add("display-none");
+      page1Phone.classList.add("display-none");
+      page2Phone.classList.add("display-none");
 
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
           "--section-1-width",
-          68 + "px"
+          45 + "px"
         );
         sec1PlaylistContent.forEach((element) => {
           element.classList.add("display-none");
         });
-        sec1Container.style.display = "none";
+        sec1HeaderContainer.style.display = "none";
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
+        sec1PlaylistContainer.style.gridAutoRows = "55px";
+        sec1CloseIcons.style.paddingLeft = "5px";
+        sec1PlaylistContainerDiv.forEach((element) => {
+          element.style.padding = "0";
+        });
+        sec1PlaylistContainerDiv.forEach((element) => {
+          element.style.height = "40px";
+        });
+        sec1PlaylistContainerDivImg.forEach((element) => {
+          element.style.minWidth = "40px";
+        });
+        sec1PlaylistContainerDivImgSvg.forEach((element) => {
+          element.style.width = "20px";
+        });
       });
       playlist2.addEventListener("click", () => {
         document.documentElement.style.setProperty(
           "--section-1-width",
-          68 + "px"
+          45 + "px"
         );
         sec1PlaylistContent.forEach((element) => {
           element.classList.add("display-none");
         });
-        sec1Container.style.display = "none";
+        sec1HeaderContainer.style.display = "none";
         sec1Bar.style.display = "none";
         sec1CloseIcons.classList.remove("display-none");
+        sec1PlaylistContainer.style.gridAutoRows = "55px";
+        sec1CloseIcons.style.paddingLeft = "5px";
+        sec1PlaylistContainerDiv.forEach((element) => {
+          element.style.padding = "0";
+        });
+        sec1PlaylistContainerDiv.forEach((element) => {
+          element.style.height = "40px";
+        });
+        sec1PlaylistContainerDivImg.forEach((element) => {
+          element.style.minWidth = "40px";
+        });
+        sec1PlaylistContainerDivImgSvg.forEach((element) => {
+          element.style.width = "20px";
+        });
       });
     } else {
       //main
@@ -856,11 +1027,13 @@ sec1OpenPLaylists.addEventListener("click", () => {
       headerMid1.style.width = "45px";
       headerMid1Svg.style.height = "55%";
       headerMid2.style.borderRadius = "20px";
-      headerMid21.style.height = "85%";
-      headerMid22.style.fontSize = "15px";
-      headerMid23.style.height = "85%";
+      headerMid2a.style.height = "85%";
+      headerMid2b.style.fontSize = "15px";
+      headerMid2c.style.height = "85%";
       headerRight1.classList.remove("display-none");
       headerRight2.classList.remove("display-none");
+      headerRight3.classList.remove("display-none");
+      headerRight4.classList.remove("display-none");
       headerRight3.style.width = "10%";
       headerRight3.style.height = "65%";
       headerRight4.style.width = "10%";
@@ -875,7 +1048,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPage.style.flexDirection = "row";
       footerPageCont1.style.width = "20%";
       footerPageCont1.style.height = "100%";
-      footerPageCont2.style.width = "35%";
+      footerPageCont2.style.width = "40%";
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "17%";
       footerPageCont1Img.style.height = "90%";
@@ -884,21 +1057,23 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont1Content.style.fontSize = "15px";
       footerPageCont1Add.style.width = "10%";
       footerPageCont2UpperMid.style.margin = "0 10px";
-      footerPageCont2UpperMid.style.height = "29px";
-      footerPageCont2UpperMid.style.width = "29px";
-      footerPageCont2UpperMidSvg.style.width = "15px";
-      footerPageCont2UpperMidSvg.style.height = "15px";
-      footerPageCont2UpperMidSvg2.style.width = "15px";
-      footerPageCont2UpperMidSvg2.style.height = "15px";
-      footerPageCont2UpperStartFirstSvg.style.height = "17px";
-      footerPageCont2UpperStartFirstSvg.style.width = "17px";
-      footerPageCont2UpperStartSecondSvg.style.height = "17px";
-      footerPageCont2UpperStartSecondSvg.style.width = "17px";
-      footerPageCont2UpperEndFirstSvg.style.height = "17px";
-      footerPageCont2UpperEndFirstSvg.style.width = "17px";
-      footerPageCont2UpperEndSecondSvg.style.height = "17px";
-      footerPageCont2UpperEndSecondSvg.style.width = "17px";
+      footerPageCont2UpperMid.style.height = "35px";
+      footerPageCont2UpperMid.style.width = "35px";
+      footerPageCont2UpperMidSvg.style.width = "17px";
+      footerPageCont2UpperMidSvg.style.height = "17px";
+      footerPageCont2UpperMidSvg2.style.width = "17px";
+      footerPageCont2UpperMidSvg2.style.height = "17px";
+      footerPageCont2UpperStartFirstSvg.style.height = "20px";
+      footerPageCont2UpperStartFirstSvg.style.width = "20px";
+      footerPageCont2UpperStartSecondSvg.style.height = "20px";
+      footerPageCont2UpperStartSecondSvg.style.width = "20px";
+      footerPageCont2UpperEndFirstSvg.style.height = "20px";
+      footerPageCont2UpperEndFirstSvg.style.width = "20px";
+      footerPageCont2UpperEndSecondSvg.style.height = "20px";
+      footerPageCont2UpperEndSecondSvg.style.width = "20px";
       footerPageCont2LowerProgressContainer.style.width = "80%";
+      footerPageCont2LowerCurrent.style.fontSize = "18px";
+      footerPageCont2LowerDuration.style.fontSize = "18px";
 
       page.classList.remove("display-none");
       page1.classList.add("display-none");

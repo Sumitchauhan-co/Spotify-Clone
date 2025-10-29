@@ -290,14 +290,7 @@
   margin: 0;
 }
 
-.section-1 .playlist-1,
-.section-1 .playlist-2,
-.section-1 .playlist-3,
-.section-1 .playlist-4,
-.section-1 .playlist-5,
-.section-1 .playlist-6,
-.section-1 .playlist-7,
-.section-1 .playlist-8 {
+.section-1 .playlist-container > div {
   /* background-color: lightslategray; */
   padding: 7px;
   border-radius: 5px;
@@ -307,19 +300,19 @@
   cursor: pointer;
 }
 
-.section-1 .playlist-3,
-.section-1 .playlist-4,
-.section-1 .playlist-5,
-.section-1 .playlist-6,
-.section-1 .playlist-7,
-.section-1 .playlist-8 {
+.section-1 .playlist-container .playlist-3,
+.section-1 .playlist-container .playlist-4,
+.section-1 .playlist-container .playlist-5,
+.section-1 .playlist-container .playlist-6,
+.section-1 .playlist-container .playlist-7,
+.section-1 .playlist-container .playlist-8 {
   cursor: not-allowed;
 }
 
 .section-1 .playlist-1 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/liked.jpg);
+  /* background-image: url(assets/images/liked.jpg); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -328,28 +321,14 @@
   align-items: center;
 }
 
-.section-1 .playlist-1 .img svg,
-.section-1 .playlist-2 .img svg,
-.section-1 .playlist-3 .img svg,
-.section-1 .playlist-4 .img svg,
-.section-1 .playlist-5 .img svg,
-.section-1 .playlist-6 .img svg,
-.section-1 .playlist-7 .img svg,
-.section-1 .playlist-8 .img svg {
+.section-1 .playlist-container > div .img svg {
   height: 25px;
   width: 25px;
   opacity: 0;
   filter: invert(1);
 }
 
-.section-1 .playlist-1 .content-container,
-.section-1 .playlist-2 .content-container,
-.section-1 .playlist-3 .content-container,
-.section-1 .playlist-4 .content-container,
-.section-1 .playlist-5 .content-container,
-.section-1 .playlist-6 .content-container,
-.section-1 .playlist-7 .content-container,
-.section-1 .playlist-8 .content-container {
+.section-1 .playlist-container > div .content-container {
   height: 100%;
   width: 82%;
   border-radius: 5px;
@@ -359,53 +338,25 @@
   margin-left: 10px;
 }
 
-.section-1 .playlist-1 .content-container .content,
-.section-1 .playlist-2 .content-container .content,
-.section-1 .playlist-3 .content-container .content,
-.section-1 .playlist-4 .content-container .content,
-.section-1 .playlist-5 .content-container .content,
-.section-1 .playlist-6 .content-container .content,
-.section-1 .playlist-7 .content-container .content,
-.section-1 .playlist-8 .content-container .content {
+.section-1 .playlist-container > div .content-container .content {
   height: 100%;
   width: 75%;
   display: flex;
   flex-direction: column;
 }
 
-.section-1 .playlist-1 .content-container .content .content-1,
-.section-1 .playlist-2 .content-container .content .content-1,
-.section-1 .playlist-3 .content-container .content .content-1,
-.section-1 .playlist-4 .content-container .content .content-1,
-.section-1 .playlist-5 .content-container .content .content-1,
-.section-1 .playlist-6 .content-container .content .content-1,
-.section-1 .playlist-7 .content-container .content .content-1,
-.section-1 .playlist-8 .content-container .content .content-1 {
+.section-1 .playlist-container > div .content-container .content .content-1 {
   height: 50%;
   width: 100%;
   color: white;
   font-size: 18px;
 }
 
-.section-1 .playlist-1 .content-container .content .content-1 p,
-.section-1 .playlist-2 .content-container .content .content-1 p,
-.section-1 .playlist-3 .content-container .content .content-1 p,
-.section-1 .playlist-4 .content-container .content .content-1 p,
-.section-1 .playlist-5 .content-container .content .content-1 p,
-.section-1 .playlist-6 .content-container .content .content-1 p,
-.section-1 .playlist-7 .content-container .content .content-1 p,
-.section-1 .playlist-8 .content-container .content .content-1 p {
+.section-1.playlist-container > div .content-container .content .content-1 p {
   font-weight: 500;
 }
 
-.section-1 .playlist-1 .content-container .content .content-2,
-.section-1 .playlist-2 .content-container .content .content-2,
-.section-1 .playlist-3 .content-container .content .content-2,
-.section-1 .playlist-4 .content-container .content .content-2,
-.section-1 .playlist-5 .content-container .content .content-2,
-.section-1 .playlist-6 .content-container .content .content-2,
-.section-1 .playlist-7 .content-container .content .content-2,
-.section-1 .playlist-8 .content-container .content .content-2 {
+.section-1 .playlist-container > div .content-container .content .content-2 {
   height: 50%;
   width: 100%;
   color: var(--light-dark-text-color);
@@ -415,7 +366,7 @@
 .section-1 .playlist-2 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/chill\ and\ relax.webp);
+  /* background-image: url(assets/images/chill\ and\ relax.webp); */
   background-position: center;
   background-size: cover;
   border-radius: 5px;
@@ -427,7 +378,7 @@
 .section-1 .playlist-3 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/feelings.webp);
+  /* background-image: url(assets/images/feelings.webp); */
   background-position: center;
   background-size: cover;
   border-radius: 5px;
@@ -439,7 +390,7 @@
 .section-1 .playlist-4 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/sound\ tracks.webp);
+  /* background-image: url(assets/images/sound\ tracks.webp); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -451,7 +402,7 @@
 .section-1 .playlist-5 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/indian\ lofi\ hits.webp);
+  /* background-image: url(assets/images/indian\ lofi\ hits.webp); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -463,7 +414,7 @@
 .section-1 .playlist-6 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/daylist.jpg);
+  /* background-image: url(assets/images/daylist.jpg); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -475,7 +426,7 @@
 .section-1 .playlist-7 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/repeat\ rewind.jpeg);
+  /* background-image: url(assets/images/repeat\ rewind.jpeg); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -487,7 +438,7 @@
 .section-1 .playlist-8 .img {
   height: 100%;
   min-width: 50px;
-  background-image: url(assets/images/on\ repeat.jpeg);
+  /* background-image: url(assets/images/on\ repeat.jpeg); */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
@@ -496,24 +447,10 @@
   align-items: center;
 }
 
-.playlist-container .playlist-1:hover .dark-img,
-.playlist-container .playlist-2:hover .dark-img,
-.playlist-container .playlist-3:hover .dark-img,
-.playlist-container .playlist-4:hover .dark-img,
-.playlist-container .playlist-5:hover .dark-img,
-.playlist-container .playlist-6:hover .dark-img,
-.playlist-container .playlist-7:hover .dark-img,
-.playlist-container .playlist-8:hover .dark-img {
+.section-1 .playlist-container > div:hover .dark-img {
   opacity: 0.5;
 }
 
-.playlist-container .playlist-1:hover svg,
-.playlist-container .playlist-2:hover svg,
-.playlist-container .playlist-3:hover svg,
-.playlist-container .playlist-4:hover svg,
-.playlist-container .playlist-5:hover svg,
-.playlist-container .playlist-6:hover svg,
-.playlist-container .playlist-7:hover svg,
-.playlist-container .playlist-8:hover svg {
+.section-1 .playlist-container > div:hover svg {
   opacity: 1;
 }

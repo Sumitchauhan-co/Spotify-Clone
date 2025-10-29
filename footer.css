@@ -19,7 +19,7 @@
 
 .footer-page .container-1 .content {
   height: 75%;
-  width: 25%;
+  width: 50%;
   /* background-color: yellow; */
   margin: 0 3%;
   display: flex;
@@ -212,7 +212,7 @@
 }
 
 .footer-page .container-2 .lower .progress-container {
-  height: 4px;
+  height: 5px;
   width: 80%;
   background-color: var(--button-hover-color);
   border-radius: 25px;

@@ -161,12 +161,14 @@ section2PhoneHomePage.insertAdjacentHTML(
                             </div>
                             <div class="line-2"></div>
                             <div class="content-2">
-                                <span>Legal</span>
-                                <span>Safety & Privacy Center</span>
-                                <span>Privacy Policy</span>
-                                <span>Cookies</span>
-                                <span>About Ads</span>
-                                <span>Accessibility</span>
+                                <div class="content">
+                                    <span>Legal</span>
+                                    <span>Safety & Privacy Center</span>
+                                    <span>Privacy Policy</span>
+                                    <span>Cookies</span>
+                                    <span>About Ads</span>
+                                    <span>Accessibility</span>
+                                </div>
                                 <p>© 2025 Spotify AB</p>
                             </div>
                         </div>
