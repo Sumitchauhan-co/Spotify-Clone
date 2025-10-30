@@ -100,15 +100,15 @@
 }
 
 .section-2 .phone-header-function .left .play-pause svg:nth-child(1) {
-  height: 22px;
-  width: 22px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   color: black;
 }
 
 .section-2 .phone-header-function .left .play-pause svg:nth-child(2) {
-  height: 25px;
-  width: 25px;
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
   color: black;
 }

@@ -244,9 +244,9 @@ const footerPage = document.querySelector(".footer-page"),
   footerPageCont2UpperEndSecondSvg = document.querySelector(
     ".footer-page .container-2 .upper .end .second svg"
   );
-  footerPageCont2UpperEndSecond = document.querySelector(
-    ".footer-page .container-2 .upper .end .second"
-  );
+footerPageCont2UpperEndSecond = document.querySelector(
+  ".footer-page .container-2 .upper .end .second"
+);
 footerPageCont2LowerProgressContainer = document.querySelector(
   ".footer-page .container-2 .lower .progress-container"
 );
@@ -596,8 +596,8 @@ pagePlayCont1Btn1.addEventListener("click", (e) => {
   }
   if (b.paused) {
     b.play();
-    playSvg();
     pauseSvg2();
+    playSvg();
   } else {
     b.pause();
     pauseSvg();
@@ -932,10 +932,10 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2UpperMid.style.margin = "0";
       footerPageCont2UpperMid.style.height = "35px";
       footerPageCont2UpperMid.style.width = "35px";
-      footerPageCont2UpperMidSvg.style.width = "20px";
-      footerPageCont2UpperMidSvg.style.height = "20px";
-      footerPageCont2UpperMidSvg2.style.width = "20px";
-      footerPageCont2UpperMidSvg2.style.height = "20px";
+      footerPageCont2UpperMidSvg.style.width = "17px";
+      footerPageCont2UpperMidSvg.style.height = "17px";
+      footerPageCont2UpperMidSvg2.style.width = "17px";
+      footerPageCont2UpperMidSvg2.style.height = "17px";
       footerPageCont2UpperStart.style.paddingRight = "15px";
       footerPageCont2UpperStartFirstSvg.style.height = "25px";
       footerPageCont2UpperStartFirstSvg.style.width = "25px";

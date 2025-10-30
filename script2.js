@@ -181,10 +181,8 @@ function playSvg2() {
   playBtnSvg2.classList.remove("display-none");
 
   // page 2
-  page2PlayBtnSvg2.classList.add("display-none");
-  console.log(page2PlayBtnSvg1)
-  page2PlayBtnSvg1.classList.remove("display-none");
-  console.log(page2PlayBtnSvg2)
+  page2PlayBtnSvg1.classList.add("display-none");
+  page2PlayBtnSvg2.classList.remove("display-none");
 
   // home page upper playlist 2
   pagePlay2Svg1.classList.add("display-none");
@@ -276,14 +274,17 @@ page2playBtn.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
     scroll();
+    console.log("1")
   }
   if (b.paused) {
     b.play();
     pauseSvg();
     playSvg2();
+    console.log("2")
   } else {
     b.pause();
     pauseSvg2();
+    console.log("3")
   }
 });
 
@@ -327,8 +328,8 @@ pagePlayCont2Btn1.addEventListener("click", (e) => {
   }
   if (b.paused) {
     b.play();
-    playSvg2();
     pauseSvg();
+    playSvg2();
   } else {
     b.pause();
     pauseSvg2();
@@ -351,8 +352,8 @@ pagePlayCont1Btn2.addEventListener("click", (e) => {
   }
   if (b.paused) {
     b.play();
-    playSvg2();
     pauseSvg();
+    playSvg2();
   } else {
     b.pause();
     pauseSvg2();
@@ -368,16 +369,30 @@ phonePageChange2.addEventListener("click", () =>
 playBtn.addEventListener("click", () => {
   if (b.paused) {
     b.play();
-    playSvg();
-    phonePlaySvg();
-    playSvg2();
-    phonePlaySvg2();
+    if (playlistPlay) {
+      pauseSvg2();
+      phonePauseSvg2();
+      playSvg();
+      phonePlaySvg();
+    } else if (playlist2Play) {
+      pauseSvg();
+      phonePauseSvg();
+      playSvg2();
+      phonePlaySvg2();
+    }
   } else {
     b.pause();
-    pauseSvg();
-    phonePauseSvg();
-    pauseSvg2();
-    phonePauseSvg2();
+    if (playlistPlay) {
+      playSvg();
+      phonePlaySvg();
+      pauseSvg2();
+      phonePauseSvg2();
+    } else if (playlist2Play) {
+      playSvg2();
+      phonePlaySvg2();
+      pauseSvg();
+      phonePauseSvg();
+    }
   }
 });
 
@@ -521,12 +536,10 @@ function nextSong() {
       }
       if (b.paused) {
         playSvg();
-        console.log("b.paused");
       }
       loadSong(n);
       playSvg();
       scroll();
-      console.log("playlistPlay");
     } else if (playlist2Play) {
       m++;
       if (m >= songs2.length) {
@@ -534,12 +547,10 @@ function nextSong() {
       }
       if (b.paused) {
         playSvg2();
-        console.log("b.paused 2");
       }
       loadSong2(m);
       playSvg2();
       scroll();
-      console.log("playlistPlay 2");
     }
   } else {
     if (playlistPlay) {
