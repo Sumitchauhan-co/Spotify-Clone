@@ -1013,6 +1013,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
     } else {
       //main
 
+      document.querySelector(".section-3").style.display = "block";
       mainSection.style.height = "80vh";
       mainSection.style.gridTemplateColumns =
         "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr 0.6fr";

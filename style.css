@@ -121,3 +121,54 @@ body {
     transform: translateX(-100%);
   }
 }
+
+@keyframes rotatePhone {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: -90deg;
+  }
+}
+
+@keyframes textBg {
+  0% {
+    box-shadow: 0 0 5px white;
+  }
+  100% {
+    box-shadow: 0 0 25px white;
+  }
+}
+
+#rotate-warning {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+#rotate-warning img {
+  height: 30vmin;
+  width: 50vmin;
+  background-size: cover;
+  animation: rotatePhone 1s linear none infinite ;
+}
+
+#rotate-warning .text {
+  height: 30px;
+  width: 200px;
+  margin-top: 10%;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: textBg 1s linear none infinite ;
+}
