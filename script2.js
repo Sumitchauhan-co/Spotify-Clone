@@ -445,6 +445,31 @@ home.addEventListener("click", () => {
     window.innerHeight > 600
   ) {
     showChangePage(".homePage-phone");
+    
+    document.documentElement.style.setProperty("--section-1-width", 50 + "px");
+    pagesBg.forEach((element) => {
+      element.style.display = "flex";
+    });
+    sec1PlaylistContent.forEach((element) => {
+      element.classList.add("display-none");
+    });
+    sec1HeaderContainer.style.display = "none";
+    sec1Bar.style.display = "none";
+    sec1CloseIcons.classList.remove("display-none");
+    sec1PlaylistContainer.style.gridAutoRows = "55px";
+    sec1CloseIcons.style.paddingLeft = "5px";
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.padding = "0";
+    });
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.height = "40px";
+    });
+    sec1PlaylistContainerDivImg.forEach((element) => {
+      element.style.minWidth = "40px";
+    });
+    sec1PlaylistContainerDivImgSvg.forEach((element) => {
+      element.style.width = "20px";
+    });
   } else {
     showChangePage(".homePage");
   }
