@@ -153,26 +153,26 @@ function loadSong2type(index) {
 }
 
 function scroll() {
-  if (sec3ScrollName.scrollWidth > sec3ScrollContainer.clientWidth) {
-    sec3ScrollName.classList.add("scrolling");
-  } else {
-    sec3ScrollName.classList.remove("scrolling");
-  }
-  for (let i = 0; i < sec2ScrollName.length; i++) {
-    for (let j = 0; j < sec2ScrollContainer.length; j++) {
-      if (i === j) {
-        if (
-          sec2ScrollName[i].scrollWidth > sec2ScrollContainer[j].clientWidth
-        ) {
-          sec2ScrollName[i].classList.add("scrolling");
-          break;
-        } else {
-          sec2ScrollName[i].classList.remove("scrolling");
-          break;
+  sec3ScrollName.forEach((element) => {
+    if (element.scrollWidth > sec3ScrollContainer.clientWidth) {
+      element.classList.add("scrolling");
+    } else {
+      element.classList.remove("scrolling");
+    }
+    for (let i = 0; i < element.length; i++) {
+      for (let j = 0; j < sec2ScrollContainer.length; j++) {
+        if (i === j) {
+          if (element[i].scrollWidth > sec2ScrollContainer[j].clientWidth) {
+            element[i].classList.add("scrolling");
+            break;
+          } else {
+            element[i].classList.remove("scrolling");
+            break;
+          }
         }
       }
     }
-  }
+  });
 }
 
 function playSvg2() {
@@ -216,7 +216,7 @@ function phonePlaySvg2() {
   playBtnSvg1.classList.add("display-none");
   playBtnSvg2.classList.remove("display-none");
 
-  // page 3
+  // page 2
   page2PhonePlaySvg1.classList.add("display-none");
   page2PhonePlaySvg2.classList.remove("display-none");
 }
@@ -226,7 +226,7 @@ function phonePauseSvg2() {
   playBtnSvg2.classList.add("display-none");
   playBtnSvg1.classList.remove("display-none");
 
-  // page 3
+  // page 2
   page2PhonePlaySvg2.classList.add("display-none");
   page2PhonePlaySvg1.classList.remove("display-none");
 }
@@ -274,17 +274,17 @@ page2playBtn.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
     scroll();
-    console.log("1")
+    console.log("1");
   }
   if (b.paused) {
     b.play();
     pauseSvg();
     playSvg2();
-    console.log("2")
+    console.log("2");
   } else {
     b.pause();
     pauseSvg2();
-    console.log("3")
+    console.log("3");
   }
 });
 
@@ -383,13 +383,13 @@ playBtn.addEventListener("click", () => {
   } else {
     b.pause();
     if (playlistPlay) {
-      playSvg();
-      phonePlaySvg();
+      pauseSvg();
+      phonePauseSvg();
       pauseSvg2();
       phonePauseSvg2();
     } else if (playlist2Play) {
-      playSvg2();
-      phonePlaySvg2();
+      pauseSvg2();
+      phonePauseSvg2();
       pauseSvg();
       phonePauseSvg();
     }
@@ -653,3 +653,371 @@ function phoneAddTORecent() {
     phoneRecentContainer.style.display = "flex";
   }
 }
+
+// hide section-3
+
+let hideBtn = document.querySelector(
+  ".section-3 .sec3-header .first .hide-btn"
+);
+let view = document.querySelector(".footer-page .container-3 .view");
+let viewSvg = document.querySelector(".footer-page .container-3 .view svg");
+let bg = document.querySelectorAll(".section-2 .header-container2 .bg");
+
+hideBtn.addEventListener("click", () => {
+  sec3.style.display = "none";
+  sec2.style.position = "relative";
+  sec2.style.width = "1150px";
+  // sec2.style.left = "-190px";
+
+  sec2Header.style.height = "26%";
+  sec2Header.style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))";
+  sec2HeaderDivsPlayBtn.forEach((element) => {
+    element.style.height = "9%";
+    element.style.top = "4%";
+    // element.style.left = "20%";
+    element.classList.add("center");
+  });
+  sec2HeaderDivsPlayBtn[0].style.left = "20%";
+  sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
+    element.style.height = "55px";
+    element.style.width = "55px";
+  });
+  sec2HeaderDivsPlayBtnPlay.forEach((element) => {
+    element.style.height = "50px";
+    element.style.width = "50px";
+  });
+  sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
+    element.style.height = "25px";
+    element.style.width = "25px";
+  });
+  sec2RecentPlaylistPlayBtn.forEach((element) => {
+    element.style.height = "12%";
+    element.style.width = "6%";
+    element.style.top = "70%";
+    element.style.left = "18%";
+  });
+  sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
+    element.style.height = "60px";
+    element.style.width = "60px";
+  });
+  sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
+    element.style.height = "55px";
+    element.style.width = "55px";
+  });
+  sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
+    element.style.height = "27px";
+    element.style.width = "27px";
+  });
+  sec2Recent.style.height = "60%";
+  // sec2RecentPlaylistPlayBtn.forEach((element) => {
+  //   element.style.top = "55%";
+  // });
+  sec2RecentPlaylists.forEach((element) => {
+    element.style.height = "100%";
+  });
+  sec2HomePageBanner.forEach((element) => {
+    element.style.width = "85%";
+  });
+  sec2HomePageContent.forEach((element) => {
+    element.style.padding = "0 25px";
+  });
+  sec2PagesBanner.forEach((element) => {
+    element.style.width = "20%";
+  });
+  sec2PagesBtnSvgs.forEach((element) => {
+    element.style.width = "30px";
+    element.style.height = "30px";
+  });
+  sec2PagesBtn.forEach((element) => {
+    element.style.width = "60px";
+    element.style.height = "60px";
+  });
+  bg.forEach((element) => {
+    element.style.width = "100%";
+    element.style.height = "60%";
+  });
+  resizer[0].style.cursor = "default";
+  sec2PageSongs.forEach((element) => {
+    element.style.height = "10vh";
+  });
+  viewSvg.style.fill = "#58cb58";
+  // console.log(sec2Page2Songs)
+  sec2Page2Songs.forEach((element) => {
+    element.style.height = "10vh";
+  });
+  mainSection.style.gridTemplateColumns =
+    "var(--section-1-width, 0.7fr) 0.001fr 1fr";
+});
+
+view.addEventListener("click", () => {
+  if (sec3.style.display == "none") {
+    sec3.style.display = "block";
+    sec3.style.width = "300px";
+    sec2.style.position = "relative";
+    sec2.style.width = "827px";
+
+    sec2Header.style.height = "20%";
+    sec2Header.style.gridTemplateColumns =
+      "repeat(auto-fit, minmax(150px, 1fr))";
+    sec2HeaderDivsPlayBtn.forEach((element) => {
+      element.style.height = "7%";
+      element.style.top = "3%";
+    });
+    sec2HeaderDivsPlayBtn[0].style.left = "22%";
+    sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
+      element.style.height = "35px";
+      element.style.width = "35px";
+    });
+    sec2HeaderDivsPlayBtnPlay.forEach((element) => {
+      element.style.height = "35px";
+      element.style.width = "35px";
+    });
+    sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
+      element.style.height = "17px";
+      element.style.width = "17px";
+    });
+    sec2RecentPlaylistPlayBtn.forEach((element) => {
+      element.style.height = "7%";
+      element.style.width = "5%";
+      element.style.top = "57%";
+      element.style.left = "20%";
+    });
+    sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
+      element.style.height = "50px";
+      element.style.width = "50px";
+    });
+    sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
+      element.style.height = "47px";
+      element.style.width = "47px";
+    });
+    sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
+      element.style.height = "20px";
+      element.style.width = "20px";
+    });
+    sec2Recent.style.height = "50%";
+    sec2RecentPlaylists.forEach((element) => {
+      element.style.height = "95%";
+    });
+    sec2HomePageBanner.forEach((element) => {
+      element.style.width = "95%";
+    });
+    sec2HomePageContent.forEach((element) => {
+      element.style.padding = "0 5px";
+    });
+    sec2PagesBanner.forEach((element) => {
+      element.style.width = "25%";
+    });
+    sec2PagesBtnSvgs.forEach((element) => {
+      element.style.width = "22px";
+      element.style.height = "22px";
+    });
+    sec2PagesBtn.forEach((element) => {
+      element.style.width = "50px";
+      element.style.height = "50px";
+    });
+    bg.forEach((element) => {
+      element.style.width = "100%";
+      element.style.height = "33%";
+    });
+    sec2PageSongs.forEach((element) => {
+      element.style.height = "8vh";
+    });
+    viewSvg.style.fill = "white";
+    resizer[0].style.cursor = "ew-resize";
+    // console.log(sec2Page2Songs);
+    sec2Page2Songs.forEach((element) => {
+      element.style.height = "8vh";
+    });
+    mainSection.style.gridTemplateColumns =
+      "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr var(--section-3-width, 0.6fr)";
+  }
+});
+
+// document.addEventListener("mousemove", (e) => {
+//   if (!isResizing2) return;
+
+//   let newWidth = Math.min(Math.max(e.pageX, 60), 290);
+//   document.documentElement.style.setProperty(
+//     "--section-1-width",
+//     newWidth + "px"
+//   );
+
+//   if (newWidth < 290) {
+
+//     document.documentElement.style.setProperty("--section-1-width", 0 + "px");
+//     sec3.style.display = "none";
+//     sec2.style.position = "relative";
+//     sec2.style.width = "1150px";
+//     // sec2.style.left = "-190px";
+
+//     sec2Header.style.height = "26%";
+//     sec2Header.style.gridTemplateColumns =
+//       "repeat(auto-fit, minmax(250px, 1fr))";
+//     sec2HeaderDivsPlayBtn.forEach((element) => {
+//       element.style.height = "9%";
+//       element.style.top = "4%";
+//       // element.style.left = "20%";
+//       element.classList.add("center");
+//     });
+//     sec2HeaderDivsPlayBtn[0].style.left = "20%";
+//     sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
+//       element.style.height = "55px";
+//       element.style.width = "55px";
+//     });
+//     sec2HeaderDivsPlayBtnPlay.forEach((element) => {
+//       element.style.height = "50px";
+//       element.style.width = "50px";
+//     });
+//     sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
+//       element.style.height = "25px";
+//       element.style.width = "25px";
+//     });
+//     sec2RecentPlaylistPlayBtn.forEach((element) => {
+//       element.style.height = "12%";
+//       element.style.width = "6%";
+//       element.style.top = "70%";
+//       element.style.left = "18%";
+//     });
+//     sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
+//       element.style.height = "60px";
+//       element.style.width = "60px";
+//     });
+//     sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
+//       element.style.height = "55px";
+//       element.style.width = "55px";
+//     });
+//     sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
+//       element.style.height = "27px";
+//       element.style.width = "27px";
+//     });
+//     sec2Recent.style.height = "60%";
+//     // sec2RecentPlaylistPlayBtn.forEach((element) => {
+//     //   element.style.top = "55%";
+//     // });
+//     sec2RecentPlaylists.forEach((element) => {
+//       element.style.height = "100%";
+//     });
+//     sec2HomePageBanner.forEach((element) => {
+//       element.style.width = "85%";
+//     });
+//     sec2HomePageContent.forEach((element) => {
+//       element.style.padding = "0 25px";
+//     });
+//     sec2PagesBanner.forEach((element) => {
+//       element.style.width = "20%";
+//     });
+//     sec2PagesBtnSvgs.forEach((element) => {
+//       element.style.width = "30px";
+//       element.style.height = "30px";
+//     });
+//     sec2PagesBtn.forEach((element) => {
+//       element.style.width = "60px";
+//       element.style.height = "60px";
+//     });
+//     bg.forEach((element) => {
+//       element.style.width = "100%";
+//       element.style.height = "60%";
+//     });
+//     resizer[0].style.cursor = "default";
+//     sec2PageSongs.forEach((element) => {
+//       element.style.height = "10vh";
+//     });
+//     viewSvg.style.fill = "#58cb58";
+//     // console.log(sec2Page2Songs)
+//     sec2Page2Songs.forEach((element) => {
+//       element.style.height = "10vh";
+//     });
+//     mainSection.style.gridTemplateColumns =
+//       "var(--section-1-width, 0.7fr) 0.001fr 1fr";
+
+//   } else if (newWidth > 290) {
+
+//     document.documentElement.style.setProperty(
+//       "--section-1-width",
+//       290 + "px"
+//     );
+//     sec3.style.display = "block";
+//     sec3.style.width = "300px";
+//     sec2.style.position = "relative";
+//     sec2.style.width = "827px";
+
+//     sec2Header.style.height = "20%";
+//     sec2Header.style.gridTemplateColumns =
+//       "repeat(auto-fit, minmax(150px, 1fr))";
+//     sec2HeaderDivsPlayBtn.forEach((element) => {
+//       element.style.height = "7%";
+//       element.style.top = "3%";
+//     });
+//     sec2HeaderDivsPlayBtn[0].style.left = "22%";
+//     sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
+//       element.style.height = "35px";
+//       element.style.width = "35px";
+//     });
+//     sec2HeaderDivsPlayBtnPlay.forEach((element) => {
+//       element.style.height = "35px";
+//       element.style.width = "35px";
+//     });
+//     sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
+//       element.style.height = "17px";
+//       element.style.width = "17px";
+//     });
+//     sec2RecentPlaylistPlayBtn.forEach((element) => {
+//       element.style.height = "7%";
+//       element.style.width = "5%";
+//       element.style.top = "57%";
+//       element.style.left = "20%";
+//     });
+//     sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
+//       element.style.height = "50px";
+//       element.style.width = "50px";
+//     });
+//     sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
+//       element.style.height = "47px";
+//       element.style.width = "47px";
+//     });
+//     sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
+//       element.style.height = "20px";
+//       element.style.width = "20px";
+//     });
+//     sec2Recent.style.height = "50%";
+//     sec2RecentPlaylists.forEach((element) => {
+//       element.style.height = "95%";
+//     });
+//     sec2HomePageBanner.forEach((element) => {
+//       element.style.width = "95%";
+//     });
+//     sec2HomePageContent.forEach((element) => {
+//       element.style.padding = "0 5px";
+//     });
+//     sec2PagesBanner.forEach((element) => {
+//       element.style.width = "25%";
+//     });
+//     sec2PagesBtnSvgs.forEach((element) => {
+//       element.style.width = "22px";
+//       element.style.height = "22px";
+//     });
+//     sec2PagesBtn.forEach((element) => {
+//       element.style.width = "50px";
+//       element.style.height = "50px";
+//     });
+//     bg.forEach((element) => {
+//       element.style.width = "100%";
+//       element.style.height = "33%";
+//     });
+//     sec2PageSongs.forEach((element) => {
+//       element.style.height = "8vh";
+//     });
+//     viewSvg.style.fill = "white";
+//     resizer[0].style.cursor = "ew-resize";
+//     // console.log(sec2Page2Songs);
+//     sec2Page2Songs.forEach((element) => {
+//       element.style.height = "8vh";
+//     });
+//     mainSection.style.gridTemplateColumns =
+//       "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr var(--section-3-width, 0.6fr)";
+//   }
+// });
+
+// document.addEventListener("mouseup", () => {
+//   isResizing2 = false;
+// });

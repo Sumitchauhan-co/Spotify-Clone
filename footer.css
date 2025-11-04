@@ -228,14 +228,14 @@
   transition: width 0.1s linear;
 }
 
-.footer-page .container-3 {
-  height: 100%;
-  width: 25%;
-  /* background-color: green; */
-}
-
 .display-none {
   display: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-page .container-2 .lower .current {
@@ -254,4 +254,109 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-page .container-3 {
+  height: 100%;
+  width: 25%;
+  /* background-color: blue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-page .container-3 > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+}
+
+.footer-page .container-3 .volume-control {
+  width: 35%;
+  height: 30px;
+}
+
+.footer-page .container-3 .volume-control .speaker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+}
+
+.footer-page .container-3 .volume-control .bar{
+  background-color: white;
+  height: 5px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.footer-page .container-3 > div svg {
+  fill: white;
+  color: white;
+  height: 17px;
+  width: 17px;
+  opacity: 0.8;
+}
+
+.footer-page .container-3 > div:hover svg {
+  opacity: 1;
+}
+
+
+/* volume control */
+
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 160px;
+}
+
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(to right, #1db954 var(--volume-progress, 100%), #333 var(--volume-progress, 100%));
+  border-radius: 2px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
+  margin-top: -4px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+#volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #1ed760; 
+}
+
+#mute-btn {
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+#mute-btn:hover {
+  color: #1db954;
 }

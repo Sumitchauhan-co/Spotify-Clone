@@ -5,7 +5,7 @@ section3.insertAdjacentHTML(
     `
     <div class="sec3-header">
                 <div class="first">
-                    <div class="hide-btn display-none">
+                    <div class="hide-btn">
                         <svg data-encore-id="icon" role="img" aria-hidden="true"
                             class="e-91000-icon e-91000-baseline e-91000-icon--auto-mirror" viewBox="0 0 16 16"
                             style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
@@ -51,7 +51,7 @@ section3.insertAdjacentHTML(
                     <div class="artist poppins-medium">allu arjun</div>
                 </div>
                 <div class="second">
-                    <div class="download display-none">
+                    <div class="download">
                         <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline"
                             viewBox="0 0 16 16"
                             style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">

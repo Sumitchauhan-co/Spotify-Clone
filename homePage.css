@@ -5,7 +5,7 @@
 
 .section-2 .header-container {
   height: 35%;
-  width: 100%;
+  width: 54%;
   /* background: linear-gradient(180deg, #5f1f62, #111111); */
   /* background-image: url(); */
   position: absolute;
@@ -95,8 +95,8 @@
   /* background-color: lightskyblue; */
   margin-top: 1%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
   gap: 5px;
   flex-shrink: 0;
 }
@@ -238,6 +238,9 @@
   /* background-color: #5f1f62; */
   top: 3%;
   left: 22%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-2 .container-class .playlists-container .div-1 .content .play {
@@ -272,9 +275,7 @@
   transform: translateY(-3px);
 }
 
-
 /* second play btn */
-
 
 .section-2 .container-class .playlists-container .div-2 .content .play-button {
   position: absolute;
@@ -437,7 +438,7 @@
   border-radius: 7px;
 }
 
-.container-class .recently-played .content-container >div:hover {
+.container-class .recently-played .content-container > div:hover {
   background-color: var(--button-color02);
 }
 

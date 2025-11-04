@@ -59,6 +59,7 @@ let phoneSongsContainer = document.querySelector(
   ".section-2 .page-1-phone .phone-songs-container"
 );
 let sec2 = document.querySelector(".main .section-2");
+let sec3 = document.querySelector(".main .section-3");
 let page = document.querySelector(".section-2 .homePage");
 let page1 = document.querySelector(".section-2 .page-1");
 let page2 = document.querySelector(".section-2 .page-2");
@@ -114,7 +115,8 @@ let randomPlay = document.querySelector(
 let playlist1 = 0;
 let playlist2 = 0;
 
-const resizer = document.querySelector(".resize");
+let resizer = document.querySelectorAll(".resize");
+// console.log(resizer);
 let sec1PlaylistContent = 0;
 const sec1HeaderContainer = document.querySelector(
   ".section-1 .sec1-header-container"
@@ -140,24 +142,58 @@ const sec1 = document.querySelector(".section-1");
 const sec2Divs = document.querySelectorAll(
   ".section-2 .container-class .recently-played .content-container>div"
 );
-const sec2HeaderDivs = document.querySelector(
+const sec2Header = document.querySelector(
   ".section-2 .container-class .playlists-container"
 );
 const sec2HeaderDivsPlayBtn = document.querySelectorAll(
     ".section-2 .container-class .playlists-container .content .play-button"
   ),
+  sec2HeaderDivsPlayBtnOverlay = document.querySelectorAll(
+    ".section-2 .container-class .playlists-container .content .play-button .overlay"
+  ),
+  sec2HeaderDivsPlayBtnSvgs = document.querySelectorAll(
+    ".section-2 .container-class .playlists-container .content .play-button .play svg"
+  ),
+  sec2HeaderDivsPlayBtnPlay = document.querySelectorAll(
+    ".section-2 .container-class .playlists-container .content .play-button .play"
+  ),
   sec2Recent = document.querySelector(".container-class .recently-played"),
   sec2RecentPlaylistPlayBtn = document.querySelectorAll(
     ".section-2 .recently-played .content-container .play-button"
   ),
+  sec2RecentPlaylistPlayBtnOverlay = document.querySelectorAll(
+    ".section-2 .recently-played .content-container .play-button .overlay"
+  ),
+  sec2RecentPlaylistPlayBtnPlay = document.querySelectorAll(
+    ".section-2 .recently-played .content-container .play-button .play"
+  ),
+  sec2RecentPlaylistPlayBtnSvgs = document.querySelectorAll(
+    ".section-2 .recently-played .content-container .play-button .play svg"
+  ),
+  sec2RecentPlaylists = document.querySelectorAll(
+    ".section-2 .recently-played .content-container > div"
+  ),
+  sec2HomePageBanner = document.querySelectorAll(
+    ".section-2 .recently-played .content-container > div .img"
+  ),
+  sec2HomePageContent = document.querySelectorAll(
+    ".section-2 .recently-played .content-container > div .content"
+  ),
   sec2PagesBanner = document.querySelectorAll(
     ".section-2 .header-container2 .img"
+  ),
+  sec2PagesBtn = document.querySelectorAll(
+    ".section-2 .header-function .left .play-pause"
+  ),
+  sec2PagesBtnSvgs = document.querySelectorAll(
+    ".section-2 .header-function .left .play-pause svg"
   );
 
 let sec2ScrollContainer = 0;
 let sec2ScrollName = 0;
 
 let isResizing = false;
+let isResizing2 = false;
 
 // section-3
 
@@ -170,13 +206,13 @@ let imgBanner = document.querySelector(".section-3 .banner .img"),
 let sec3ScrollContainer = document.querySelector(
   ".section-3 .song-detail .first"
 );
-let sec3ScrollName = document.querySelector(
-  ".section-3 .song-detail .first .name"
+let sec3ScrollName = document.querySelectorAll(
+  ".section-3 .song-detail .first .name, .section-3 .song-detail .first .artist"
 );
 
 // header
 
-const header = document.querySelector(".header"),
+let header = document.querySelector(".header"),
   headerLeftSvg = document.querySelector(".header .left-header svg"),
   headerLeft = document.querySelector(".header .left-header"),
   headerMid1Svg = document.querySelector(
@@ -208,7 +244,7 @@ headerRight5b = document.querySelector(
 
 // Footer
 
-const footerPage = document.querySelector(".footer-page"),
+let footerPage = document.querySelector(".footer-page"),
   footerPageCont1 = document.querySelector(".footer-page .container-1"),
   footerPageCont2 = document.querySelector(".footer-page .container-2"),
   footerPageCont3 = document.querySelector(".footer-page .container-3"),
@@ -288,7 +324,12 @@ function formatTime(seconds) {
   return `${min}:${sec < 10 ? "0" + sec : sec}`;
 }
 
+let audio = document.querySelector(
+  ".footer-page .container-3 .volume-control audio"
+);
+
 let sec2PageSongs = 0;
+// let currentVol = 1.0;
 // let i = 0
 
 async function main() {
@@ -405,6 +446,14 @@ async function sec1Main() {
     });
   });
 
+  window.addEventListener("load", () => {
+    if (window.innerWidth <= 768) {
+      sec1PlaylistContent.forEach((element) => {
+        element.classList.add("display-none");
+      });
+    }
+  });
+
   playlist1 = document.querySelector(
     ".section-1 .playlist-container .playlist-1"
   );
@@ -444,6 +493,8 @@ function loadSong(index) {
   if (b) b.pause();
 
   b = new Audio(songs[index].src);
+  // audio.src = songs[index].src;
+  b.volume = currentVol;
   playlistPlay = true;
   playlist2Play = false;
 
@@ -481,6 +532,8 @@ function loadSongtype(index) {
   if (b) b.pause();
 
   b = new Audio(songs[index].src);
+  // audio.src = songs[index].src;
+  b.volume = currentVol;
   playlistPlay = true;
   playlist2Play = false;
 
@@ -678,8 +731,14 @@ phonePageChange1.addEventListener("click", () =>
   showChangePage(".page-1-phone")
 );
 
-resizer.addEventListener("mousedown", () => {
-  isResizing = true;
+let homePageDivImg = document.querySelectorAll(
+  ".section-2 .container-class .playlists-container > div .img"
+);
+
+resizer.forEach((element) => {
+  element.addEventListener("mousedown", () => {
+    isResizing = true;
+  });
 });
 
 document.addEventListener("mousemove", (e) => {
@@ -692,14 +751,24 @@ document.addEventListener("mousemove", (e) => {
   );
 
   if (newWidth < 350) {
+    sec3.style.width = "auto";
+    document.querySelector(".section-3 .banner").style.height = "60%";
     midBtnSpan.textContent = "";
     midBtn.classList.add("change");
   } else if (newWidth > 350) {
+    sec3.style.width = "290px";
+    document.querySelector(".section-3 .banner").style.height = "50%";
     midBtnSpan.textContent = "Create";
     midBtn.classList.remove("change");
   }
   if (newWidth < 285) {
     document.documentElement.style.setProperty("--section-1-width", 75 + "px");
+    bg.forEach((element) => {
+      element.style.width = "68%";
+      element.style.height = "27%";
+    });
+    sec2Header.style.gridTemplateColumns =
+      "repeat(auto-fit, minmax(200px, 1fr))";
     sec1PlaylistContent.forEach((element) => {
       element.classList.add("display-none");
     });
@@ -709,7 +778,7 @@ document.addEventListener("mousemove", (e) => {
     sec2Divs.forEach((element) => {
       element.style.height = "105%";
     });
-    sec2HeaderDivs.style.height = "25%";
+    sec2Header.style.height = "25%";
     sec2HeaderDivsPlayBtn.forEach((element) => {
       element.style.top = "5%";
     });
@@ -721,16 +790,22 @@ document.addEventListener("mousemove", (e) => {
       element.style.width = "20%";
     });
     sec2PageSongs.forEach((element) => {
-      element.style.height = "9vh";
+      element.style.height = "10vh";
     });
     sec2Page2Songs.forEach((element) => {
-      element.style.height = "9vh";
+      element.style.height = "10vh";
     });
   } else if (newWidth > 285) {
     document.documentElement.style.setProperty(
       "--section-1-width",
       newWidth + "px"
     );
+    bg.forEach((element) => {
+      element.style.width = "54%";
+      element.style.height = "27%";
+    });
+    sec2Header.style.gridTemplateColumns =
+      "repeat(auto-fit, minmax(150px, 1fr))";
     sec1PlaylistContent.forEach((element) => {
       element.classList.remove("display-none");
     });
@@ -740,7 +815,7 @@ document.addEventListener("mousemove", (e) => {
     sec2Divs.forEach((element) => {
       element.style.height = "90%";
     });
-    sec2HeaderDivs.style.height = "20%";
+    sec2Header.style.height = "20%";
     sec2HeaderDivsPlayBtn.forEach((element) => {
       element.style.top = "3%";
     });
@@ -760,12 +835,55 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
+let pagesBg = document.querySelectorAll(
+  ".section-2 .phone-header-container2 .bg"
+);
+
 document.addEventListener("mouseup", () => {
   isResizing = false;
 });
 
 sec1OpenPLaylists.addEventListener("click", () => {
-  document.documentElement.style.setProperty("--section-1-width", 375 + "px");
+  if (
+    window.innerWidth <= 450 &&
+    window.innerWidth > 350 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    pagesBg.forEach((element) => {
+      element.style.display = "none";
+    });
+    document.documentElement.style.setProperty("--section-1-width", 375 + "px");
+  } else if (
+    window.innerWidth <= 1025 &&
+    window.innerWidth > 450 &&
+    window.innerHeight <= 1375 &&
+    window.innerHeight > 600
+  ) {
+    pagesBg.forEach((element) => {
+      element.style.display = "none";
+    });
+    document.documentElement.style.setProperty("--section-1-width", 425 + "px");
+  }
+
+  // if( window.innerWidth <= 768){
+  //   console.log("none",window.innerWidth,window.innerHeight)
+  // } else {
+  //   console.log("what",window.innerWidth,window.innerHeight)
+  // }
+
+  // document.documentElement.style.setProperty("--section-1-width", 375 + "px");
+  // sec2.classList.add("display-none");
+  // resizer.forEach((element) => {
+  //   element.classList.add("display-none");
+  // });
+  sec3.style.width = "290px";
+  document.querySelector(".section-3 .banner").style.height = "50%";
+  bg.forEach((element) => {
+    element.style.width = "54%";
+    element.style.height = "27%";
+  });
+  sec2Header.style.gridTemplateColumns = "repeat(auto-fit, minmax(150px, 1fr))";
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
   });
@@ -800,7 +918,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
   // sec1PlaylistContainerDivImg.forEach((element) => {
   //   element.style.minWidth = "40px";
   // });
-  sec2HeaderDivs.style.height = "20%";
+  sec2Header.style.height = "20%";
   sec2HeaderDivsPlayBtn.forEach((element) => {
     element.style.top = "3%";
   });
@@ -824,12 +942,12 @@ sec1OpenPLaylists.addEventListener("click", () => {
     if (window.innerWidth <= 768) {
       document.documentElement.style.setProperty(
         "--section-1-width",
-        45 + "px"
+        50 + "px"
         // 68 + "px"
       );
-      sec1PlaylistContent.forEach((element) => {
-        element.classList.add("display-none");
-      });
+      // sec1PlaylistContent.forEach((element) => {
+      //   element.classList.add("display-none");
+      // });
       sec1HeaderContainer.style.display = "none";
       sec1Bar.style.display = "none";
       sec1CloseIcons.classList.remove("display-none");
@@ -850,7 +968,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
     } else {
       document.documentElement.style.setProperty(
         "--section-1-width",
-        360 + "px"
+        370 + "px"
       );
       sec1PlaylistContent.forEach((element) => {
         element.classList.remove("display-none");
@@ -875,7 +993,10 @@ sec1OpenPLaylists.addEventListener("click", () => {
       //main
 
       document.querySelector(".section-3").style.display = "none";
+      document.querySelector(".footer-page .container-3").style.display =
+        "none";
       mainSection.style.height = "63vh";
+      document.querySelector(".resize").style.width = "1px";
       mainSection.style.gridTemplateColumns =
         "var(--section-1-width, 0.7fr) 0.001fr 1fr";
 
@@ -961,8 +1082,11 @@ sec1OpenPLaylists.addEventListener("click", () => {
       playlist1.addEventListener("click", () => {
         document.documentElement.style.setProperty(
           "--section-1-width",
-          45 + "px"
+          50 + "px"
         );
+        pagesBg.forEach((element) => {
+          element.style.display = "flex";
+        });
         sec1PlaylistContent.forEach((element) => {
           element.classList.add("display-none");
         });
@@ -987,8 +1111,11 @@ sec1OpenPLaylists.addEventListener("click", () => {
       playlist2.addEventListener("click", () => {
         document.documentElement.style.setProperty(
           "--section-1-width",
-          45 + "px"
+          50 + "px"
         );
+        pagesBg.forEach((element) => {
+          element.style.display = "flex";
+        });
         sec1PlaylistContent.forEach((element) => {
           element.classList.add("display-none");
         });
@@ -1013,10 +1140,14 @@ sec1OpenPLaylists.addEventListener("click", () => {
     } else {
       //main
 
-      document.querySelector(".section-3").style.display = "block";
+      document.querySelector(".footer-page .container-3").style.display =
+        "flex";
+      if (!sec3.classList.contains("display-none)")) {
+        sec3.style.display = "block";
+      } // issue
       mainSection.style.height = "80vh";
       mainSection.style.gridTemplateColumns =
-        "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr 0.6fr";
+        "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr var(--section-3-width, 0.6fr)";
 
       // header
 

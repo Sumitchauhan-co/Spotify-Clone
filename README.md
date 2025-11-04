@@ -103,7 +103,7 @@ JS Project-3/
 
 ## 🧠 Future Enhancements  
 
-- 🎚️ Volume control  
+- 🎨 Extract the avg color from image to show in the background of home page when hover the each image container
 
 ---
 

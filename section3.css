@@ -16,12 +16,18 @@
 }
 
 .section-3 .sec3-header .first .hide-btn {
-  height: 17px;
-  width: 17px;
+  height: 35px;
+  width: 40px;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-3 .sec3-header svg {
   filter: invert(1);
+  height: 17px;
+  width: 17px;
 }
 
 .section-3 .sec3-header .first .name {
@@ -51,13 +57,25 @@
 }
 
 .section-3 .sec3-header .second .more {
-  height: 17px;
-  width: 17px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-3 .sec3-header .second .expand {
-  height: 17px;
-  width: 17px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-3 .sec3-header .first .hide-btn:hover, .section-3 .sec3-header .second > div:hover {
+  background-color: var(--button-color02);
 }
 
 .section-3 .banner {
@@ -140,6 +158,7 @@
   height: 17px;
   width: 17px;
   opacity: 0.7;
+  display: none;
 }
 
 .section-3 .song-detail .second .verify {
@@ -152,6 +171,9 @@
   opacity: 1;
 }
 
-.section-3:hover .hide-btn, .section-3:hover .expand, .section-3:hover .more, .section-3:hover .download {
+.section-3:hover .sec3-header .first .hide-btn,
+.section-3:hover .sec3-header .second .expand,
+.section-3:hover .sec3-header .second .more,
+.section-3:hover .song-detail .second .download {
   display: flex;
 }

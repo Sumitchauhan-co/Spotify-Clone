@@ -5,7 +5,7 @@
 
 .section-2 .page-2-phone .phone-header-container2 .img {
   height: 80%;
-  width: 45%;
+  width: 40%;
   /* background-color: aqua; */
   margin-right: 2%;
   background-image: url(assets/images/p2.jpg);
@@ -21,11 +21,10 @@
 }
 
 .section-2 .page-2-phone .phone-header-container2 .bg {
-  height: 40%;
-  width: 100%;
-  background: linear-gradient(180deg, #c8ca4d, #111111);
+  height: 16%;
+  width: 83%;
+  background: linear-gradient(180deg, #cccf13, #111111);
   position: absolute;
   border-radius: 15px;
   z-index: 1;
-  top: 0;
 }
