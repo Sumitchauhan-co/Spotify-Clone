@@ -98,8 +98,8 @@
 }
 
 .container-2 .upper .start .first svg {
-  height: 17px;
-  width: 17px;
+  height: 20px;
+  width: 20px;
   filter: invert(1);
   opacity: 0.7;
   transition: var(--trans-02);
@@ -116,8 +116,8 @@
 }
 
 .container-2 .upper .start .second svg {
-  height: 17px;
-  width: 17px;
+  height: 20px;
+  width: 20px;
   filter: invert(1);
   opacity: 0.7;
   transition: var(--trans-02);
@@ -144,8 +144,8 @@
 }
 
 .container-2 .upper .end .first svg {
-  height: 17px;
-  width: 17px;
+  height: 20px;
+  width: 20px;
   filter: invert(1);
   opacity: 0.7;
   transition: var(--trans-02);
@@ -162,8 +162,8 @@
 }
 
 .container-2 .upper .end .second svg {
-  height: 17px;
-  width: 17px;
+  height: 20px;
+  width: 20px;
   filter: invert(1);
   opacity: 0.7;
   transition: var(--trans-02);
@@ -182,8 +182,8 @@
 } */
 
 .footer-page .container-2 .upper .mid {
-  height: 29px;
-  width: 29px;
+  height: 35px;
+  width: 35px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -198,8 +198,8 @@
 }
 
 .footer-page .container-2 .upper .mid svg {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
 }
 
 .footer-page .container-2 .lower {
@@ -245,6 +245,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
 }
 
 .footer-page .container-2 .lower .duration {
@@ -254,6 +255,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
 }
 
 .footer-page .container-3 {

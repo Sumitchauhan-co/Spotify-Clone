@@ -864,6 +864,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       element.style.display = "none";
     });
     document.documentElement.style.setProperty("--section-1-width", 425 + "px");
+  } else {
+    document.documentElement.style.setProperty("--section-1-width", 375 + "px");
   }
 
   // if( window.innerWidth <= 768){
