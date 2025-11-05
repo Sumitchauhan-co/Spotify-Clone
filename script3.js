@@ -65,7 +65,7 @@ document.addEventListener("fullscreenchange", () => {
 // 3. Volume Control
 
 const volumeSlider = document.getElementById("volume-slider");
-let currentVol = 1.0
+let currentVol = 1.0;
 
 volumeSlider.addEventListener("input", (e) => {
   currentVol = parseFloat(e.target.value);
@@ -73,3 +73,38 @@ volumeSlider.addEventListener("input", (e) => {
   // console.log("set vol to:", currentVol);
   e.target.style.setProperty("--val", currentVol * 100 + "%");
 });
+
+// screen load
+
+// window.addEventListener("load", () => {
+//   const preloader = document.getElementById("preloader");
+//   preloader.style.opacity = "0";
+//   preloader.addEventListener("transitionend", () => {
+//     preloader.remove();
+//   });
+// });
+
+// Promise.all([
+//   fetch("json/songs2.json"),
+//   fetch("json/songs3.json"),
+//   fetch("json/section1.json"),
+// ]).then(() => {
+//   window.dispatchEvent(new Event("load"));
+// });
+
+document.onreadystatechange = () => {
+  const preloader = document.getElementById('preloader');
+
+  if (document.readyState !== 'complete') {
+    preloader.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // prevent scroll during load
+  } 
+  else {
+    document.body.style.overflow = 'auto';
+    document.body.style.height = '100vh';
+    preloader.style.opacity = '0';
+    preloader.addEventListener('transitionend', () => {
+      preloader.remove();
+    });
+  }
+};
