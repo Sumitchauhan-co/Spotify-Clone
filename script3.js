@@ -112,7 +112,7 @@ document.onreadystatechange = () => {
 
 ["resize", "load"].forEach((evt) => {
   window.addEventListener(evt, () => {
-    if (window.innerWidth <= 1025 && window.innerWidth > 768) {
+    if (window.innerWidth <= 1414 && window.innerWidth > 768) {
       document.querySelector(".not-available").style.display = "flex";
     } else {
       document.querySelector(".not-available").style.display = "none";

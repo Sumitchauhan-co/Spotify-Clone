@@ -244,7 +244,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-@media (max-width:1025px) and (min-width:768px) {
+@media (max-width:1414px) and (min-width:768px) {
   .main {
     display: none;
   }
