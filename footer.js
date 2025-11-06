@@ -6,8 +6,8 @@ footerPage.insertAdjacentHTML(
     <div class="container-1">
             <div class="img"></div>
             <div class="content">
-                <div class="content-1">Memories</div>
-                <div class="content-2">Maroon 5</div>
+                <div class="content-1"></div>
+                <div class="content-2"></div>
             </div>
             <div class="add">
                 <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline"

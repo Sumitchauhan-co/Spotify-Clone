@@ -445,11 +445,16 @@ home.addEventListener("click", () => {
     window.innerHeight > 600
   ) {
     showChangePage(".homePage-phone");
-    
+
     document.documentElement.style.setProperty("--section-1-width", 50 + "px");
     pagesBg.forEach((element) => {
       element.style.display = "flex";
     });
+    sec2.style.display = "block";
+    resizer.forEach((element) => {
+      element.style.display = "block";
+    });
+    resizer[1].style.display = "none"
     sec1PlaylistContent.forEach((element) => {
       element.classList.add("display-none");
     });
