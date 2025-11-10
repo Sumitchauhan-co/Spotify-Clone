@@ -784,7 +784,8 @@ view.addEventListener("click", () => {
     sec3.style.display = "block";
     sec3.style.width = "300px";
     sec2.style.position = "relative";
-    sec2.style.width = "827px";
+    // sec2.style.width = "827px";
+    sec2.style.width = "auto";
 
     sec2Header.style.height = "20%";
     sec2Header.style.gridTemplateColumns =

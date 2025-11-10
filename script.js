@@ -756,7 +756,8 @@ document.addEventListener("mousemove", (e) => {
     midBtnSpan.textContent = "";
     midBtn.classList.add("change");
   } else if (newWidth > 350) {
-    sec3.style.width = "290px";
+    // sec3.style.width = "290px";
+    sec3.style.width = "auto";
     document.querySelector(".section-3 .banner").style.height = "50%";
     midBtnSpan.textContent = "Create";
     midBtn.classList.remove("change");
@@ -972,7 +973,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
   // resizer.forEach((element) => {
   //   element.classList.add("display-none");
   // });
-  sec3.style.width = "290px";
+  // sec3.style.width = "290px";
+  sec3.style.width = "auto";
   document.querySelector(".section-3 .banner").style.height = "50%";
   bg.forEach((element) => {
     element.style.width = "54%";
@@ -1287,7 +1289,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont1.style.height = "100%";
       footerPageCont2.style.width = "40%";
       footerPageCont2.style.height = "100%";
-      footerPageCont1Img.style.width = "17%";
+      footerPageCont1Img.style.width = "20%";
       footerPageCont1Img.style.height = "90%";
       footerPageCont1Content.style.minWidth = "50%";
       footerPageCont1Content.style.height = "100%";

@@ -81,7 +81,8 @@ body {
   background-color: var(--section-color);
   border-radius: 20px;
   padding: 0 10px;
-  width: 290px;
+  /* width: 290px; */
+  width: auto;
 }
 
 /* section-3 */
@@ -241,10 +242,16 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-@media (max-width:1414px) and (min-width:768px) {
+/* 1280 to 1920 px for laptops */
+
+/* 340 to 715 px for laptops */
+
+@media (max-width: 894px) and (min-width: 715px) {
   .main {
     display: none;
   }
@@ -256,14 +263,184 @@ body {
   }
 }
 
+@media (max-width: 1280px) and (min-width: 1025px) {
+  .main {
+    display: none;
+  }
+  .header {
+    display: none;
+  }
+  .footer-page {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 500px) {
+  .section-2 .phone-songs-container > div > div:nth-child(2) {
+    height: 100% !important;
+    width: 12% !important;
+  }
+  .footer-page .container-1 .img {
+    min-width: 20% !important;
+  }
+}
+
+@media (max-width: 675px) and (min-width: 600px) {
+  .section-2 .phone-songs-container > div > div:nth-child(2) {
+    width: 10% !important;
+    height: 115% !important;
+  }
+}
+
+@media (max-width: 715px) and (min-width: 675px) {
+  .section-2 .phone-songs-container > div > div:nth-child(2) {
+    width: 10% !important;
+    height: 125% !important;
+  }
+}
+
+@media (max-width: 625px) and (min-width: 600px) {
+  .footer-page .container-1 .img {
+    min-width: 20% !important;
+  }
+}
+
+@media (max-width: 715px) and (min-width: 625px) {
+  .footer-page .container-1 .img {
+    min-width: 18% !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .main {
+    display: none;
+  }
+  .header {
+    display: none;
+  }
+  .footer-page {
+    display: none;
+  }
+}
+
+@media (max-width: 1368px) and (min-width: 1280px) {
+  .section-2 .header-container2 .bg {
+    width: 51% !important;
+  }
+  .section-2 .songs-container > div > div:nth-child(2) {
+    width: 9% !important;
+  }
+  .footer-page .container-1 .img {
+    width: 25% !important;
+  }
+}
+
+@media (max-width: 1310px) and (min-width: 1280px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1420px) and (min-width: 1310px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1525px) and (min-width: 1460px) {
+  .section-2 .header-container2 .bg {
+    width: 52% !important;
+  }
+}
+
+@media (max-width: 1460px) and (min-width: 1420px) {
+  .section-2 .header-container2 .bg {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 1420px) and (min-width: 1368px) {
+  .section-2 .header-container2 .bg {
+    width: 48% !important;
+  }
+}
+
+@media (max-width: 1525px) and (min-width: 1420px) {
+  .section-2 .header-container2 .img {
+    width: 30% !important;
+  }
+}
+
+@media (max-width: 1525px) and (min-width: 1368px) {
+  .section-2 .songs-container > div > div:nth-child(2) {
+    width: 8% !important;
+  }
+  .footer-page .container-1 .img {
+    width: 23% !important;
+  }
+}
+
+@media (max-width: 1420px) and (min-width: 1368px) {
+  .section-2 .header-container2 .img {
+    width: 35% !important;
+  }
+  .section-2 .header-container2 .content h1 {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 1740px) and (min-width: 1575px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)) !important;
+  }
+  .section-2 .songs-container > div > div:nth-child(2) {
+    width: 7% !important;
+  }
+}
+
+@media (max-width: 1910px) and (min-width: 1740px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  }
+  .section-2 .header-container2 .img {
+    height: 95% !important;
+  }
+  .footer-page .container-1 .img {
+    width: 19% !important;
+  }
+}
+
+@media (min-width: 1910px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)) !important;
+  }
+  .section-2 .header-container2 .img {
+    height: 100% !important;
+  }
+  .footer-page .container-1 .img {
+    width: 17% !important;
+  }
+}
+
+/* @media (min-width: 1575px) {
+  .section-2 .header-container2 .img {
+    height: 100% !important;
+  }
+} */
+
 .not-available {
   height: 100vh;
   width: 100vw;
   /* display: flex; */
-  justify-content: center;
-  align-content: center;
+  place-content: center;
+  place-items: center;
   font-size: 25px;
   color: white;
   display: none;
   flex-wrap: wrap;
+}
+
+.not-available img {
+  height: 50px;
+  width: 50px;
 }

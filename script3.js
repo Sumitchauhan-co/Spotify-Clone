@@ -112,10 +112,27 @@ document.onreadystatechange = () => {
 
 ["resize", "load"].forEach((evt) => {
   window.addEventListener(evt, () => {
-    if (window.innerWidth <= 1414 && window.innerWidth > 768) {
-      document.querySelector(".not-available").style.display = "flex";
-    } else {
+    // if (window.innerWidth < 1280 && window.innerWidth > 768) {
+    //   document.querySelector(".not-available").style.display = "flex";
+    //   console.log("1")
+    //   console.log(window.innerHeight, window.innerWidth)
+    // }
+    console.log(window.innerHeight, window.innerWidth)
+    if (window.innerWidth < 340) {
+      document.querySelector(".not-available").style.display = "grid";
+      // console.log("2")
+      // console.log(window.innerHeight, window.innerWidth)
+    }
+    else if(window.innerWidth > 1025 && window.innerWidth < 1280) {
+      document.querySelector(".not-available").style.display = "grid";
+    }
+    else if(window.innerWidth > 715 && window.innerWidth < 894) {
+      document.querySelector(".not-available").style.display = "grid";
+    }
+    else {
       document.querySelector(".not-available").style.display = "none";
+      // console.log("3")
+      // console.log(window.innerHeight, window.innerWidth)
     }
   });
 });
