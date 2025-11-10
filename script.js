@@ -116,7 +116,6 @@ let playlist1 = 0;
 let playlist2 = 0;
 
 let resizer = document.querySelectorAll(".resize");
-// console.log(resizer);
 let sec1PlaylistContent = 0;
 const sec1HeaderContainer = document.querySelector(
   ".section-1 .sec1-header-container"
@@ -236,11 +235,13 @@ let header = document.querySelector(".header"),
   headerRight4 = document.querySelector(".header .right-header .activity"),
   headerRight5 = document.querySelector(
     ".header .right-header .profile-button span"
+  ),
+  headerRight5a = document.querySelector(
+    ".header .right-header .profile-button"
+  ),
+  headerRight5b = document.querySelector(
+    ".header .right-header .profile-button .profile"
   );
-headerRight5a = document.querySelector(".header .right-header .profile-button");
-headerRight5b = document.querySelector(
-  ".header .right-header .profile-button .profile"
-);
 
 // Footer
 
@@ -959,21 +960,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
     document.documentElement.style.setProperty("--section-1-width", 650 + "px");
   } else {
     document.documentElement.style.setProperty("--section-1-width", 375 + "px");
-    // console.log(window.innerHeight, window.innerWidth);
   }
-
-  // if( window.innerWidth <= 768){
-  //   console.log("none",window.innerWidth,window.innerHeight)
-  // } else {
-  //   console.log("what",window.innerWidth,window.innerHeight)
-  // }
-
-  // document.documentElement.style.setProperty("--section-1-width", 375 + "px");
-  // sec2.classList.add("display-none");
-  // resizer.forEach((element) => {
-  //   element.classList.add("display-none");
-  // });
-  // sec3.style.width = "290px";
   sec3.style.width = "auto";
   document.querySelector(".section-3 .banner").style.height = "50%";
   bg.forEach((element) => {
@@ -1078,6 +1065,7 @@ sec1OpenPLaylists.addEventListener("click", () => {
 });
 
 ["resize", "load"].forEach((evt) => {
+  // console.log(window.innerHeight, window.innerWidth)
   window.addEventListener(evt, () => {
     if (
       window.innerWidth <= 1025 &&
@@ -1119,10 +1107,6 @@ sec1OpenPLaylists.addEventListener("click", () => {
       headerRight2.classList.add("display-none");
       headerRight3.classList.add("display-none");
       headerRight4.classList.add("display-none");
-      // headerRight3.style.width = "30%";
-      // headerRight3.style.height = "45%";
-      // headerRight4.style.width = "30%";
-      // headerRight4.style.height = "45%";
       headerRight5.style.fontSize = "13px";
       headerRight5a.style.height = "7vmin";
       headerRight5a.style.width = "7vmin";

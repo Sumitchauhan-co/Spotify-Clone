@@ -274,17 +274,14 @@ page2playBtn.addEventListener("click", () => {
   if (!playlist2Play) {
     loadSong2type(m);
     scroll();
-    console.log("1");
   }
   if (b.paused) {
     b.play();
     pauseSvg();
     playSvg2();
-    console.log("2");
   } else {
     b.pause();
     pauseSvg2();
-    console.log("3");
   }
 });
 
@@ -771,7 +768,6 @@ hideBtn.addEventListener("click", () => {
     element.style.height = "10vh";
   });
   viewSvg.style.fill = "#58cb58";
-  // console.log(sec2Page2Songs)
   sec2Page2Songs.forEach((element) => {
     element.style.height = "10vh";
   });
@@ -855,7 +851,6 @@ view.addEventListener("click", () => {
     });
     viewSvg.style.fill = "white";
     resizer[0].style.cursor = "ew-resize";
-    // console.log(sec2Page2Songs);
     sec2Page2Songs.forEach((element) => {
       element.style.height = "8vh";
     });
