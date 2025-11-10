@@ -6,7 +6,7 @@ let repeatPlay = document.querySelector(
   ".footer-page .container-2 .upper .end .second"
 );
 let home = document.querySelector(".header .home-button");
-let sec2Page2Songs = 0;
+// let sec2Page2Songs = 0;
 let songsContainer2 = document.querySelector(
   ".section-2 .page-2 .songs-container"
 );
@@ -451,7 +451,7 @@ home.addEventListener("click", () => {
     resizer.forEach((element) => {
       element.style.display = "block";
     });
-    resizer[1].style.display = "none"
+    resizer[1].style.display = "none";
     sec1PlaylistContent.forEach((element) => {
       element.classList.add("display-none");
     });
@@ -691,88 +691,91 @@ let viewSvg = document.querySelector(".footer-page .container-3 .view svg");
 let bg = document.querySelectorAll(".section-2 .header-container2 .bg");
 
 hideBtn.addEventListener("click", () => {
-  sec3.style.display = "none";
-  sec2.style.position = "relative";
-  sec2.style.width = "1150px";
-  // sec2.style.left = "-190px";
+  if (window.innerWidth > 1500 && window.innerWidth < 1575) {
+    sec3.style.display = "none";
+    sec2.style.position = "relative";
+    sec2.style.width = "1150px";
+    // sec2.style.left = "-190px";
 
-  sec2Header.style.height = "26%";
-  sec2Header.style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))";
-  sec2HeaderDivsPlayBtn.forEach((element) => {
-    element.style.height = "9%";
-    element.style.top = "4%";
-    // element.style.left = "20%";
-    element.classList.add("center");
-  });
-  sec2HeaderDivsPlayBtn[0].style.left = "20%";
-  sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
-    element.style.height = "55px";
-    element.style.width = "55px";
-  });
-  sec2HeaderDivsPlayBtnPlay.forEach((element) => {
-    element.style.height = "50px";
-    element.style.width = "50px";
-  });
-  sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
-    element.style.height = "25px";
-    element.style.width = "25px";
-  });
-  sec2RecentPlaylistPlayBtn.forEach((element) => {
-    element.style.height = "12%";
-    element.style.width = "6%";
-    element.style.top = "70%";
-    element.style.left = "18%";
-  });
-  sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
-    element.style.height = "60px";
-    element.style.width = "60px";
-  });
-  sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
-    element.style.height = "55px";
-    element.style.width = "55px";
-  });
-  sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
-    element.style.height = "27px";
-    element.style.width = "27px";
-  });
-  sec2Recent.style.height = "60%";
-  // sec2RecentPlaylistPlayBtn.forEach((element) => {
-  //   element.style.top = "55%";
-  // });
-  sec2RecentPlaylists.forEach((element) => {
-    element.style.height = "100%";
-  });
-  sec2HomePageBanner.forEach((element) => {
-    element.style.width = "85%";
-  });
-  sec2HomePageContent.forEach((element) => {
-    element.style.padding = "0 25px";
-  });
-  sec2PagesBanner.forEach((element) => {
-    element.style.width = "20%";
-  });
-  sec2PagesBtnSvgs.forEach((element) => {
-    element.style.width = "30px";
-    element.style.height = "30px";
-  });
-  sec2PagesBtn.forEach((element) => {
-    element.style.width = "60px";
-    element.style.height = "60px";
-  });
-  bg.forEach((element) => {
-    element.style.width = "100%";
-    element.style.height = "60%";
-  });
-  resizer[0].style.cursor = "default";
-  sec2PageSongs.forEach((element) => {
-    element.style.height = "10vh";
-  });
-  viewSvg.style.fill = "#58cb58";
-  sec2Page2Songs.forEach((element) => {
-    element.style.height = "10vh";
-  });
-  mainSection.style.gridTemplateColumns =
-    "var(--section-1-width, 0.7fr) 0.001fr 1fr";
+    sec2Header.style.height = "26%";
+    sec2Header.style.gridTemplateColumns =
+      "repeat(auto-fit, minmax(250px, 1fr))";
+    sec2HeaderDivsPlayBtn.forEach((element) => {
+      element.style.height = "9%";
+      element.style.top = "4%";
+      // element.style.left = "20%";
+      element.classList.add("center");
+    });
+    sec2HeaderDivsPlayBtn[0].style.left = "20%";
+    sec2HeaderDivsPlayBtnOverlay.forEach((element) => {
+      element.style.height = "55px";
+      element.style.width = "55px";
+    });
+    sec2HeaderDivsPlayBtnPlay.forEach((element) => {
+      element.style.height = "50px";
+      element.style.width = "50px";
+    });
+    sec2HeaderDivsPlayBtnSvgs.forEach((element) => {
+      element.style.height = "25px";
+      element.style.width = "25px";
+    });
+    sec2RecentPlaylistPlayBtn.forEach((element) => {
+      element.style.height = "12%";
+      element.style.width = "6%";
+      element.style.top = "70%";
+      element.style.left = "18%";
+    });
+    sec2RecentPlaylistPlayBtnOverlay.forEach((element) => {
+      element.style.height = "60px";
+      element.style.width = "60px";
+    });
+    sec2RecentPlaylistPlayBtnPlay.forEach((element) => {
+      element.style.height = "55px";
+      element.style.width = "55px";
+    });
+    sec2RecentPlaylistPlayBtnSvgs.forEach((element) => {
+      element.style.height = "27px";
+      element.style.width = "27px";
+    });
+    sec2Recent.style.height = "60%";
+    // sec2RecentPlaylistPlayBtn.forEach((element) => {
+    //   element.style.top = "55%";
+    // });
+    sec2RecentPlaylists.forEach((element) => {
+      element.style.height = "100%";
+    });
+    sec2HomePageBanner.forEach((element) => {
+      element.style.width = "85%";
+    });
+    sec2HomePageContent.forEach((element) => {
+      element.style.padding = "0 25px";
+    });
+    sec2PagesBanner.forEach((element) => {
+      element.style.width = "20%";
+    });
+    sec2PagesBtnSvgs.forEach((element) => {
+      element.style.width = "30px";
+      element.style.height = "30px";
+    });
+    sec2PagesBtn.forEach((element) => {
+      element.style.width = "60px";
+      element.style.height = "60px";
+    });
+    bg.forEach((element) => {
+      element.style.width = "100%";
+      element.style.height = "60%";
+    });
+    resizer[0].style.cursor = "default";
+    sec2PageSongs.forEach((element) => {
+      element.style.height = "10vh";
+    });
+    viewSvg.style.fill = "#58cb58";
+    // sec2Page2Songs.forEach((element) => {
+    //   element.style.height = "10vh";
+    // });
+    mainSection.style.gridTemplateColumns =
+      "var(--section-1-width, 0.7fr) 0.001fr 1fr";
+  }
 });
 
 view.addEventListener("click", () => {
@@ -851,9 +854,9 @@ view.addEventListener("click", () => {
     });
     viewSvg.style.fill = "white";
     resizer[0].style.cursor = "ew-resize";
-    sec2Page2Songs.forEach((element) => {
-      element.style.height = "8vh";
-    });
+    // sec2Page2Songs.forEach((element) => {
+    //   element.style.height = "8vh";
+    // });
     mainSection.style.gridTemplateColumns =
       "var(--section-1-width, 0.7fr) 0.001fr 1.7fr 0.001fr var(--section-3-width, 0.6fr)";
   }

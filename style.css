@@ -247,8 +247,6 @@ body {
   }
 }
 
-/* 1280 to 1920 px for laptops */
-
 /* 340 to 715 px for laptops */
 
 @media (max-width: 894px) and (min-width: 715px) {
@@ -263,7 +261,7 @@ body {
   }
 }
 
-@media (max-width: 1280px) and (min-width: 1025px) {
+@media (max-width: 1200px) and (min-width: 1025px) {
   .main {
     display: none;
   }
@@ -323,6 +321,69 @@ body {
   }
 }
 
+/* 1280 to 1920 px for laptops */
+
+@media (max-width: 1400px) and (min-width: 1200px) {
+  .section-3 .banner .img {
+    height: 75%;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1200px) {
+  .footer .foot {
+    width: 107% !important;
+  }
+  .footer .foot .content-1 .col-1 p,
+  .footer .foot .content-1 .col-2 p,
+  .footer .foot .content-1 .col-3 p,
+  .footer .foot .content-1 .col-4 p {
+    font-size: 15px !important;
+  }
+  .footer .foot .content-1 .col-1 span,
+  .footer .foot .content-1 .col-2 span,
+  .footer .foot .content-1 .col-3 span,
+  .footer .foot .content-1 .col-4 span {
+    font-size: 15px !important;
+  }
+  .section-2 .container-class .playlists-container {
+    width: 107% !important;
+  }
+  .section-2 .container-class .playlists-container > div .content .name {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1200px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)) !important;
+  }
+  .section-2 .header-container2 .bg {
+    width: 48% !important;
+  }
+  .section-2 .header-container2 .img {
+    width: 45% !important;
+  }
+  .section-2 .header-container2 .content h1 {
+    font-size: 57px !important;
+  }
+  .section-2 .page-2 .header-container2 .content h1 {
+    font-size: 47px !important;
+  }
+  .footer-page .container-1 .img {
+    width: 30% !important;
+  }
+  .footer-page .container-2 {
+    width: 45% !important;
+  }
+  .section-2 .songs-container > div > div:nth-child(2) {
+    width: 10% !important;
+    height: 75% !important;
+  }
+  .section-2 .songs-container > div {
+    height: 9vh;
+  }
+}
+
 @media (max-width: 1368px) and (min-width: 1280px) {
   .section-2 .header-container2 .bg {
     width: 51% !important;
@@ -332,6 +393,15 @@ body {
   }
   .footer-page .container-1 .img {
     width: 25% !important;
+  }
+  .section-2 .header-container2 .img {
+    width: 35% !important;
+  }
+  .section-2 .header-container2 .content h1 {
+    font-size: 67px !important;
+  }
+  .section-2 .page-2 .header-container2 .content h1 {
+    font-size: 57px !important;
   }
 }
 
@@ -349,7 +419,7 @@ body {
 
 @media (max-width: 1525px) and (min-width: 1460px) {
   .section-2 .header-container2 .bg {
-    width: 52% !important;
+    width: 52%;
   }
 }
 
@@ -367,16 +437,16 @@ body {
 
 @media (max-width: 1525px) and (min-width: 1420px) {
   .section-2 .header-container2 .img {
-    width: 30% !important;
+    width: 30%;
   }
 }
 
 @media (max-width: 1525px) and (min-width: 1368px) {
   .section-2 .songs-container > div > div:nth-child(2) {
-    width: 8% !important;
+    width: 8%;
   }
   .footer-page .container-1 .img {
-    width: 23% !important;
+    width: 23%;
   }
 }
 
@@ -385,7 +455,10 @@ body {
     width: 35% !important;
   }
   .section-2 .header-container2 .content h1 {
-    font-size: 70px;
+    font-size: 67px;
+  }
+  .section-2 .page-2 .header-container2 .content h1 {
+    font-size: 57px !important;
   }
 }
 

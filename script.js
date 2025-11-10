@@ -738,7 +738,10 @@ let homePageDivImg = document.querySelectorAll(
 
 resizer.forEach((element) => {
   element.addEventListener("mousedown", () => {
-    isResizing = true;
+    // isResizing = true;
+    if (window.innerWidth > 1500 && window.innerWidth < 1575) {
+      isResizing = true;
+    }
   });
 });
 
@@ -794,9 +797,9 @@ document.addEventListener("mousemove", (e) => {
     sec2PageSongs.forEach((element) => {
       element.style.height = "10vh";
     });
-    sec2Page2Songs.forEach((element) => {
-      element.style.height = "10vh";
-    });
+    // sec2Page2Songs.forEach((element) => {
+    //   element.style.height = "10vh";
+    // });
   } else if (newWidth > 285) {
     document.documentElement.style.setProperty(
       "--section-1-width",
@@ -831,9 +834,9 @@ document.addEventListener("mousemove", (e) => {
     sec2PageSongs.forEach((element) => {
       element.style.height = "8vh";
     });
-    sec2Page2Songs.forEach((element) => {
-      element.style.height = "8vh";
-    });
+    // sec2Page2Songs.forEach((element) => {
+    //   element.style.height = "8vh";
+    // });
   }
 });
 
@@ -1011,14 +1014,14 @@ sec1OpenPLaylists.addEventListener("click", () => {
     element.style.top = "55%";
   });
   sec2PagesBanner.forEach((element) => {
-    element.style.width = "25%";
+    element.style.width = "27%";
   });
   sec2PageSongs.forEach((element) => {
     element.style.height = "8vh";
   });
-  sec2Page2Songs.forEach((element) => {
-    element.style.height = "8vh";
-  });
+  // sec2Page2Songs.forEach((element) => {
+  //   element.style.height = "8vh";
+  // });
 });
 
 ["resize", "load"].forEach((evt) => {
@@ -1065,7 +1068,6 @@ sec1OpenPLaylists.addEventListener("click", () => {
 });
 
 ["resize", "load"].forEach((evt) => {
-  // console.log(window.innerHeight, window.innerWidth)
   window.addEventListener(evt, () => {
     if (
       window.innerWidth <= 1025 &&
@@ -1257,9 +1259,9 @@ sec1OpenPLaylists.addEventListener("click", () => {
       headerRight2.classList.remove("display-none");
       headerRight3.classList.remove("display-none");
       headerRight4.classList.remove("display-none");
-      headerRight3.style.width = "10%";
+      headerRight3.style.width = "7%";
       headerRight3.style.height = "65%";
-      headerRight4.style.width = "10%";
+      headerRight4.style.width = "7%";
       headerRight4.style.height = "65%";
       headerRight5.style.fontSize = "17px";
 
@@ -1275,7 +1277,8 @@ sec1OpenPLaylists.addEventListener("click", () => {
       footerPageCont2.style.height = "100%";
       footerPageCont1Img.style.width = "20%";
       footerPageCont1Img.style.height = "90%";
-      footerPageCont1Content.style.minWidth = "50%";
+      footerPageCont1.style.maxWidth = "revert";
+      footerPageCont1.style.minWidth = "revert";
       footerPageCont1Content.style.height = "100%";
       footerPageCont1Content.style.fontSize = "15px";
       footerPageCont1Add.style.width = "10%";
