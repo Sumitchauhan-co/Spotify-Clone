@@ -88,7 +88,7 @@
 .section-3 .banner .img {
   height: 100%;
   width: 100%;
-  /* background-image: url("assets/images/play\ song.png"); */
+  background-image: url(assets/images/default\ song\ cover.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

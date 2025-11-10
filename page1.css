@@ -255,7 +255,7 @@
 .section-2 .songs-container > div > div:nth-child(2) {
   height: 100%;
   width: 6%;
-  /* background-image: url(covers/song1.jpeg); */
+  background-image: url(assets/images/default\ song\ cover.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 5px;
