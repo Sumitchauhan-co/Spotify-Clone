@@ -324,8 +324,8 @@ body {
 /* 1280 to 1920 px for laptops */
 
 @media (max-width: 1400px) and (min-width: 1200px) {
-  .section-3 .banner .img {
-    height: 75%;
+  .section-3 .banner {
+    height: 40%;
   }
 }
 
