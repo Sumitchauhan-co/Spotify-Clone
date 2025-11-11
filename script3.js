@@ -113,7 +113,7 @@ document.onreadystatechange = () => {
   window.addEventListener(evt, () => {
     if (window.innerWidth < 340) {
       document.querySelector(".not-available").style.display = "grid";
-    } else if (window.innerWidth > 1025 && window.innerWidth < 1200) {
+    } else if (window.innerWidth > 1025 && window.innerWidth < 1150) {
       document.querySelector(".not-available").style.display = "grid";
     } else if (window.innerWidth > 715 && window.innerWidth < 894) {
       document.querySelector(".not-available").style.display = "grid";

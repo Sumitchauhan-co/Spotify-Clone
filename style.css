@@ -261,7 +261,7 @@ body {
   }
 }
 
-@media (max-width: 1200px) and (min-width: 1025px) {
+@media (max-width: 1150px) and (min-width: 1025px) {
   .main {
     display: none;
   }
@@ -323,15 +323,94 @@ body {
 
 /* 1280 to 1920 px for laptops */
 
-@media (max-width: 1400px) and (min-width: 1200px) {
+@media (max-width: 1400px) and (min-width: 1150px) {
   .section-3 .banner {
     height: 40%;
   }
 }
 
+@media (max-width: 1200px) and (min-width: 1150px) {
+  .section-2 .container-class .playlists-container {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)) !important;
+    height: 30% !important;
+  }
+  .section-2 .header-container2 .bg {
+    width: 48% !important;
+  }
+  .section-2 .header-container2 .img {
+    width: 50% !important;
+  }
+  .section-2 .header-container2 .content h1 {
+    font-size: 50px !important;
+    height: 40% !important;
+  }
+  .section-2 .page-2 .header-container2 .content h1 {
+    font-size: 40px !important;
+  }
+  .footer-page .container-1 .img {
+    width: 30% !important;
+  }
+  .footer-page .container-2 {
+    width: 50% !important;
+  }
+  .footer-page .container-2 .lower .progress-container {
+    width: 70% !important;
+  }
+  .section-2 .songs-container > div > div:nth-child(2) {
+    width: 10% !important;
+    height: 70% !important;
+  }
+  .section-2 .header-function .left {
+    width: 35% !important;
+  }
+  .section-2 .songs-container > div {
+    height: 9vh;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 1150px) {
+  .footer .foot .content-2 {
+    font-size: 13px;
+  }
+  .section-2 .header .second-div {
+    width: 12%;
+  }
+  .section-2 .header .third-div {
+    width: 14%;
+  }
+  .section-2 .container-class .playlists-container .div-1 .content .play-button {
+    width: 7% !important;
+    left: 27% !important;
+  }
+  .section-2 .container-class .playlists-container .div-2 .content .play-button {
+    width: 7% !important;
+    left: 56% !important;
+  }
+  .footer .foot .content-1 .col-1 p,
+  .footer .foot .content-1 .col-2 p,
+  .footer .foot .content-1 .col-3 p,
+  .footer .foot .content-1 .col-4 p {
+    font-size: 13px !important;
+  }
+  .footer .foot .content-1 .col-1 span,
+  .footer .foot .content-1 .col-2 span,
+  .footer .foot .content-1 .col-3 span,
+  .footer .foot .content-1 .col-4 span {
+    font-size: 13px !important;
+  }
+  .section-2 .container-class .playlists-container > div .content .name {
+    font-size: 14px !important;
+  }
+}
+
 @media (max-width: 1280px) and (min-width: 1200px) {
-  .footer .foot {
-    width: 107% !important;
+  .section-2 .container-class .playlists-container .div-1 .content .play-button {
+    width: 7% !important;
+    left: 27% !important;
+  }
+  .section-2 .container-class .playlists-container .div-2 .content .play-button {
+    width: 7% !important;
+    left: 56% !important;
   }
   .footer .foot .content-1 .col-1 p,
   .footer .foot .content-1 .col-2 p,
@@ -345,9 +424,6 @@ body {
   .footer .foot .content-1 .col-4 span {
     font-size: 15px !important;
   }
-  .section-2 .container-class .playlists-container {
-    width: 107% !important;
-  }
   .section-2 .container-class .playlists-container > div .content .name {
     font-size: 14px !important;
   }
@@ -355,7 +431,8 @@ body {
 
 @media (max-width: 1280px) and (min-width: 1200px) {
   .section-2 .container-class .playlists-container {
-    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)) !important;
+    height: 30% !important;
   }
   .section-2 .header-container2 .bg {
     width: 48% !important;
@@ -381,6 +458,9 @@ body {
   }
   .section-2 .songs-container > div {
     height: 9vh;
+  }
+  .section-2 .header-function .left {
+    width: 35% !important;
   }
 }
 

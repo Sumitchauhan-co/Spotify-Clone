@@ -274,7 +274,7 @@
 .section-2 .phone-songs-container > div > div:nth-child(2) {
   height: 80%;
   width: 15%;
-  /* background-image: url(covers/song1.jpeg); */
+  background-image: url(assets/images/default\ song\ cover.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 5px;
