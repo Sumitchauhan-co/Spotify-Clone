@@ -445,10 +445,17 @@ async function sec1Main() {
     playlistImg.forEach((e) => {
       e.style.backgroundImage = `url(${element.cover})`;
     });
-  });
-
-  window.addEventListener("load", () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.padding = "0 5px";
+        element.style.height = "40px";
+      });
+      sec1PlaylistContainerDivImg.forEach((element) => {
+        element.style.minWidth = "40px";
+      });
+      sec1PlaylistContainerDivImgSvg.forEach((element) => {
+        element.style.width = "20px";
+      });
       sec1PlaylistContent.forEach((element) => {
         element.classList.add("display-none");
       });
@@ -474,6 +481,69 @@ async function sec1Main() {
     } else {
       showPage(".page-2-phone", ".homePage-phone");
     }
+  });
+
+  playlist1.addEventListener("click", () => {
+    document.documentElement.style.setProperty("--section-1-width", 50 + "px");
+    sec2.style.display = "block";
+    resizer.forEach((element) => {
+      element.style.display = "block";
+    });
+    resizer[1].style.display = "none";
+    pagesBg.forEach((element) => {
+      element.style.display = "flex";
+    });
+    sec1PlaylistContent.forEach((element) => {
+      element.classList.add("display-none");
+    });
+    sec1HeaderContainer.style.display = "none";
+    sec1Bar.style.display = "none";
+    sec1CloseIcons.classList.remove("display-none");
+    sec1PlaylistContainer.style.gridAutoRows = "55px";
+    sec1CloseIcons.style.paddingLeft = "5px";
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.padding = "0";
+    });
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.height = "40px";
+    });
+    sec1PlaylistContainerDivImg.forEach((element) => {
+      element.style.minWidth = "40px";
+    });
+    sec1PlaylistContainerDivImgSvg.forEach((element) => {
+      element.style.width = "20px";
+    });
+  });
+  playlist2.addEventListener("click", () => {
+    document.documentElement.style.setProperty("--section-1-width", 50 + "px");
+    sec2.style.display = "block";
+    resizer.forEach((element) => {
+      element.style.display = "block";
+    });
+    resizer[1].style.display = "none";
+    pagesBg.forEach((element) => {
+      element.style.display = "flex";
+    });
+    sec1PlaylistContent.forEach((element) => {
+      element.classList.add("display-none");
+    });
+    sec1HeaderContainer.style.display = "none";
+    sec1Bar.style.display = "none";
+    sec1CloseIcons.classList.remove("display-none");
+    sec1PlaylistContainer.style.gridAutoRows = "55px";
+    sec1CloseIcons.style.paddingLeft = "5px";
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.padding = "0";
+    });
+    sec1PlaylistContainerDiv.forEach((element) => {
+      element.style.height = "40px";
+    });
+    sec1PlaylistContainerDivImg.forEach((element) => {
+      element.style.minWidth = "40px";
+    });
+    sec1PlaylistContainerDivImgSvg.forEach((element) => {
+      element.style.width = "20px";
+    });
   });
 }
 
@@ -1032,26 +1102,11 @@ sec1OpenPLaylists.addEventListener("click", () => {
         50 + "px"
         // 68 + "px"
       );
-      // sec1PlaylistContent.forEach((element) => {
-      //   element.classList.add("display-none");
-      // });
       sec1HeaderContainer.style.display = "none";
       sec1Bar.style.display = "none";
       sec1CloseIcons.classList.remove("display-none");
       sec1PlaylistContainer.style.gridAutoRows = "55px";
       sec1CloseIcons.style.paddingLeft = "5px";
-      sec1PlaylistContainerDiv.forEach((element) => {
-        element.style.padding = "0 5px";
-      });
-      sec1PlaylistContainerDiv.forEach((element) => {
-        element.style.height = "40px";
-      });
-      sec1PlaylistContainerDivImg.forEach((element) => {
-        element.style.minWidth = "40px";
-      });
-      sec1PlaylistContainerDivImgSvg.forEach((element) => {
-        element.style.width = "20px";
-      });
     } else {
       document.documentElement.style.setProperty(
         "--section-1-width",
@@ -1162,74 +1217,74 @@ sec1OpenPLaylists.addEventListener("click", () => {
       page1Phone.classList.add("display-none");
       page2Phone.classList.add("display-none");
 
-      playlist1.addEventListener("click", () => {
-        document.documentElement.style.setProperty(
-          "--section-1-width",
-          50 + "px"
-        );
-        sec2.style.display = "block";
-        resizer.forEach((element) => {
-          element.style.display = "block";
-        });
-        resizer[1].style.display = "none";
-        pagesBg.forEach((element) => {
-          element.style.display = "flex";
-        });
-        sec1PlaylistContent.forEach((element) => {
-          element.classList.add("display-none");
-        });
-        sec1HeaderContainer.style.display = "none";
-        sec1Bar.style.display = "none";
-        sec1CloseIcons.classList.remove("display-none");
-        sec1PlaylistContainer.style.gridAutoRows = "55px";
-        sec1CloseIcons.style.paddingLeft = "5px";
-        sec1PlaylistContainerDiv.forEach((element) => {
-          element.style.padding = "0";
-        });
-        sec1PlaylistContainerDiv.forEach((element) => {
-          element.style.height = "40px";
-        });
-        sec1PlaylistContainerDivImg.forEach((element) => {
-          element.style.minWidth = "40px";
-        });
-        sec1PlaylistContainerDivImgSvg.forEach((element) => {
-          element.style.width = "20px";
-        });
-      });
-      playlist2.addEventListener("click", () => {
-        document.documentElement.style.setProperty(
-          "--section-1-width",
-          50 + "px"
-        );
-        sec2.style.display = "block";
-        resizer.forEach((element) => {
-          element.style.display = "block";
-        });
-        resizer[1].style.display = "none";
-        pagesBg.forEach((element) => {
-          element.style.display = "flex";
-        });
-        sec1PlaylistContent.forEach((element) => {
-          element.classList.add("display-none");
-        });
-        sec1HeaderContainer.style.display = "none";
-        sec1Bar.style.display = "none";
-        sec1CloseIcons.classList.remove("display-none");
-        sec1PlaylistContainer.style.gridAutoRows = "55px";
-        sec1CloseIcons.style.paddingLeft = "5px";
-        sec1PlaylistContainerDiv.forEach((element) => {
-          element.style.padding = "0";
-        });
-        sec1PlaylistContainerDiv.forEach((element) => {
-          element.style.height = "40px";
-        });
-        sec1PlaylistContainerDivImg.forEach((element) => {
-          element.style.minWidth = "40px";
-        });
-        sec1PlaylistContainerDivImgSvg.forEach((element) => {
-          element.style.width = "20px";
-        });
-      });
+      // playlist1.addEventListener("click", () => {
+      //   document.documentElement.style.setProperty(
+      //     "--section-1-width",
+      //     50 + "px"
+      //   );
+      //   sec2.style.display = "block";
+      //   resizer.forEach((element) => {
+      //     element.style.display = "block";
+      //   });
+      //   resizer[1].style.display = "none";
+      //   pagesBg.forEach((element) => {
+      //     element.style.display = "flex";
+      //   });
+      //   sec1PlaylistContent.forEach((element) => {
+      //     element.classList.add("display-none");
+      //   });
+      //   sec1HeaderContainer.style.display = "none";
+      //   sec1Bar.style.display = "none";
+      //   sec1CloseIcons.classList.remove("display-none");
+      //   sec1PlaylistContainer.style.gridAutoRows = "55px";
+      //   sec1CloseIcons.style.paddingLeft = "5px";
+      //   sec1PlaylistContainerDiv.forEach((element) => {
+      //     element.style.padding = "0";
+      //   });
+      //   sec1PlaylistContainerDiv.forEach((element) => {
+      //     element.style.height = "40px";
+      //   });
+      //   sec1PlaylistContainerDivImg.forEach((element) => {
+      //     element.style.minWidth = "40px";
+      //   });
+      //   sec1PlaylistContainerDivImgSvg.forEach((element) => {
+      //     element.style.width = "20px";
+      //   });
+      // });
+      // playlist2.addEventListener("click", () => {
+      //   document.documentElement.style.setProperty(
+      //     "--section-1-width",
+      //     50 + "px"
+      //   );
+      //   sec2.style.display = "block";
+      //   resizer.forEach((element) => {
+      //     element.style.display = "block";
+      //   });
+      //   resizer[1].style.display = "none";
+      //   pagesBg.forEach((element) => {
+      //     element.style.display = "flex";
+      //   });
+      //   sec1PlaylistContent.forEach((element) => {
+      //     element.classList.add("display-none");
+      //   });
+      //   sec1HeaderContainer.style.display = "none";
+      //   sec1Bar.style.display = "none";
+      //   sec1CloseIcons.classList.remove("display-none");
+      //   sec1PlaylistContainer.style.gridAutoRows = "55px";
+      //   sec1CloseIcons.style.paddingLeft = "5px";
+      //   sec1PlaylistContainerDiv.forEach((element) => {
+      //     element.style.padding = "0";
+      //   });
+      //   sec1PlaylistContainerDiv.forEach((element) => {
+      //     element.style.height = "40px";
+      //   });
+      //   sec1PlaylistContainerDivImg.forEach((element) => {
+      //     element.style.minWidth = "40px";
+      //   });
+      //   sec1PlaylistContainerDivImgSvg.forEach((element) => {
+      //     element.style.width = "20px";
+      //   });
+      // });
     } else {
       //main
 

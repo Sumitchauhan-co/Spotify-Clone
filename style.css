@@ -338,7 +338,7 @@ body {
     width: 48% !important;
   }
   .section-2 .header-container2 .img {
-    width: 50% !important;
+    width: 47% !important;
   }
   .section-2 .header-container2 .content h1 {
     font-size: 50px !important;
@@ -348,7 +348,7 @@ body {
     font-size: 40px !important;
   }
   .footer-page .container-1 .img {
-    width: 30% !important;
+    width: 25% !important;
   }
   .footer-page .container-2 {
     width: 50% !important;
@@ -357,7 +357,7 @@ body {
     width: 70% !important;
   }
   .section-2 .songs-container > div > div:nth-child(2) {
-    width: 10% !important;
+    width: 8% !important;
     height: 70% !important;
   }
   .section-2 .header-function .left {
@@ -372,17 +372,30 @@ body {
   .footer .foot .content-2 {
     font-size: 13px;
   }
+  .section-3 {
+    width: 200px;
+  } 
   .section-2 .header .second-div {
     width: 12%;
   }
   .section-2 .header .third-div {
     width: 14%;
   }
-  .section-2 .container-class .playlists-container .div-1 .content .play-button {
+  .section-2
+    .container-class
+    .playlists-container
+    .div-1
+    .content
+    .play-button {
     width: 7% !important;
     left: 27% !important;
   }
-  .section-2 .container-class .playlists-container .div-2 .content .play-button {
+  .section-2
+    .container-class
+    .playlists-container
+    .div-2
+    .content
+    .play-button {
     width: 7% !important;
     left: 56% !important;
   }
@@ -401,15 +414,32 @@ body {
   .section-2 .container-class .playlists-container > div .content .name {
     font-size: 14px !important;
   }
+  .container-class .recently-played .content-container > div {
+    width: 45%;
+  }
+  .section-2 .recently-played .content-container .playlist-1 .play-button {
+    left: 33%;
+    top: 67%;
+  }
 }
 
-@media (max-width: 1280px) and (min-width: 1200px) {
-  .section-2 .container-class .playlists-container .div-1 .content .play-button {
-    width: 7% !important;
+@media (max-width: 1270px) and (min-width: 1200px) {
+  .section-2
+    .container-class
+    .playlists-container
+    .div-1
+    .content
+    .play-button {
+    width: 6% !important;
     left: 27% !important;
   }
-  .section-2 .container-class .playlists-container .div-2 .content .play-button {
-    width: 7% !important;
+  .section-2
+    .container-class
+    .playlists-container
+    .div-2
+    .content
+    .play-button {
+    width: 6% !important;
     left: 56% !important;
   }
   .footer .foot .content-1 .col-1 p,
@@ -429,7 +459,10 @@ body {
   }
 }
 
-@media (max-width: 1280px) and (min-width: 1200px) {
+@media (max-width: 1270px) and (min-width: 1200px) {
+  .section-3 {
+    width: 220px;
+  }
   .section-2 .container-class .playlists-container {
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)) !important;
     height: 30% !important;
@@ -438,13 +471,13 @@ body {
     width: 48% !important;
   }
   .section-2 .header-container2 .img {
-    width: 45% !important;
+    width: 42% !important;
   }
   .section-2 .header-container2 .content h1 {
-    font-size: 57px !important;
+    font-size: 55px !important;
   }
   .section-2 .page-2 .header-container2 .content h1 {
-    font-size: 47px !important;
+    font-size: 45px !important;
   }
   .footer-page .container-1 .img {
     width: 30% !important;
@@ -453,7 +486,7 @@ body {
     width: 45% !important;
   }
   .section-2 .songs-container > div > div:nth-child(2) {
-    width: 10% !important;
+    width: 8% !important;
     height: 75% !important;
   }
   .section-2 .songs-container > div {
@@ -462,30 +495,49 @@ body {
   .section-2 .header-function .left {
     width: 35% !important;
   }
+  .container-class .recently-played .content-container > div {
+    width: 40%;
+  }
+  .section-2 .recently-played .content-container .playlist-1 .play-button {
+    top: 67%;
+    left: 30%;
+  }
 }
 
-@media (max-width: 1368px) and (min-width: 1280px) {
+@media (max-width: 1368px) and (min-width: 1270px) {
+  .section-3 {
+    width: 230px;
+  }
   .section-2 .header-container2 .bg {
-    width: 51% !important;
+    width: 50% !important;
   }
   .section-2 .songs-container > div > div:nth-child(2) {
-    width: 9% !important;
+    width: 7% !important;
+  }
+  .footer-page .container-2 {
+    width: 45% !important;
   }
   .footer-page .container-1 .img {
-    width: 25% !important;
+    width: 20% !important;
   }
   .section-2 .header-container2 .img {
     width: 35% !important;
   }
   .section-2 .header-container2 .content h1 {
-    font-size: 67px !important;
+    font-size: 65px !important;
   }
   .section-2 .page-2 .header-container2 .content h1 {
-    font-size: 57px !important;
+    font-size: 55px !important;
+  }
+  .container-class .recently-played .content-container > div {
+    width: 35%;
+  }
+  .section-2 .recently-played .content-container .playlist-1 .play-button {
+    left: 27%;
   }
 }
 
-@media (max-width: 1310px) and (min-width: 1280px) {
+@media (max-width: 1310px) and (min-width: 1270px) {
   .section-2 .container-class .playlists-container {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
   }
@@ -513,11 +565,23 @@ body {
   .section-2 .header-container2 .bg {
     width: 48% !important;
   }
+  .container-class .recently-played .content-container > div {
+    width: 33%;
+  }
+  .section-2 .recently-played .content-container .playlist-1 .play-button {
+    left: 27%;
+  }
 }
 
 @media (max-width: 1525px) and (min-width: 1420px) {
   .section-2 .header-container2 .img {
     width: 30%;
+  }
+  .container-class .recently-played .content-container > div {
+    width: 30%;
+  }
+  .section-2 .recently-played .content-container .playlist-1 .play-button {
+    left: 27%;
   }
 }
 

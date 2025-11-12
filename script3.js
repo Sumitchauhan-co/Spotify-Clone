@@ -98,7 +98,7 @@ document.onreadystatechange = () => {
     preloader.style.display = "flex";
     document.body.style.overflow = "hidden"; // prevent scroll during load
   } else {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "revert";
     document.body.style.height = "100vh";
     preloader.style.opacity = "0";
     preloader.addEventListener("transitionend", () => {
