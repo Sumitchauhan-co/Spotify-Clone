@@ -482,69 +482,76 @@ async function sec1Main() {
       showPage(".page-2-phone", ".homePage-phone");
     }
   });
-
-  playlist1.addEventListener("click", () => {
-    document.documentElement.style.setProperty("--section-1-width", 50 + "px");
-    sec2.style.display = "block";
-    resizer.forEach((element) => {
-      element.style.display = "block";
+  if (window.innerWidth < 768) {
+    playlist1.addEventListener("click", () => {
+      document.documentElement.style.setProperty(
+        "--section-1-width",
+        50 + "px"
+      );
+      sec2.style.display = "block";
+      resizer.forEach((element) => {
+        element.style.display = "block";
+      });
+      resizer[1].style.display = "none";
+      pagesBg.forEach((element) => {
+        element.style.display = "flex";
+      });
+      sec1PlaylistContent.forEach((element) => {
+        element.classList.add("display-none");
+      });
+      sec1HeaderContainer.style.display = "none";
+      sec1Bar.style.display = "none";
+      sec1CloseIcons.classList.remove("display-none");
+      sec1PlaylistContainer.style.gridAutoRows = "55px";
+      sec1CloseIcons.style.paddingLeft = "5px";
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.padding = "0";
+      });
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.height = "40px";
+      });
+      sec1PlaylistContainerDivImg.forEach((element) => {
+        element.style.minWidth = "40px";
+      });
+      sec1PlaylistContainerDivImgSvg.forEach((element) => {
+        element.style.width = "20px";
+      });
     });
-    resizer[1].style.display = "none";
-    pagesBg.forEach((element) => {
-      element.style.display = "flex";
+    playlist2.addEventListener("click", () => {
+      document.documentElement.style.setProperty(
+        "--section-1-width",
+        50 + "px"
+      );
+      sec2.style.display = "block";
+      resizer.forEach((element) => {
+        element.style.display = "block";
+      });
+      resizer[1].style.display = "none";
+      pagesBg.forEach((element) => {
+        element.style.display = "flex";
+      });
+      sec1PlaylistContent.forEach((element) => {
+        element.classList.add("display-none");
+      });
+      sec1HeaderContainer.style.display = "none";
+      sec1Bar.style.display = "none";
+      sec1CloseIcons.classList.remove("display-none");
+      sec1PlaylistContainer.style.gridAutoRows = "55px";
+      sec1CloseIcons.style.paddingLeft = "5px";
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.padding = "0";
+      });
+      sec1PlaylistContainerDiv.forEach((element) => {
+        element.style.height = "40px";
+      });
+      sec1PlaylistContainerDivImg.forEach((element) => {
+        element.style.minWidth = "40px";
+      });
+      sec1PlaylistContainerDivImgSvg.forEach((element) => {
+        element.style.width = "20px";
+      });
     });
-    sec1PlaylistContent.forEach((element) => {
-      element.classList.add("display-none");
-    });
-    sec1HeaderContainer.style.display = "none";
-    sec1Bar.style.display = "none";
-    sec1CloseIcons.classList.remove("display-none");
-    sec1PlaylistContainer.style.gridAutoRows = "55px";
-    sec1CloseIcons.style.paddingLeft = "5px";
-    sec1PlaylistContainerDiv.forEach((element) => {
-      element.style.padding = "0";
-    });
-    sec1PlaylistContainerDiv.forEach((element) => {
-      element.style.height = "40px";
-    });
-    sec1PlaylistContainerDivImg.forEach((element) => {
-      element.style.minWidth = "40px";
-    });
-    sec1PlaylistContainerDivImgSvg.forEach((element) => {
-      element.style.width = "20px";
-    });
-  });
-  playlist2.addEventListener("click", () => {
-    document.documentElement.style.setProperty("--section-1-width", 50 + "px");
-    sec2.style.display = "block";
-    resizer.forEach((element) => {
-      element.style.display = "block";
-    });
-    resizer[1].style.display = "none";
-    pagesBg.forEach((element) => {
-      element.style.display = "flex";
-    });
-    sec1PlaylistContent.forEach((element) => {
-      element.classList.add("display-none");
-    });
-    sec1HeaderContainer.style.display = "none";
-    sec1Bar.style.display = "none";
-    sec1CloseIcons.classList.remove("display-none");
-    sec1PlaylistContainer.style.gridAutoRows = "55px";
-    sec1CloseIcons.style.paddingLeft = "5px";
-    sec1PlaylistContainerDiv.forEach((element) => {
-      element.style.padding = "0";
-    });
-    sec1PlaylistContainerDiv.forEach((element) => {
-      element.style.height = "40px";
-    });
-    sec1PlaylistContainerDivImg.forEach((element) => {
-      element.style.minWidth = "40px";
-    });
-    sec1PlaylistContainerDivImgSvg.forEach((element) => {
-      element.style.width = "20px";
-    });
-  });
+  }
 }
 
 sec1Main();
