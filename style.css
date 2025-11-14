@@ -546,6 +546,7 @@ body {
 @media (max-width: 1420px) and (min-width: 1310px) {
   .section-2 .container-class .playlists-container {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    height: 22%;
   }
 }
 
