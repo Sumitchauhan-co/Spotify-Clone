@@ -822,8 +822,6 @@ resizer.forEach((element) => {
   });
 });
 
-let section1Closed = false;
-
 document.addEventListener("mousemove", (e) => {
   if (!isResizing) return;
 
@@ -834,13 +832,11 @@ document.addEventListener("mousemove", (e) => {
   );
 
   if (newWidth < 350) {
-    section1Closed = false
     sec3.style.width = "auto";
     document.querySelector(".section-3 .banner").style.height = "60%";
     midBtnSpan.textContent = "";
     midBtn.classList.add("change");
   } else if (newWidth > 350) {
-    section1Closed = false
     // sec3.style.width = "290px";
     sec3.style.width = "auto";
     document.querySelector(".section-3 .banner").style.height = "50%";
@@ -878,12 +874,10 @@ document.addEventListener("mousemove", (e) => {
     sec2PageSongs.forEach((element) => {
       element.style.height = "10vh";
     });
-    section1Closed = true
     // sec2Page2Songs.forEach((element) => {
     //   element.style.height = "10vh";
     // });
   } else if (newWidth > 285) {
-    section1Closed = false
     document.documentElement.style.setProperty(
       "--section-1-width",
       newWidth + "px"
@@ -1047,7 +1041,6 @@ sec1OpenPLaylists.addEventListener("click", () => {
   } else {
     document.documentElement.style.setProperty("--section-1-width", 375 + "px");
   }
-  section1Closed = false
   sec3.style.width = "auto";
   document.querySelector(".section-3 .banner").style.height = "50%";
   bg.forEach((element) => {

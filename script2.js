@@ -691,9 +691,6 @@ let viewSvg = document.querySelector(".footer-page .container-3 .view svg");
 let bg = document.querySelectorAll(".section-2 .header-container2 .bg");
 
 hideBtn.addEventListener("click", () => {
-  
-  if (section1Closed) return
-
   if (window.innerWidth > 1500 && window.innerWidth < 1575) {
     sec3.style.display = "none";
     sec2.style.position = "relative";
