@@ -693,6 +693,7 @@ let bg = document.querySelectorAll(".section-2 .header-container2 .bg");
 hideBtn.addEventListener("click", () => {
   
   if (section1Closed) return
+  isHideHit = true
 
   if (window.innerWidth > 1500 && window.innerWidth < 1575) {
     sec3.style.display = "none";

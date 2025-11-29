@@ -329,6 +329,7 @@ let audio = document.querySelector(
   ".footer-page .container-3 .volume-control audio"
 );
 
+let isHideHit = false;
 let sec2PageSongs = 0;
 // let currentVol = 1.0;
 // let i = 0
@@ -834,25 +835,43 @@ document.addEventListener("mousemove", (e) => {
   );
 
   if (newWidth < 350) {
-    section1Closed = false
+    section1Closed = false;
     sec3.style.width = "auto";
     document.querySelector(".section-3 .banner").style.height = "60%";
     midBtnSpan.textContent = "";
     midBtn.classList.add("change");
   } else if (newWidth > 350) {
-    section1Closed = false
+    section1Closed = false;
     // sec3.style.width = "290px";
     sec3.style.width = "auto";
     document.querySelector(".section-3 .banner").style.height = "50%";
     midBtnSpan.textContent = "Create";
     midBtn.classList.remove("change");
+    if (isHideHit) {
+      bg.forEach((element) => {
+        element.style.width = "100%";
+        element.style.height = "33%";
+      });
+    } else {
+      bg.forEach((element) => {
+        element.style.width = "54%";
+        element.style.height = "27%";
+      });
+    }
   }
-  if (newWidth < 285) {
+  if (newWidth <= 285) {
     document.documentElement.style.setProperty("--section-1-width", 75 + "px");
-    bg.forEach((element) => {
-      element.style.width = "68%";
-      element.style.height = "27%";
-    });
+    if (isHideHit) {
+      bg.forEach((element) => {
+        element.style.width = "100%";
+        element.style.height = "33%";
+      });
+    } else {
+      bg.forEach((element) => {
+        element.style.width = "68%";
+        element.style.height = "27%";
+      });
+    }
     sec2Header.style.gridTemplateColumns =
       "repeat(auto-fit, minmax(200px, 1fr))";
     sec1PlaylistContent.forEach((element) => {
@@ -878,20 +897,27 @@ document.addEventListener("mousemove", (e) => {
     sec2PageSongs.forEach((element) => {
       element.style.height = "10vh";
     });
-    section1Closed = true
+    section1Closed = true;
     // sec2Page2Songs.forEach((element) => {
     //   element.style.height = "10vh";
     // });
   } else if (newWidth > 285) {
-    section1Closed = false
+    section1Closed = false;
     document.documentElement.style.setProperty(
       "--section-1-width",
       newWidth + "px"
     );
-    bg.forEach((element) => {
-      element.style.width = "54%";
-      element.style.height = "27%";
-    });
+    if (isHideHit) {
+      bg.forEach((element) => {
+        element.style.width = "100%";
+        element.style.height = "33%";
+      });
+    } else {
+      bg.forEach((element) => {
+        element.style.width = "54%";
+        element.style.height = "27%";
+      });
+    }
     sec2Header.style.gridTemplateColumns =
       "repeat(auto-fit, minmax(150px, 1fr))";
     sec1PlaylistContent.forEach((element) => {
@@ -1047,13 +1073,20 @@ sec1OpenPLaylists.addEventListener("click", () => {
   } else {
     document.documentElement.style.setProperty("--section-1-width", 375 + "px");
   }
-  section1Closed = false
+  section1Closed = false;
   sec3.style.width = "auto";
   document.querySelector(".section-3 .banner").style.height = "50%";
-  bg.forEach((element) => {
-    element.style.width = "54%";
-    element.style.height = "27%";
-  });
+  if (isHideHit) {
+    bg.forEach((element) => {
+      element.style.width = "100%";
+      element.style.height = "33%";
+    });
+  } else {
+    bg.forEach((element) => {
+      element.style.width = "54%";
+      element.style.height = "27%";
+    });
+  }
   sec2Header.style.gridTemplateColumns = "repeat(auto-fit, minmax(150px, 1fr))";
   sec1PlaylistContent.forEach((element) => {
     element.classList.remove("display-none");
