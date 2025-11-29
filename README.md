@@ -9,7 +9,7 @@
 
 ## 🌐 Live Demo
 
-🔗 **[Click here to listen](https://sumitchauhan-co.github.io/Js-Project-3/)**
+🔗 **[Click here to listen](https://sumitchauhan-co.github.io/Spotify-Clone/)**
 
 Experience a full-fledged web music player directly in your browser.
 
