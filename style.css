@@ -537,6 +537,24 @@ body {
   }
 }
 
+@media (max-width: 1425px) and (min-width: 1368px) {
+  .section-3 {
+    width: 250px;
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 1425px) {
+  .section-3 {
+    width: 275px;
+  }
+}
+
+@media (max-width: 1555px) and (min-width: 1500px) {
+  .section-3 {
+    width: 300px;
+  }
+}
+
 @media (max-width: 1310px) and (min-width: 1270px) {
   .section-2 .container-class .playlists-container {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
